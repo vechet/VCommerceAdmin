@@ -8,5 +8,15 @@ namespace VCommerceAdmin.Controllers
         {
             return View();
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        public IActionResult Detail()
+        {
+            return View();
+        }
     }
 }

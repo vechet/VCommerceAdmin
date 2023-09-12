@@ -7,12 +7,11 @@
     <div class="container-fluid mb-2">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-
             <li class="breadcrumb-item">
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Product</span>
             </li>
-            <li class="breadcrumb-item active" style="color: black;">Setup Brand</li>
+            <li class="breadcrumb-item">Setup Brand</li>
         </ol>
     </div><!-- /.container-fluid -->
 </div>
@@ -469,11 +468,10 @@
 </section>
 <!-- /.content -->
 
-
-@section scripts{
-    <script>
-        $(function () {
-          
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
             $('#example2').DataTable({
                 scrollY: "370pt",
                 "paging": true,
@@ -484,7 +482,14 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-            
+
+            //create new record
+            $("#AddRecordButton").click(function (e) {
+                e.preventDefault();
+                window.location.href = '@Url.Action("Create")';
+            });
+
+
         });
     </script>
 }
