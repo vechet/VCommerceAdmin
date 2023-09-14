@@ -2,24 +2,20 @@
 {
     public class ApiResponse<T>
     {
-        private T _data;
 
         public ApiResponse(T data)
         {
-            _data = data;
+            Data = data;
         }
 
-        public ErrorResponse Error { get; set; } = null!;
-        public T Data
-        { 
-            get => _data;
-            set => _data = value;
-        }
+        public int Code { get; set; }
+        public string Message { get; set; }
+        public T Data { get;  set; }
     }
 
-    public class ErrorResponse
+    public interface IResponse
     {
         public int Code { get; set; }
-        public string Message { get; set; } = null!;
+        public string Message { get; set; }
     }
 }

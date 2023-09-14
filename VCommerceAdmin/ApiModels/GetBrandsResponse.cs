@@ -1,6 +1,6 @@
 ﻿namespace VCommerceAdmin.CustomModels
 {
-    public class BrandResponse
+    public class GetBrandsResponse
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

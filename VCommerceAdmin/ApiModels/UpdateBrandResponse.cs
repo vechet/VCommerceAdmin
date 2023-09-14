@@ -3,9 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace VCommerceAdmin.CustomModels
 {
-    public class BrandUpdateResponse : BrandResponse
+    public class UpdateBrandResponse : GetBrandsResponse
     {
-        public BrandUpdateResponse(Brand data) 
+        public UpdateBrandResponse(Brand data)
         {
             Id = data.Id;
             Name = data.Name;

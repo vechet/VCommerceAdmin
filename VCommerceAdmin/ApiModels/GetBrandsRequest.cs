@@ -1,7 +1,7 @@
 ﻿namespace VCommerceAdmin.CustomModels
 {
-    public class BrandRequest
+    public class GetBrandsRequest
     {
-        
+
     }
 }

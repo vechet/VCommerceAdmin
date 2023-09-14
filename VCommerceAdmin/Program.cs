@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.Data;
+using VCommerceAdmin.Repository.Interface;
+using VCommerceAdmin.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +12,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//DbContext in dependency injection
-builder.Services.AddDbContext<VcommerceContext>(options =>
+//DbContext factory in dependency injection
+builder.Services.AddDbContextFactory<VcommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VCommerce")));
+
+//repository in dependency injection
+builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
 
 var app = builder.Build();
 
@@ -40,6 +45,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Brand}/{action=Index}/{id?}");
 
 app.Run();

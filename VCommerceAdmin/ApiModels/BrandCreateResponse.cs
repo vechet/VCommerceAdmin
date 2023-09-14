@@ -1,12 +1,14 @@
-﻿using VCommerceAdmin.Models;
+﻿using Newtonsoft.Json;
+using VCommerceAdmin.Helpers;
+using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.CustomModels
 {
-    public class BrandCreateResponse : BrandResponse
+    public class BrandCreateResponse : GetBrandsResponse
     {
         public BrandCreateResponse() { }
 
-        public BrandCreateResponse(Brand data)
+        public BrandCreateResponse(Brand data, int code, string message)
         {
             Id = data.Id;
             Name = data.Name;

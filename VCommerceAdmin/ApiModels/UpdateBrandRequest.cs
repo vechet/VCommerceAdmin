@@ -1,6 +1,6 @@
 ﻿namespace VCommerceAdmin.CustomModels
 {
-    public class BrandUpdateRequest
+    public class UpdateBrandRequest
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
