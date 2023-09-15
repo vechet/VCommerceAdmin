@@ -18079,5 +18079,4 @@
     hooks.locale('en');
 
     return hooks;
-
 })));

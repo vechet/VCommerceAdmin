@@ -104,18 +104,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ "./dev/raphael.amd.js":
 /*!****************************!*\
   !*** ./dev/raphael.amd.js ***!
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./raphael.core */ "./dev/raphael.core.js"), __webpack_require__(/*! ./raphael.svg */ "./dev/raphael.svg.js"), __webpack_require__(/*! ./raphael.vml */ "./dev/raphael.vml.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function(R) {
-
     return R;
-
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -127,9 +123,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! eve */ "eve")], __WEBPACK_AMD_DEFINE_RESULT__ = (function(eve) {
-
     /*\
      * Raphael
      [ method ]
@@ -5178,7 +5172,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         return ret;
     };
 
-
     /*\
      * Set.isPointInside
      [ method ]
@@ -5546,7 +5539,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
-
 /***/ }),
 
 /***/ "./dev/raphael.svg.js":
@@ -5555,7 +5547,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./raphael.core */ "./dev/raphael.core.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function(R) {
     if (R && !R.svg) {
         return;
@@ -6982,7 +6973,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
-
 /***/ }),
 
 /***/ "./dev/raphael.vml.js":
@@ -6991,7 +6981,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./raphael.core */ "./dev/raphael.core.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function(R) {
     if (R && !R.vml) {
         return;
@@ -7143,7 +7132,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             newpath = pathTypes[o.type] && (params.x != a.x || params.y != a.y || params.width != a.width || params.height != a.height || params.cx != a.cx || params.cy != a.cy || params.rx != a.rx || params.ry != a.ry || params.r != a.r),
             isOval = ovalTypes[o.type] && (a.cx != params.cx || a.cy != params.cy || a.r != params.r || a.rx != params.rx || a.ry != params.ry),
             res = o;
-
 
         for (var par in params) if (params[has](par)) {
             a[par] = params[par];
@@ -7993,7 +7981,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
-
 /***/ }),
 
 /***/ "eve":
@@ -8002,7 +7989,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
   \**********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
-
 module.exports = __WEBPACK_EXTERNAL_MODULE_eve__;
 
 /***/ })

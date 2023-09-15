@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace VCommerceAdmin.Helpers
+﻿namespace VCommerceAdmin.Helpers
 {
     public class ApiResponse<T>
     {

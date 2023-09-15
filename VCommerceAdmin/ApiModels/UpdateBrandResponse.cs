@@ -1,13 +1,9 @@
 ﻿using VCommerceAdmin.Models;
-using Microsoft.IdentityModel.Tokens;
-using VCommerceAdmin.ApiModels;
 
 namespace VCommerceAdmin.ApiModels
 {
     public class UpdateBrandResponse : GetBrandsResponse
     {
-        public UpdateBrandResponse() { }
-
         public UpdateBrandResponse(Brand data)
         {
             Id = data.Id;

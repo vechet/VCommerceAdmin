@@ -3793,5 +3793,4 @@
             dataTable.ext.features.register('searchBuilder', _init);
         }
     }));
-
 }());

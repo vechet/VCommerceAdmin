@@ -23,7 +23,6 @@
         factory(jQuery, jQuery.mapael);
     }
 }(function ($, Mapael) {
-
     "use strict";
 
     $.extend(true, Mapael, {
@@ -321,5 +320,4 @@
     });
 
     return Mapael;
-
 }));

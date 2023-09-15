@@ -105,15 +105,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
-
 module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -179,7 +176,6 @@ var Extension = function () {
    * @return {ColorItem|String|*}
    */
 
-
   _createClass(Extension, [{
     key: 'resolveColor',
     value: function resolveColor(color) {
@@ -194,12 +190,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerCreate
      * @param {Event} event
      */
-
   }, {
     key: 'onCreate',
     value: function onCreate(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker is destroyed
@@ -207,7 +201,6 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerDestroy
      * @param {Event} event
      */
-
   }, {
     key: 'onDestroy',
     value: function onDestroy(event) {
@@ -220,12 +213,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerUpdate
      * @param {Event} event
      */
-
   }, {
     key: 'onUpdate',
     value: function onUpdate(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker color is changed
@@ -233,12 +224,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerChange
      * @param {Event} event
      */
-
   }, {
     key: 'onChange',
     value: function onChange(event) {}
     // to be extended
-
 
     /**
      * Method called when the colorpicker color is invalid
@@ -246,12 +235,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerInvalid
      * @param {Event} event
      */
-
   }, {
     key: 'onInvalid',
     value: function onInvalid(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker is hidden
@@ -259,12 +246,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerHide
      * @param {Event} event
      */
-
   }, {
     key: 'onHide',
     value: function onHide(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker is shown
@@ -272,12 +257,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerShow
      * @param {Event} event
      */
-
   }, {
     key: 'onShow',
     value: function onShow(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker is disabled
@@ -285,12 +268,10 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerDisable
      * @param {Event} event
      */
-
   }, {
     key: 'onDisable',
     value: function onDisable(event) {}
     // to be extended
-
 
     /**
      * Method called after the colorpicker is enabled
@@ -298,7 +279,6 @@ var Extension = function () {
      * @listens Colorpicker#colorpickerEnable
      * @param {Event} event
      */
-
   }, {
     key: 'onEnable',
     value: function onEnable(event) {
@@ -315,9 +295,7 @@ module.exports = exports.default;
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -327,7 +305,6 @@ exports.ColorItem = exports.HSVAColor = undefined;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * Color manipulation class, specific for Bootstrap Colorpicker
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
-
 
 var _color = __webpack_require__(16);
 
@@ -371,11 +348,9 @@ var HSVAColor = function () {
  * HSVA color manipulation
  */
 
-
 var ColorItem = function () {
   _createClass(ColorItem, [{
     key: 'api',
-
 
     /**
      * Applies a method of the QixColor API and returns a new Color object or
@@ -416,7 +391,6 @@ var ColorItem = function () {
      *
      * @returns {{color: *, format: String, valid: boolean}}
      */
-
   }, {
     key: 'original',
     get: function get() {
@@ -428,10 +402,8 @@ var ColorItem = function () {
      * @param {String|null} format Color model to convert to by default. Supported: 'rgb', 'hsl', 'hex'.
      * @param {boolean} disableHexInputFallback Disable fixing hex3 format
      */
-
   }], [{
     key: 'HSVAColor',
-
 
     /**
      * Returns the HSVAColor class
@@ -465,7 +437,6 @@ var ColorItem = function () {
    * @example color.replace('rgb(255,0,0)', 'hsl');
    * @example color.replace(hsvaColorData);
    */
-
 
   _createClass(ColorItem, [{
     key: 'replace',
@@ -513,10 +484,8 @@ var ColorItem = function () {
      * @static
      * @returns {QixColor|null}
      */
-
   }, {
     key: 'isValid',
-
 
     /**
      * Returns true if the color is valid, false if not.
@@ -532,10 +501,8 @@ var ColorItem = function () {
      *
      * @returns {int}
      */
-
   }, {
     key: 'setHueRatio',
-
 
     /**
      * Sets the hue ratio, where 1.0 is 0, 0.5 is 180 and 0.0 is 360.
@@ -552,10 +519,8 @@ var ColorItem = function () {
      *
      * @param {int} value Integer from 0 to 100
      */
-
   }, {
     key: 'setSaturationRatio',
-
 
     /**
      * Sets the saturation ratio, where 1.0 is 100 and 0.0 is 0.
@@ -572,10 +537,8 @@ var ColorItem = function () {
      *
      * @param {int} value Integer from 0 to 100
      */
-
   }, {
     key: 'setValueRatio',
-
 
     /**
      * Sets the value ratio, where 1.0 is 0 and 0.0 is 100.
@@ -592,10 +555,8 @@ var ColorItem = function () {
      *
      * @param {int} value Float from 0.0 to 1.0
      */
-
   }, {
     key: 'setAlphaRatio',
-
 
     /**
      * Sets the alpha ratio, where 1.0 is 0.0 and 0.0 is 1.0.
@@ -612,10 +573,8 @@ var ColorItem = function () {
      *
      * @param {String} value Supported: 'rgb', 'hsl', 'hex'
      */
-
   }, {
     key: 'isDesaturated',
-
 
     /**
      * Returns true if the saturation value is zero, false otherwise
@@ -631,7 +590,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'isTransparent',
     value: function isTransparent() {
@@ -643,7 +601,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'hasTransparency',
     value: function hasTransparency() {
@@ -655,7 +612,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'hasAlpha',
     value: function hasAlpha() {
@@ -667,7 +623,6 @@ var ColorItem = function () {
      *
      * @returns {HSVAColor}
      */
-
   }, {
     key: 'toObject',
     value: function toObject() {
@@ -679,7 +634,6 @@ var ColorItem = function () {
      *
      * @returns {HSVAColor}
      */
-
   }, {
     key: 'toHsva',
     value: function toHsva() {
@@ -693,7 +647,6 @@ var ColorItem = function () {
      * @ignore
      * @returns {HSVAColor}
      */
-
   }, {
     key: 'toHsvaRatio',
     value: function toHsvaRatio() {
@@ -706,7 +659,6 @@ var ColorItem = function () {
      *
      * @returns {String}
      */
-
   }, {
     key: 'toString',
     value: function toString() {
@@ -720,7 +672,6 @@ var ColorItem = function () {
      * @param {String|null} format Format to convert to. If empty or null, the internal format will be used.
      * @returns {String}
      */
-
   }, {
     key: 'string',
     value: function string() {
@@ -750,7 +701,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'equals',
     value: function equals(color) {
@@ -768,7 +718,6 @@ var ColorItem = function () {
      *
      * @returns {ColorItem}
      */
-
   }, {
     key: 'getClone',
     value: function getClone() {
@@ -781,7 +730,6 @@ var ColorItem = function () {
      *
      * @returns {ColorItem}
      */
-
   }, {
     key: 'getCloneHueOnly',
     value: function getCloneHueOnly() {
@@ -793,7 +741,6 @@ var ColorItem = function () {
      *
      * @returns {ColorItem}
      */
-
   }, {
     key: 'getCloneOpaque',
     value: function getCloneOpaque() {
@@ -805,7 +752,6 @@ var ColorItem = function () {
      *
      * @returns {String}
      */
-
   }, {
     key: 'toRgbString',
     value: function toRgbString() {
@@ -817,7 +763,6 @@ var ColorItem = function () {
      *
      * @returns {String}
      */
-
   }, {
     key: 'toHexString',
     value: function toHexString() {
@@ -829,7 +774,6 @@ var ColorItem = function () {
      *
      * @returns {String}
      */
-
   }, {
     key: 'toHslString',
     value: function toHslString() {
@@ -842,7 +786,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'isDark',
     value: function isDark() {
@@ -855,7 +798,6 @@ var ColorItem = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'isLight',
     value: function isLight() {
@@ -871,7 +813,6 @@ var ColorItem = function () {
      * @example let colors = color.generate([45, 80, 112, 200]);
      * @returns {ColorItem[]}
      */
-
   }, {
     key: 'generate',
     value: function generate(formula) {
@@ -909,7 +850,6 @@ var ColorItem = function () {
      * @returns {int}
      */
     ,
-
 
     /**
      * Sets the hue value
@@ -1024,7 +964,6 @@ var ColorItem = function () {
      * @static
      * @returns {String|*}
      */
-
   }, {
     key: 'sanitizeString',
     value: function sanitizeString(str) {
@@ -1053,7 +992,6 @@ var ColorItem = function () {
      * @static
      * @returns {boolean}
      */
-
   }, {
     key: 'isHex',
     value: function isHex(str) {
@@ -1075,7 +1013,6 @@ var ColorItem = function () {
      * @static
      * @returns {String} 'rgb', 'hsl', 'hex' or ''.
      */
-
   }, {
     key: 'sanitizeFormat',
     value: function sanitizeFormat(format) {
@@ -1114,7 +1051,6 @@ var ColorItem = function () {
  * @type {{complementary: number[], triad: number[], tetrad: number[], splitcomplement: number[]}}
  */
 
-
 ColorItem.colorFormulas = {
   complementary: [180],
   triad: [0, 120, 240],
@@ -1129,7 +1065,6 @@ exports.ColorItem = ColorItem;
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 /**
@@ -1399,9 +1334,7 @@ module.exports = exports.default;
 /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1472,7 +1405,6 @@ var Palette = function (_Extension) {
   _createClass(Palette, [{
     key: 'colors',
 
-
     /**
      * @returns {Object|Array}
      */
@@ -1497,7 +1429,6 @@ var Palette = function (_Extension) {
   /**
    * @returns {int}
    */
-
 
   _createClass(Palette, [{
     key: 'getLength',
@@ -1557,7 +1488,6 @@ var Palette = function (_Extension) {
      * @param {*} defaultValue
      * @returns {*}
      */
-
   }, {
     key: 'getName',
     value: function getName(value) {
@@ -1584,7 +1514,6 @@ var Palette = function (_Extension) {
      * @param {*} defaultValue
      * @returns {*}
      */
-
   }, {
     key: 'getValue',
     value: function getValue(name) {
@@ -1609,9 +1538,7 @@ module.exports = exports.default;
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 module.exports = {
 	"aliceblue": [240, 248, 255],
@@ -1764,11 +1691,9 @@ module.exports = {
 	"yellowgreen": [154, 205, 50]
 };
 
-
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
-
 /* MIT license */
 var cssKeywords = __webpack_require__(5);
 
@@ -2638,13 +2563,10 @@ convert.rgb.gray = function (rgb) {
 	return [val / 255 * 100];
 };
 
-
 /***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -2707,9 +2629,7 @@ _jquery2.default.fn[plugin].constructor = _Colorpicker2.default;
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2777,7 +2697,6 @@ var Colorpicker = function () {
   _createClass(Colorpicker, [{
     key: 'color',
 
-
     /**
      * Internal color object
      *
@@ -2792,7 +2711,6 @@ var Colorpicker = function () {
      *
      * @type {String|null}
      */
-
   }, {
     key: 'format',
     get: function get() {
@@ -2804,7 +2722,6 @@ var Colorpicker = function () {
      *
      * @returns {jQuery|HTMLElement}
      */
-
   }, {
     key: 'picker',
     get: function get() {
@@ -2817,7 +2734,6 @@ var Colorpicker = function () {
      * @param {Object} options
      * @constructor
      */
-
   }], [{
     key: 'Color',
 
@@ -2837,7 +2753,6 @@ var Colorpicker = function () {
      * @static
      * @type {Extension}
      */
-
   }, {
     key: 'Extension',
     get: function get() {
@@ -2941,7 +2856,6 @@ var Colorpicker = function () {
    * @private
    */
 
-
   _createClass(Colorpicker, [{
     key: 'init',
     value: function init() {
@@ -2979,7 +2893,6 @@ var Colorpicker = function () {
      * Initializes the plugin extensions
      * @private
      */
-
   }, {
     key: 'initExtensions',
     value: function initExtensions() {
@@ -3006,7 +2919,6 @@ var Colorpicker = function () {
      * @param {Object} [config] Extension configuration
      * @returns {Extension}
      */
-
   }, {
     key: 'registerExtension',
     value: function registerExtension(ExtensionClass) {
@@ -3023,7 +2935,6 @@ var Colorpicker = function () {
      *
      * @fires Colorpicker#colorpickerDestroy
      */
-
   }, {
     key: 'destroy',
     value: function destroy() {
@@ -3053,7 +2964,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerShow
      * @param {Event} [e]
      */
-
   }, {
     key: 'show',
     value: function show(e) {
@@ -3066,7 +2976,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerHide
      * @param {Event} [e]
      */
-
   }, {
     key: 'hide',
     value: function hide(e) {
@@ -3080,7 +2989,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerHide
      * @param {Event} [e]
      */
-
   }, {
     key: 'toggle',
     value: function toggle(e) {
@@ -3093,7 +3001,6 @@ var Colorpicker = function () {
      * @param {String|*} [defaultValue]
      * @returns {String|*}
      */
-
   }, {
     key: 'getValue',
     value: function getValue() {
@@ -3116,7 +3023,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerChange
      * @param {String|Color} val
      */
-
   }, {
     key: 'setValue',
     value: function setValue(val) {
@@ -3148,7 +3054,6 @@ var Colorpicker = function () {
      *
      * @fires Colorpicker#colorpickerUpdate
      */
-
   }, {
     key: 'update',
     value: function update() {
@@ -3175,7 +3080,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerEnable
      * @returns {boolean}
      */
-
   }, {
     key: 'enable',
     value: function enable() {
@@ -3198,7 +3102,6 @@ var Colorpicker = function () {
      * @fires Colorpicker#colorpickerDisable
      * @returns {boolean}
      */
-
   }, {
     key: 'disable',
     value: function disable() {
@@ -3219,7 +3122,6 @@ var Colorpicker = function () {
      * Returns true if this instance is enabled
      * @returns {boolean}
      */
-
   }, {
     key: 'isEnabled',
     value: function isEnabled() {
@@ -3230,7 +3132,6 @@ var Colorpicker = function () {
      * Returns true if this instance is disabled
      * @returns {boolean}
      */
-
   }, {
     key: 'isDisabled',
     value: function isDisabled() {
@@ -3244,7 +3145,6 @@ var Colorpicker = function () {
      * @param color
      * @param value
      */
-
   }, {
     key: 'trigger',
     value: function trigger(eventName) {
@@ -3270,7 +3170,6 @@ var Colorpicker = function () {
  * @type {Object} a map between the extension name and its class
  */
 
-
 Colorpicker.extensions = _extensions2.default;
 
 exports.default = Colorpicker;
@@ -3279,9 +3178,7 @@ module.exports = exports.default;
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3320,9 +3217,7 @@ exports.default = {
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3378,7 +3273,6 @@ var Debugger = function (_Extension) {
    * @param {string} eventName
    * @param {*} args
    */
-
 
   _createClass(Debugger, [{
     key: 'log',
@@ -3454,7 +3348,6 @@ var Debugger = function (_Extension) {
      * @listens Colorpicker#change
      * @param {Event} event
      */
-
   }, {
     key: 'onChangeInput',
     value: function onChangeInput(event) {
@@ -3502,9 +3395,7 @@ module.exports = exports.default;
 /***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3592,9 +3483,7 @@ module.exports = exports.default;
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3700,9 +3589,7 @@ module.exports = exports.default;
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3761,7 +3648,6 @@ var SliderHandler = function () {
    * @param {int} left
    */
 
-
   _createClass(SliderHandler, [{
     key: 'defaultOnMove',
     value: function defaultOnMove(top, left) {
@@ -3796,7 +3682,6 @@ var SliderHandler = function () {
     /**
      * Binds the colorpicker sliders to the mouse/touch events
      */
-
   }, {
     key: 'bind',
     value: function bind() {
@@ -3818,7 +3703,6 @@ var SliderHandler = function () {
     /**
      * Unbinds any event bound by this handler
      */
-
   }, {
     key: 'unbind',
     value: function unbind() {
@@ -3837,7 +3721,6 @@ var SliderHandler = function () {
      * @fires Colorpicker#mousemove
      * @param {Event} e
      */
-
   }, {
     key: 'pressed',
     value: function pressed(e) {
@@ -3922,7 +3805,6 @@ var SliderHandler = function () {
      * @private
      * @param {Event} e
      */
-
   }, {
     key: 'moved',
     value: function moved(e) {
@@ -3950,7 +3832,6 @@ var SliderHandler = function () {
      * @private
      * @param {Event} e
      */
-
   }, {
     key: 'released',
     value: function released(e) {
@@ -3978,9 +3859,7 @@ module.exports = exports.default;
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -4049,10 +3928,8 @@ var PopupHandler = function () {
    * @returns {jQuery|false}
    */
 
-
   _createClass(PopupHandler, [{
     key: 'bind',
-
 
     /**
      * Binds the different colorpicker elements to the focus/mouse/touch events so it reacts in order to show or
@@ -4117,7 +3994,6 @@ var PopupHandler = function () {
     /**
      * Unbinds any event bound by this handler
      */
-
   }, {
     key: 'unbind',
     value: function unbind() {
@@ -4205,7 +4081,6 @@ var PopupHandler = function () {
      * @param {Event} [e]
      * @private
      */
-
   }, {
     key: 'reposition',
     value: function reposition(e) {
@@ -4221,7 +4096,6 @@ var PopupHandler = function () {
      * @fires Colorpicker#colorpickerHide
      * @param {Event} [e]
      */
-
   }, {
     key: 'toggle',
     value: function toggle(e) {
@@ -4238,7 +4112,6 @@ var PopupHandler = function () {
      * @fires Colorpicker#colorpickerShow
      * @param {Event} [e]
      */
-
   }, {
     key: 'show',
     value: function show(e) {
@@ -4302,7 +4175,6 @@ var PopupHandler = function () {
      * @fires Colorpicker#colorpickerHide
      * @param {Event} [e]
      */
-
   }, {
     key: 'hide',
     value: function hide(e) {
@@ -4375,7 +4247,6 @@ var PopupHandler = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'isVisible',
     value: function isVisible() {
@@ -4388,7 +4259,6 @@ var PopupHandler = function () {
      *
      * @returns {boolean}
      */
-
   }, {
     key: 'isHidden',
     value: function isHidden() {
@@ -4404,7 +4274,6 @@ var PopupHandler = function () {
      * @private
      * @returns {boolean}
      */
-
   }, {
     key: 'hasInput',
     get: function get() {
@@ -4415,7 +4284,6 @@ var PopupHandler = function () {
      * @private
      * @returns {jQuery|false}
      */
-
   }, {
     key: 'addon',
     get: function get() {
@@ -4426,7 +4294,6 @@ var PopupHandler = function () {
      * @private
      * @returns {boolean}
      */
-
   }, {
     key: 'hasAddon',
     get: function get() {
@@ -4437,7 +4304,6 @@ var PopupHandler = function () {
      * @private
      * @returns {boolean}
      */
-
   }, {
     key: 'isPopover',
     get: function get() {
@@ -4454,9 +4320,7 @@ module.exports = exports.default;
 /***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -4556,7 +4420,6 @@ var InputHandler = function () {
      *
      * @returns {String|boolean}
      */
-
   }, {
     key: 'getValue',
     value: function getValue() {
@@ -4575,7 +4438,6 @@ var InputHandler = function () {
      *
      * @fires Colorpicker#change
      */
-
   }, {
     key: 'setValue',
     value: function setValue(val) {
@@ -4615,7 +4477,6 @@ var InputHandler = function () {
      *
      * @returns {String}
      */
-
   }, {
     key: 'getFormattedColor',
     value: function getFormattedColor() {
@@ -4640,7 +4501,6 @@ var InputHandler = function () {
      * Returns true if the widget has an associated input element, false otherwise
      * @returns {boolean}
      */
-
   }, {
     key: 'hasInput',
     value: function hasInput() {
@@ -4651,7 +4511,6 @@ var InputHandler = function () {
      * Returns true if the input exists and is disabled
      * @returns {boolean}
      */
-
   }, {
     key: 'isEnabled',
     value: function isEnabled() {
@@ -4662,7 +4521,6 @@ var InputHandler = function () {
      * Returns true if the input exists and is disabled
      * @returns {boolean}
      */
-
   }, {
     key: 'isDisabled',
     value: function isDisabled() {
@@ -4675,7 +4533,6 @@ var InputHandler = function () {
      * @fires Colorpicker#colorpickerDisable
      * @returns {boolean}
      */
-
   }, {
     key: 'disable',
     value: function disable() {
@@ -4690,7 +4547,6 @@ var InputHandler = function () {
      * @fires Colorpicker#colorpickerEnable
      * @returns {boolean}
      */
-
   }, {
     key: 'enable',
     value: function enable() {
@@ -4704,7 +4560,6 @@ var InputHandler = function () {
      *
      * @fires Colorpicker#change
      */
-
   }, {
     key: 'update',
     value: function update() {
@@ -4727,7 +4582,6 @@ var InputHandler = function () {
      * @param {Event} e
      * @returns {boolean}
      */
-
   }, {
     key: 'onchange',
     value: function onchange(e) {
@@ -4748,7 +4602,6 @@ var InputHandler = function () {
      * @param {Event} e
      * @returns {boolean}
      */
-
   }, {
     key: 'onkeyup',
     value: function onkeyup(e) {
@@ -4772,9 +4625,7 @@ module.exports = exports.default;
 /***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 var colorString = __webpack_require__(17);
 var convert = __webpack_require__(20);
@@ -5257,11 +5108,9 @@ function zeroArray(arr, length) {
 
 module.exports = Color;
 
-
 /***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
-
 /* MIT license */
 var colorNames = __webpack_require__(5);
 var swizzle = __webpack_require__(18);
@@ -5497,13 +5346,10 @@ function hexDouble(num) {
 	return (str.length < 2) ? '0' + str : str;
 }
 
-
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 var isArrayish = __webpack_require__(19);
 
@@ -5533,13 +5379,10 @@ swizzle.wrap = function (fn) {
 	};
 };
 
-
 /***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 module.exports = function isArrayish(obj) {
 	if (!obj) {
@@ -5550,11 +5393,9 @@ module.exports = function isArrayish(obj) {
 		(obj.length >= 0 && obj.splice instanceof Function);
 };
 
-
 /***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
-
 var conversions = __webpack_require__(6);
 var route = __webpack_require__(21);
 
@@ -5634,11 +5475,9 @@ models.forEach(function (fromModel) {
 
 module.exports = convert;
 
-
 /***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
-
 var conversions = __webpack_require__(6);
 
 /*
@@ -5736,14 +5575,10 @@ module.exports = function (fromModel) {
 	return conversion;
 };
 
-
-
 /***/ }),
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5784,7 +5619,6 @@ var ColorHandler = function () {
    * @returns {*|String|ColorItem}
    */
 
-
   _createClass(ColorHandler, [{
     key: 'bind',
     value: function bind() {
@@ -5811,7 +5645,6 @@ var ColorHandler = function () {
      *
      * @returns {String|*}
      */
-
   }, {
     key: 'getColorString',
     value: function getColorString() {
@@ -5827,7 +5660,6 @@ var ColorHandler = function () {
      *
      * @param {String|ColorItem} val
      */
-
   }, {
     key: 'setColorString',
     value: function setColorString(val) {
@@ -5845,7 +5677,6 @@ var ColorHandler = function () {
      * @param {boolean} autoHexInputFallback
      * @returns {ColorItem}
      */
-
   }, {
     key: 'createColor',
     value: function createColor(val) {
@@ -5898,7 +5729,6 @@ var ColorHandler = function () {
     /**
      * @returns {ColorItem}
      */
-
   }, {
     key: 'assureColor',
     value: function assureColor() {
@@ -5916,7 +5746,6 @@ var ColorHandler = function () {
      * @param {boolean} realColor if true, the color should resolve into a real (not named) color code
      * @returns {ColorItem|String|*|null}
      */
-
   }, {
     key: 'resolveColorDelegate',
     value: function resolveColorDelegate(color) {
@@ -5939,7 +5768,6 @@ var ColorHandler = function () {
      * Checks if there is a color object, that it is valid and it is not a fallback
      * @returns {boolean}
      */
-
   }, {
     key: 'isInvalidColor',
     value: function isInvalidColor() {
@@ -5950,7 +5778,6 @@ var ColorHandler = function () {
      * Returns true if the useAlpha option is exactly true, false otherwise
      * @returns {boolean}
      */
-
   }, {
     key: 'isAlphaEnabled',
     value: function isAlphaEnabled() {
@@ -5961,7 +5788,6 @@ var ColorHandler = function () {
      * Returns true if the current color object is an instance of Color, false otherwise.
      * @returns {boolean}
      */
-
   }, {
     key: 'hasColor',
     value: function hasColor() {
@@ -5976,7 +5802,6 @@ var ColorHandler = function () {
     /**
      * @returns {String|null}
      */
-
   }, {
     key: 'format',
     get: function get() {
@@ -6000,7 +5825,6 @@ var ColorHandler = function () {
      *
      * @type {ColorItem|null}
      */
-
   }, {
     key: 'color',
     get: function get() {
@@ -6033,9 +5857,7 @@ module.exports = exports.default;
 /***/ }),
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6119,7 +5941,6 @@ var PickerHandler = function () {
     /**
      * Changes the color adjustment bars using the current color object information.
      */
-
   }, {
     key: 'update',
     value: function update() {
@@ -6187,9 +6008,7 @@ module.exports = exports.default;
 /***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
-
 
 /**
  * Handles everything related to the colorpicker addon
@@ -6250,7 +6069,6 @@ var AddonHandler = function () {
     /**
      * If the addon element is present, its background color is updated
      */
-
   }, {
     key: 'update',
     value: function update() {

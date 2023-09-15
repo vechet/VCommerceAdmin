@@ -1,8 +1,7 @@
-﻿using VCommerceAdmin.Data;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Cryptography;
 using System.Text;
-using Newtonsoft.Json;
+using VCommerceAdmin.Data;
 using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.Helpers
@@ -71,6 +70,7 @@ namespace VCommerceAdmin.Helpers
             }
             return clearText;
         }
+
         public static string Decrypt(string cipherText)
         {
             var EncryptionKey = "SmartSolutions";
@@ -119,4 +119,3 @@ namespace VCommerceAdmin.Helpers
         }
     }
 }
-

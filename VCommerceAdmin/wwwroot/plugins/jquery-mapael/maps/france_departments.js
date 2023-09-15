@@ -24,14 +24,13 @@
         factory(jQuery, jQuery.mapael);
     }
 }(function ($, Mapael) {
-
     "use strict";
-    
-    $.extend(true, Mapael, 
+
+    $.extend(true, Mapael,
         {
             maps : {
                 france_departments : {
-                    width : 600.08728, 
+                    width : 600.08728,
                     height : 626.26221,
                     getCoords : function (lat, lon) {
                         var xfactor,
@@ -45,7 +44,7 @@
                             xfactor = 43.64246;
                             xoffset = 181.34520;
                             x = (lon * xfactor) + xoffset;
-                            
+
                             yfactor = -65.77758;
                             yoffset = 3346.37839;
                             y = (lat * yfactor) + yoffset;
@@ -53,7 +52,7 @@
                             xfactor = 45.48385;
                             xoffset = 220.22005;
                             x = (lon * xfactor) + xoffset;
-                            
+
                             yfactor = -65.97284;
                             yoffset = 3371.10748;
                             y = (lat * yfactor) + yoffset;
@@ -164,5 +163,4 @@
     );
 
     return Mapael;
-
 }));

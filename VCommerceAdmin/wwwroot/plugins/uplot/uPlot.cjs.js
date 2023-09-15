@@ -1310,7 +1310,6 @@ function logAxisSplits(self, axisIdx, scaleMin, scaleMax, foundIncr, foundSpace,
 
 		if (split >= foundIncr * logBase)
 			foundIncr = split;
-
 	} while (split <= scaleMax);
 
 	return splits;
@@ -3880,7 +3879,6 @@ function uPlot(opts, data, then) {
 						round(plotTop + plotHgt / 2),
 					);
 					ctx.rotate((side == 3 ? -PI : PI) / 2);
-
 				}
 				else {
 					x = round(plotLft + plotWid / 2);
@@ -4070,7 +4068,6 @@ function uPlot(opts, data, then) {
 			// canvas pixels to white, even when followed up with clearRect() below
 			can.width  = round(fullWidCss * pxRatio);
 			can.height = round(fullHgtCss * pxRatio);
-
 
 			axes.forEach(a => {
 				let { _show, _el, _size, _pos, side } = a;

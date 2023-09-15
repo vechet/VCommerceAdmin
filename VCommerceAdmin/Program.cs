@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.Data;
-using VCommerceAdmin.Repository.Interface;
 using VCommerceAdmin.Repository;
+using VCommerceAdmin.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 

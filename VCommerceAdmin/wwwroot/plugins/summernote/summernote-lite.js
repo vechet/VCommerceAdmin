@@ -1,5 +1,5 @@
 /*!
- * 
+ *
  * Super simple WYSIWYG editor v0.8.20
  * https://summernote.org
  *
@@ -23,10 +23,8 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
 /***/ 9770:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
-
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1145);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -199,7 +197,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default().extend((jquery__WEBPACK_IMPORTED_M
 
 /***/ 1145:
 /***/ ((module) => {
-
 module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 
 /***/ })
@@ -208,7 +205,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -222,14 +219,14 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -242,7 +239,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -254,12 +251,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -270,7 +267,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1145__;
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -432,7 +429,6 @@ function resetUniqueId() {
  * @param {String} [prefix]
  */
 
-
 function uniqueId(prefix) {
   var id = ++idCounter + '';
   return prefix ? prefix + id : id;
@@ -451,7 +447,6 @@ function uniqueId(prefix) {
  * @return {Number} bounds.height
  */
 
-
 function rect2bnd(rect) {
   var $document = external_jQuery_default()(document);
   return {
@@ -466,7 +461,6 @@ function rect2bnd(rect) {
  * @param {Object} obj
  * @return {Object}
  */
-
 
 function invertObject(obj) {
   var inverted = {};
@@ -485,7 +479,6 @@ function invertObject(obj) {
  * @return {String}
  */
 
-
 function namespaceToCamel(namespace, prefix) {
   prefix = prefix || '';
   return prefix + namespace.split('.').map(function (name) {
@@ -502,7 +495,6 @@ function namespaceToCamel(namespace, prefix) {
  * @param {Boolean} immediate
  * @return {Function}
  */
-
 
 function debounce(func, wait, immediate) {
   var timeout;
@@ -532,7 +524,6 @@ function debounce(func, wait, immediate) {
  * @param {String} url
  * @return {Boolean}
  */
-
 
 function isValidUrl(url) {
   var expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
@@ -574,7 +565,6 @@ function head(array) {
  * @param {Array} array
  */
 
-
 function last(array) {
   return array[array.length - 1];
 }
@@ -583,7 +573,6 @@ function last(array) {
  *
  * @param {Array} array
  */
-
 
 function initial(array) {
   return array.slice(0, array.length - 1);
@@ -594,14 +583,12 @@ function initial(array) {
  * @param {Array} array
  */
 
-
 function tail(array) {
   return array.slice(1);
 }
 /**
  * returns item of array
  */
-
 
 function find(array, pred) {
   for (var idx = 0, len = array.length; idx < len; idx++) {
@@ -616,7 +603,6 @@ function find(array, pred) {
  * returns true if all of the values in the array pass the predicate truth test.
  */
 
-
 function lists_all(array, pred) {
   for (var idx = 0, len = array.length; idx < len; idx++) {
     if (!pred(array[idx])) {
@@ -629,7 +615,6 @@ function lists_all(array, pred) {
 /**
  * returns true if the value is present in the list.
  */
-
 
 function contains(array, item) {
   if (array && array.length && item) {
@@ -650,7 +635,6 @@ function contains(array, item) {
  * @param {Function} fn - iterator
  */
 
-
 function sum(array, fn) {
   fn = fn || func.self;
   return array.reduce(function (memo, v) {
@@ -661,7 +645,6 @@ function sum(array, fn) {
  * returns a copy of the collection with array type.
  * @param {Collection} collection - collection eg) node.childNodes, ...
  */
-
 
 function from(collection) {
   var result = [];
@@ -678,7 +661,6 @@ function from(collection) {
  * returns whether list is empty or not
  */
 
-
 function isEmpty(array) {
   return !array || !array.length;
 }
@@ -689,7 +671,6 @@ function isEmpty(array) {
  * @param {Function} fn - predicate function for cluster rule
  * @param {Array[]}
  */
-
 
 function clusterBy(array, fn) {
   if (!array.length) {
@@ -716,7 +697,6 @@ function clusterBy(array, fn) {
  * @param {Function} fn - predicate function for cluster rule
  */
 
-
 function compact(array) {
   var aResult = [];
 
@@ -734,7 +714,6 @@ function compact(array) {
  * @param {Array} array
  */
 
-
 function unique(array) {
   var results = [];
 
@@ -751,7 +730,6 @@ function unique(array) {
  * @param {Array} array
  */
 
-
 function next(array, item) {
   if (array && array.length && item) {
     var idx = array.indexOf(item);
@@ -764,7 +742,6 @@ function next(array, item) {
  * returns prev item.
  * @param {Array} array
  */
-
 
 function prev(array, item) {
   if (array && array.length && item) {
@@ -782,7 +759,6 @@ function prev(array, item) {
  * @singleton
  * @alternateClassName list
  */
-
 
 /* harmony default export */ const lists = ({
   head: head,
@@ -802,9 +778,6 @@ function prev(array, item) {
   unique: unique
 });
 ;// CONCATENATED MODULE: ./src/js/core/dom.js
-
-
-
 
 var NBSP_CHAR = String.fromCharCode(160);
 var ZERO_WIDTH_NBSP_CHAR = "\uFEFF";
@@ -829,7 +802,6 @@ function isEditable(node) {
  * @return {Boolean}
  */
 
-
 function isControlSizing(node) {
   return node && external_jQuery_default()(node).hasClass('note-control-sizing');
 }
@@ -841,7 +813,6 @@ function isControlSizing(node) {
  * @param {String} nodeName
  * @return {Function}
  */
-
 
 function makePredByNodeName(nodeName) {
   nodeName = nodeName.toUpperCase();
@@ -858,7 +829,6 @@ function makePredByNodeName(nodeName) {
  * @return {Boolean} true if node's type is text(3)
  */
 
-
 function isText(node) {
   return node && node.nodeType === 3;
 }
@@ -871,7 +841,6 @@ function isText(node) {
  * @return {Boolean} true if node's type is element(1)
  */
 
-
 function isElement(node) {
   return node && node.nodeType === 1;
 }
@@ -879,7 +848,6 @@ function isElement(node) {
  * ex) br, col, embed, hr, img, input, ...
  * @see http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
  */
-
 
 function isVoid(node) {
   return node && /^BR|^IMG|^HR|^IFRAME|^BUTTON|^INPUT|^AUDIO|^VIDEO|^EMBED/.test(node.nodeName.toUpperCase());
@@ -889,7 +857,6 @@ function isPara(node) {
   if (isEditable(node)) {
     return false;
   } // Chrome(v31.0), FF(v25.0.1) use DIV for paragraph
-
 
   return node && /^DIV|^P|^LI|^H[1-7]/.test(node.nodeName.toUpperCase());
 }
@@ -958,7 +925,6 @@ function isClosestSibling(nodeA, nodeB) {
  * @return {Node[]}
  */
 
-
 function withClosestSiblings(node, pred) {
   pred = pred || func.ok;
   var siblings = [];
@@ -980,7 +946,6 @@ function withClosestSiblings(node, pred) {
  * - [workaround] old IE only works with &nbsp;
  * - [workaround] IE11 and other browser works with bogus br
  */
-
 
 var blankHTML = env.isMSIE && env.browserVersion < 11 ? '&nbsp;' : '<br>';
 /**
@@ -1009,7 +974,6 @@ function nodeLength(node) {
  * @return {Boolean}
  */
 
-
 function deepestChildIsEmpty(node) {
   do {
     if (node.firstElementChild === null || node.firstElementChild.innerHTML === '') break;
@@ -1023,7 +987,6 @@ function deepestChildIsEmpty(node) {
  * @param {Node} node
  * @return {Boolean}
  */
-
 
 function dom_isEmpty(node) {
   var len = nodeLength(node);
@@ -1044,7 +1007,6 @@ function dom_isEmpty(node) {
  * padding blankHTML if node is empty (for cursor position)
  */
 
-
 function paddingBlankHTML(node) {
   if (!isVoid(node) && !nodeLength(node)) {
     node.innerHTML = blankHTML;
@@ -1056,7 +1018,6 @@ function paddingBlankHTML(node) {
  * @param {Node} node
  * @param {Function} pred - predicate function
  */
-
 
 function ancestor(node, pred) {
   while (node) {
@@ -1079,7 +1040,6 @@ function ancestor(node, pred) {
  * @param {Node} node
  * @param {Function} pred - predicate function
  */
-
 
 function singleChildAncestor(node, pred) {
   node = node.parentNode;
@@ -1109,7 +1069,6 @@ function singleChildAncestor(node, pred) {
  * @param {Function} [optional] pred - predicate function
  */
 
-
 function listAncestor(node, pred) {
   pred = pred || func.fail;
   var ancestors = [];
@@ -1126,7 +1085,6 @@ function listAncestor(node, pred) {
  * find farthest ancestor predicate hit
  */
 
-
 function lastAncestor(node, pred) {
   var ancestors = listAncestor(node);
   return lists.last(ancestors.filter(pred));
@@ -1137,7 +1095,6 @@ function lastAncestor(node, pred) {
  * @param {Node} nodeA
  * @param {Node} nodeB
  */
-
 
 function commonAncestor(nodeA, nodeB) {
   var ancestors = listAncestor(nodeA);
@@ -1154,7 +1111,6 @@ function commonAncestor(nodeA, nodeB) {
  * @param {Node} node
  * @param {Function} [optional] pred - predicate function
  */
-
 
 function listPrev(node, pred) {
   pred = pred || func.fail;
@@ -1178,7 +1134,6 @@ function listPrev(node, pred) {
  * @param {Function} [pred] - predicate function
  */
 
-
 function listNext(node, pred) {
   pred = pred || func.fail;
   var nodes = [];
@@ -1200,7 +1155,6 @@ function listNext(node, pred) {
  * @param {Node} node
  * @param {Function} [pred] - predicate function
  */
-
 
 function listDescendant(node, pred) {
   var descendants = [];
@@ -1226,7 +1180,6 @@ function listDescendant(node, pred) {
  * @return {Node} - wrapper
  */
 
-
 function wrap(node, wrapperName) {
   var parent = node.parentNode;
   var wrapper = external_jQuery_default()('<' + wrapperName + '>')[0];
@@ -1240,7 +1193,6 @@ function wrap(node, wrapperName) {
  * @param {Node} node
  * @param {Node} preceding - predicate function
  */
-
 
 function insertAfter(node, preceding) {
   var next = preceding.nextSibling;
@@ -1261,7 +1213,6 @@ function insertAfter(node, preceding) {
  * @param {Collection} aChild
  */
 
-
 function appendChildNodes(node, aChild) {
   external_jQuery_default().each(aChild, function (idx, child) {
     node.appendChild(child);
@@ -1275,7 +1226,6 @@ function appendChildNodes(node, aChild) {
  * @return {Boolean}
  */
 
-
 function isLeftEdgePoint(point) {
   return point.offset === 0;
 }
@@ -1285,7 +1235,6 @@ function isLeftEdgePoint(point) {
  * @param {BoundaryPoint} point
  * @return {Boolean}
  */
-
 
 function isRightEdgePoint(point) {
   return point.offset === nodeLength(point.node);
@@ -1297,7 +1246,6 @@ function isRightEdgePoint(point) {
  * @return {Boolean}
  */
 
-
 function isEdgePoint(point) {
   return isLeftEdgePoint(point) || isRightEdgePoint(point);
 }
@@ -1308,7 +1256,6 @@ function isEdgePoint(point) {
  * @param {Node} ancestor
  * @return {Boolean}
  */
-
 
 function isLeftEdgeOf(node, ancestor) {
   while (node && node !== ancestor) {
@@ -1328,7 +1275,6 @@ function isLeftEdgeOf(node, ancestor) {
  * @param {Node} ancestor
  * @return {Boolean}
  */
-
 
 function isRightEdgeOf(node, ancestor) {
   if (!ancestor) {
@@ -1352,7 +1298,6 @@ function isRightEdgeOf(node, ancestor) {
  * @return {Boolean}
  */
 
-
 function isLeftEdgePointOf(point, ancestor) {
   return isLeftEdgePoint(point) && isLeftEdgeOf(point.node, ancestor);
 }
@@ -1363,7 +1308,6 @@ function isLeftEdgePointOf(point, ancestor) {
  * @return {Boolean}
  */
 
-
 function isRightEdgePointOf(point, ancestor) {
   return isRightEdgePoint(point) && isRightEdgeOf(point.node, ancestor);
 }
@@ -1372,7 +1316,6 @@ function isRightEdgePointOf(point, ancestor) {
  *
  * @param {Node} node
  */
-
 
 function position(node) {
   var offset = 0;
@@ -1394,7 +1337,6 @@ function hasChildren(node) {
  * @param {Boolean} isSkipInnerOffset
  * @return {BoundaryPoint}
  */
-
 
 function prevPoint(point, isSkipInnerOffset) {
   var node;
@@ -1427,7 +1369,6 @@ function prevPoint(point, isSkipInnerOffset) {
  * @param {Boolean} isSkipInnerOffset
  * @return {BoundaryPoint}
  */
-
 
 function nextPoint(point, isSkipInnerOffset) {
   var node, offset;
@@ -1466,7 +1407,6 @@ function nextPoint(point, isSkipInnerOffset) {
  * @param {Boolean} isSkipInnerOffset
  * @return {BoundaryPoint}
  */
-
 
 function nextPointWithEmptyNode(point, isSkipInnerOffset) {
   var node,
@@ -1529,7 +1469,6 @@ function nextPointWithEmptyNode(point, isSkipInnerOffset) {
 * returns the next Text node index or 0 if not found.
 */
 
-
 function getNextTextNode(actual) {
   if (!actual.nextSibling) return undefined;
   if (actual.parent !== actual.nextSibling.parent) return undefined;
@@ -1543,7 +1482,6 @@ function getNextTextNode(actual) {
  * @return {Boolean}
  */
 
-
 function isSamePoint(pointA, pointB) {
   return pointA.node === pointB.node && pointA.offset === pointB.offset;
 }
@@ -1553,7 +1491,6 @@ function isSamePoint(pointA, pointB) {
  * @param {BoundaryPoint} point
  * @return {Boolean}
  */
-
 
 function isVisiblePoint(point) {
   if (isText(point.node) || !hasChildren(point.node) || dom_isEmpty(point.node)) {
@@ -1577,7 +1514,6 @@ function isVisiblePoint(point) {
  * @return {BoundaryPoint}
  */
 
-
 function prevPointUntil(point, pred) {
   while (point) {
     if (pred(point)) {
@@ -1597,7 +1533,6 @@ function prevPointUntil(point, pred) {
  * @return {BoundaryPoint}
  */
 
-
 function nextPointUntil(point, pred) {
   while (point) {
     if (pred(point)) {
@@ -1616,7 +1551,6 @@ function nextPointUntil(point, pred) {
  * @return {Boolean}
  */
 
-
 function isCharPoint(point) {
   if (!isText(point.node)) {
     return false;
@@ -1631,7 +1565,6 @@ function isCharPoint(point) {
  * @param {Point} point
  * @return {Boolean}
  */
-
 
 function isSpacePoint(point) {
   if (!isText(point.node)) {
@@ -1649,7 +1582,6 @@ function isSpacePoint(point) {
  * @param {Function} handler
  * @param {Boolean} isSkipInnerOffset
  */
-
 
 function walkPoint(startPoint, endPoint, handler, isSkipInnerOffset) {
   var point = startPoint;
@@ -1674,7 +1606,6 @@ function walkPoint(startPoint, endPoint, handler, isSkipInnerOffset) {
  * @param {Node} node
  */
 
-
 function makeOffsetPath(ancestor, node) {
   var ancestors = listAncestor(node, func.eq(ancestor));
   return ancestors.map(position).reverse();
@@ -1687,7 +1618,6 @@ function makeOffsetPath(ancestor, node) {
  * @param {Node} ancestor - ancestor node
  * @param {array} offsets - offsetPath
  */
-
 
 function fromOffsetPath(ancestor, offsets) {
   var current = ancestor;
@@ -1715,7 +1645,6 @@ function fromOffsetPath(ancestor, offsets) {
  * @return {Node} right node of boundaryPoint
  */
 
-
 function splitNode(point, options) {
   var isSkipPaddingBlankHTML = options && options.isSkipPaddingBlankHTML;
   var isNotSplitEdgePoint = options && options.isNotSplitEdgePoint;
@@ -1725,7 +1654,6 @@ function splitNode(point, options) {
     isSkipPaddingBlankHTML = true;
   } // edge case
 
-
   if (isEdgePoint(point) && (isText(point.node) || isNotSplitEdgePoint)) {
     if (isLeftEdgePoint(point)) {
       return point.node;
@@ -1733,7 +1661,6 @@ function splitNode(point, options) {
       return point.node.nextSibling;
     }
   } // split #text
-
 
   if (isText(point.node)) {
     return point.node.splitText(point.offset);
@@ -1774,7 +1701,6 @@ function splitNode(point, options) {
  * @return {Node} right node of boundaryPoint
  */
 
-
 function splitTree(root, point, options) {
   // ex) [#text, <span>, <p>]
   var ancestors = listAncestor(point.node, func.eq(root));
@@ -1804,7 +1730,6 @@ function splitTree(root, point, options) {
  * @return {Object}
  */
 
-
 function splitPoint(point, isInline) {
   // find splitRoot, container
   //  - inline: splitRoot is a child of paragraph
@@ -1821,7 +1746,6 @@ function splitPoint(point, isInline) {
     splitRoot = topAncestor;
     container = splitRoot.parentNode;
   } // if splitRoot is exists, split with splitTree
-
 
   var pivot = splitRoot && splitTree(splitRoot, point, {
     isSkipPaddingBlankHTML: isInline,
@@ -1853,7 +1777,6 @@ function createText(text) {
  * @param {Node} node
  * @param {Boolean} isRemoveChild
  */
-
 
 function remove(node, isRemoveChild) {
   if (!node || !node.parentNode) {
@@ -1887,7 +1810,6 @@ function remove(node, isRemoveChild) {
  * @param {Function} pred
  */
 
-
 function removeWhile(node, pred) {
   while (node) {
     if (isEditable(node) || !pred(node)) {
@@ -1908,7 +1830,6 @@ function removeWhile(node, pred) {
  * @param {String} nodeName
  * @return {Node} - new node
  */
-
 
 function replace(node, nodeName) {
   if (node.nodeName.toUpperCase() === nodeName.toUpperCase()) {
@@ -1950,7 +1871,6 @@ function value($node, stripLinebreaks) {
  * @param {jQuery} $node
  * @param {Boolean} [isNewlineOnBlock]
  */
-
 
 function html($node, isNewlineOnBlock) {
   var markup = value($node);
@@ -1999,7 +1919,6 @@ function detachEvents($node, events) {
  *
  * @param {Node} an HTML DOM node
  */
-
 
 function isCustomStyleTag(node) {
   return node && !isText(node) && lists.contains(node.classList, 'note-styletag');
@@ -2108,11 +2027,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
-
-
-
 var Context = /*#__PURE__*/function () {
   /**
    * @param {jQuery} $note
@@ -2135,7 +2049,6 @@ var Context = /*#__PURE__*/function () {
    * create layout and initialize modules and other resources
    */
 
-
   _createClass(Context, [{
     key: "initialize",
     value: function initialize() {
@@ -2149,7 +2062,6 @@ var Context = /*#__PURE__*/function () {
     /**
      * destroy modules and other resources and remove layout
      */
-
   }, {
     key: "destroy",
     value: function destroy() {
@@ -2161,7 +2073,6 @@ var Context = /*#__PURE__*/function () {
     /**
      * destory modules and other resources and initialize it again
      */
-
   }, {
     key: "reset",
     value: function reset() {
@@ -2282,11 +2193,9 @@ var Context = /*#__PURE__*/function () {
         return;
       } // initialize module
 
-
       if (module.initialize) {
         module.initialize();
       } // attach events
-
 
       if (module.events) {
         dom.attachEvents(this.$note, module.events);
@@ -2343,7 +2252,6 @@ var Context = /*#__PURE__*/function () {
     /**
      * Some buttons need to change their visual style immediately once they get pressed
      */
-
   }, {
     key: "createInvokeHandlerAndUpdateState",
     value: function createInvokeHandlerAndUpdateState(namespace, value) {
@@ -2389,11 +2297,7 @@ var Context = /*#__PURE__*/function () {
   return Context;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/summernote.js
-
-
-
 
 external_jQuery_default().fn.extend({
   /**
@@ -2442,11 +2346,6 @@ function range_defineProperties(target, props) { for (var i = 0; i < props.lengt
 
 function range_createClass(Constructor, protoProps, staticProps) { if (protoProps) range_defineProperties(Constructor.prototype, protoProps); if (staticProps) range_defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
-
-
-
 /**
  * return boundaryPoint from TextRange, inspired by Andy Na's HuskyRange.js
  *
@@ -2493,7 +2392,6 @@ function textRangeToPoint(textRange, isStart) {
       curTextNode = curTextNode.nextSibling;
     } // [workaround] enforce IE to re-reference curTextNode, hack
 
-
     var dummy = curTextNode.nodeValue; // eslint-disable-line
 
     if (isStart && curTextNode.nextSibling && dom.isText(curTextNode.nextSibling) && textCount === curTextNode.nodeValue.length) {
@@ -2515,7 +2413,6 @@ function textRangeToPoint(textRange, isStart) {
  * @param {BoundaryPoint} point
  * @return {TextRange}
  */
-
 
 function pointToTextRange(point) {
   var textRangeInfo = function textRangeInfo(container, offset) {
@@ -2562,7 +2459,6 @@ function pointToTextRange(point) {
    * @param {Number} eo - end offset
    */
 
-
 var WrappedRange = /*#__PURE__*/function () {
   function WrappedRange(sc, so, ec, eo) {
     range_classCallCheck(this, WrappedRange);
@@ -2582,7 +2478,6 @@ var WrappedRange = /*#__PURE__*/function () {
 
     this.isOnData = this.makeIsOn(dom.isData);
   } // nativeRange: get nativeRange from sc, so, ec, eo
-
 
   range_createClass(WrappedRange, [{
     key: "nativeRange",
@@ -2633,7 +2528,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * select update visible range
      */
-
   }, {
     key: "select",
     value: function select() {
@@ -2658,7 +2552,6 @@ var WrappedRange = /*#__PURE__*/function () {
      *
      * @return {WrappedRange}
      */
-
   }, {
     key: "scrollIntoView",
     value: function scrollIntoView(container) {
@@ -2673,7 +2566,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * @return {WrappedRange}
      */
-
   }, {
     key: "normalize",
     value: function normalize() {
@@ -2694,13 +2586,11 @@ var WrappedRange = /*#__PURE__*/function () {
         //  - case 05. if the point is on the left edge and prefer to choose left node but the node is void
         //  - case 06. if the point is on the block node and there is no children
 
-
         if (dom.isVisiblePoint(point)) {
           if (!dom.isEdgePoint(point) || dom.isRightEdgePoint(point) && !isLeftToRight || dom.isLeftEdgePoint(point) && isLeftToRight || dom.isRightEdgePoint(point) && isLeftToRight && dom.isVoid(point.node.nextSibling) || dom.isLeftEdgePoint(point) && !isLeftToRight && dom.isVoid(point.node.previousSibling) || dom.isBlock(point.node) && dom.isEmpty(point.node)) {
             return point;
           }
         } // point on block's edge
-
 
         var block = dom.ancestor(point.node, dom.isBlock);
         var hasRightNode = false;
@@ -2728,7 +2618,6 @@ var WrappedRange = /*#__PURE__*/function () {
             return point;
           } // reverse direction
 
-
           isLeftToRight = !isLeftToRight;
         }
 
@@ -2749,7 +2638,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} [options.fullyContains]
      * @return {Node[]}
      */
-
   }, {
     key: "nodes",
     value: function nodes(pred, options) {
@@ -2792,7 +2680,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * returns commonAncestor of range
      * @return {Element} - commonAncestor
      */
-
   }, {
     key: "commonAncestor",
     value: function commonAncestor() {
@@ -2804,7 +2691,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Function} pred - predicate function
      * @return {WrappedRange}
      */
-
   }, {
     key: "expand",
     value: function expand(pred) {
@@ -2833,7 +2719,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} isCollapseToStart
      * @return {WrappedRange}
      */
-
   }, {
     key: "collapse",
     value: function collapse(isCollapseToStart) {
@@ -2846,7 +2731,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * splitText on range
      */
-
   }, {
     key: "splitText",
     value: function splitText() {
@@ -2873,7 +2757,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * delete contents on range
      * @return {WrappedRange}
      */
-
   }, {
     key: "deleteContents",
     value: function deleteContents() {
@@ -2909,7 +2792,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * makeIsOn: return isOn(pred) function
      */
-
   }, {
     key: "makeIsOn",
     value: function makeIsOn(pred) {
@@ -2922,7 +2804,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Function} pred
      * @return {Boolean}
      */
-
   }, {
     key: "isLeftEdgeOf",
     value: function isLeftEdgeOf(pred) {
@@ -2936,7 +2817,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * returns whether range was collapsed or not
      */
-
   }, {
     key: "isCollapsed",
     value: function isCollapsed() {
@@ -2947,7 +2827,6 @@ var WrappedRange = /*#__PURE__*/function () {
      *
      * @return {WrappedRange}
      */
-
   }, {
     key: "wrapBodyInlineWithPara",
     value: function wrapBodyInlineWithPara() {
@@ -2961,13 +2840,11 @@ var WrappedRange = /*#__PURE__*/function () {
        *  - chrome: <p>|text|</p>
        */
 
-
       var rng = this.normalize();
 
       if (dom.isParaInline(this.sc) || dom.isPara(this.sc)) {
         return rng;
       } // find inline top ancestor
-
 
       var topAncestor;
 
@@ -3001,7 +2878,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Node} node
      * @return {Node}
      */
-
   }, {
     key: "insertNode",
     value: function insertNode(node) {
@@ -3028,7 +2904,6 @@ var WrappedRange = /*#__PURE__*/function () {
     /**
      * insert html at current cursor
      */
-
   }, {
     key: "pasteHTML",
     value: function pasteHTML(markup) {
@@ -3059,7 +2934,6 @@ var WrappedRange = /*#__PURE__*/function () {
      *
      * @return {String}
      */
-
   }, {
     key: "toString",
     value: function toString() {
@@ -3072,7 +2946,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} [findAfter] - find after cursor, default: false
      * @return {WrappedRange}
      */
-
   }, {
     key: "getWordRange",
     value: function getWordRange(findAfter) {
@@ -3100,7 +2973,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} [findAfter] - find after cursor, default: false
      * @return {WrappedRange}
      */
-
   }, {
     key: "getWordsRange",
     value: function getWordsRange(findAfter) {
@@ -3133,7 +3005,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {RegExp} [regex]
      * @return {WrappedRange|null}
      */
-
   }, {
     key: "getWordsMatchRange",
     value: function getWordsMatchRange(regex) {
@@ -3162,7 +3033,6 @@ var WrappedRange = /*#__PURE__*/function () {
      *
      * @param {Node} editable
      */
-
   }, {
     key: "bookmark",
     value: function bookmark(editable) {
@@ -3182,7 +3052,6 @@ var WrappedRange = /*#__PURE__*/function () {
      *
      * @param {Node[]} paras
      */
-
   }, {
     key: "paraBookmark",
     value: function paraBookmark(paras) {
@@ -3201,7 +3070,6 @@ var WrappedRange = /*#__PURE__*/function () {
      * getClientRects
      * @return {Rect[]}
      */
-
   }, {
     key: "getClientRects",
     value: function getClientRects() {
@@ -3219,7 +3087,6 @@ var WrappedRange = /*#__PURE__*/function () {
  *
  * See to http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position
  */
-
 
 /* harmony default export */ const range = ({
   /**
@@ -3388,7 +3255,6 @@ var WrappedRange = /*#__PURE__*/function () {
 });
 ;// CONCATENATED MODULE: ./src/js/core/key.js
 
-
 var KEY_MAP = {
   'BACKSPACE': 8,
   'TAB': 9,
@@ -3535,8 +3401,6 @@ function History_defineProperties(target, props) { for (var i = 0; i < props.len
 
 function History_createClass(Constructor, protoProps, staticProps) { if (protoProps) History_defineProperties(Constructor.prototype, protoProps); if (staticProps) History_defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
 var History = /*#__PURE__*/function () {
   function History(context) {
     History_classCallCheck(this, History);
@@ -3583,7 +3447,6 @@ var History = /*#__PURE__*/function () {
     * Rewinds the history stack back to the first snapshot taken.
     * Leaves the stack intact, so that "Redo" can still be used.
     */
-
   }, {
     key: "rewind",
     value: function rewind() {
@@ -3591,7 +3454,6 @@ var History = /*#__PURE__*/function () {
       if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
         this.recordUndo();
       } // Return to the first available snapshot.
-
 
       this.stackOffset = 0; // Apply that snapshot.
 
@@ -3601,7 +3463,6 @@ var History = /*#__PURE__*/function () {
     *  @method commit
     *  Resets history stack, but keeps current editor's content.
     */
-
   }, {
     key: "commit",
     value: function commit() {
@@ -3616,7 +3477,6 @@ var History = /*#__PURE__*/function () {
     * @method reset
     * Resets the history stack completely; reverting to an empty editor.
     */
-
   }, {
     key: "reset",
     value: function reset() {
@@ -3632,7 +3492,6 @@ var History = /*#__PURE__*/function () {
     /**
      * undo
      */
-
   }, {
     key: "undo",
     value: function undo() {
@@ -3649,7 +3508,6 @@ var History = /*#__PURE__*/function () {
     /**
      * redo
      */
-
   }, {
     key: "redo",
     value: function redo() {
@@ -3661,7 +3519,6 @@ var History = /*#__PURE__*/function () {
     /**
      * recorded undo
      */
-
   }, {
     key: "recordUndo",
     value: function recordUndo() {
@@ -3670,7 +3527,6 @@ var History = /*#__PURE__*/function () {
       if (this.stack.length > this.stackOffset) {
         this.stack = this.stack.slice(0, this.stackOffset);
       } // Create new snapshot and push it to the end
-
 
       this.stack.push(this.makeSnapshot()); // If the stack size reachs to the limit, then slice it
 
@@ -3684,18 +3540,12 @@ var History = /*#__PURE__*/function () {
   return History;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/editing/Style.js
 function Style_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Style_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Style_createClass(Constructor, protoProps, staticProps) { if (protoProps) Style_defineProperties(Constructor.prototype, protoProps); if (staticProps) Style_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
 
 var Style = /*#__PURE__*/function () {
   function Style() {
@@ -3731,7 +3581,6 @@ var Style = /*#__PURE__*/function () {
      * @param {jQuery} $node
      * @return {Object}
      */
-
   }, {
     key: "fromNode",
     value: function fromNode($node) {
@@ -3748,7 +3597,6 @@ var Style = /*#__PURE__*/function () {
      * @param {WrappedRange} rng
      * @param {Object} styleInfo
      */
-
   }, {
     key: "stylePara",
     value: function stylePara(rng, styleInfo) {
@@ -3768,7 +3616,6 @@ var Style = /*#__PURE__*/function () {
      * @param {Boolean} [options.onlyPartialContains] - default: `false`
      * @return {Node[]}
      */
-
   }, {
     key: "styleNodes",
     value: function styleNodes(rng, options) {
@@ -3817,7 +3664,6 @@ var Style = /*#__PURE__*/function () {
      * @param {WrappedRange} rng
      * @return {Object} - object contains style properties.
      */
-
   }, {
     key: "current",
     value: function current(rng) {
@@ -3837,7 +3683,6 @@ var Style = /*#__PURE__*/function () {
         });
       } catch (e) {// eslint-disable-next-line
       } // list-style-type to list-style(unordered, ordered)
-
 
       if (!rng.isOnList()) {
         styleInfo['list-style'] = 'none';
@@ -3866,19 +3711,12 @@ var Style = /*#__PURE__*/function () {
   return Style;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/editing/Bullet.js
 function Bullet_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Bullet_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Bullet_createClass(Constructor, protoProps, staticProps) { if (protoProps) Bullet_defineProperties(Constructor.prototype, protoProps); if (staticProps) Bullet_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
-
 
 var Bullet = /*#__PURE__*/function () {
   function Bullet() {
@@ -3897,7 +3735,6 @@ var Bullet = /*#__PURE__*/function () {
     /**
      * toggle unordered list
      */
-
   }, {
     key: "insertUnorderedList",
     value: function insertUnorderedList(editable) {
@@ -3906,7 +3743,6 @@ var Bullet = /*#__PURE__*/function () {
     /**
      * indent
      */
-
   }, {
     key: "indent",
     value: function indent(editable) {
@@ -3949,7 +3785,6 @@ var Bullet = /*#__PURE__*/function () {
     /**
      * outdent
      */
-
   }, {
     key: "outdent",
     value: function outdent(editable) {
@@ -3981,7 +3816,6 @@ var Bullet = /*#__PURE__*/function () {
      *
      * @param {String} listName - OL or UL
      */
-
   }, {
     key: "toggleList",
     value: function toggleList(listName, editable) {
@@ -4023,7 +3857,6 @@ var Bullet = /*#__PURE__*/function () {
      * @param {String} listName
      * @return {Node[]}
      */
-
   }, {
     key: "wrapList",
     value: function wrapList(paras, listName) {
@@ -4053,7 +3886,6 @@ var Bullet = /*#__PURE__*/function () {
      * @param {Boolean} isEscapseToBody
      * @return {Node[]}
      */
-
   }, {
     key: "releaseList",
     value: function releaseList(clustereds, isEscapseToBody) {
@@ -4139,7 +3971,6 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {HTMLNode}
      */
-
   }, {
     key: "appendToPrevious",
     value: function appendToPrevious(node) {
@@ -4153,7 +3984,6 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {Array[]}
      */
-
   }, {
     key: "findList",
     value: function findList(node) {
@@ -4169,7 +3999,6 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {HTMLNode}
      */
-
   }, {
     key: "findNextSiblings",
     value: function findNextSiblings(node) {
@@ -4187,17 +4016,12 @@ var Bullet = /*#__PURE__*/function () {
   return Bullet;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/editing/Typing.js
 function Typing_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Typing_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Typing_createClass(Constructor, protoProps, staticProps) { if (protoProps) Typing_defineProperties(Constructor.prototype, protoProps); if (staticProps) Typing_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 /**
  * @class editing.Typing
@@ -4221,7 +4045,6 @@ var Typing = /*#__PURE__*/function () {
    * @param {Number} tabsize
    */
 
-
   Typing_createClass(Typing, [{
     key: "insertTab",
     value: function insertTab(rng, tabsize) {
@@ -4242,7 +4065,6 @@ var Typing = /*#__PURE__*/function () {
      *   1 - Break the first blockquote in the ancestors list
      *   2 - Break all blockquotes, so that the new paragraph is not quoted (this is the default)
      */
-
   }, {
     key: "insertParagraph",
     value: function insertParagraph(editable, rng) {
@@ -4302,7 +4124,6 @@ var Typing = /*#__PURE__*/function () {
             }
           }
         } // no paragraph: insert empty paragraph
-
       } else {
         var next = rng.sc.childNodes[rng.so];
         nextPara = external_jQuery_default()(dom.emptyPara)[0];
@@ -4321,17 +4142,12 @@ var Typing = /*#__PURE__*/function () {
   return Typing;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/editing/Table.js
 function Table_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Table_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Table_createClass(Constructor, protoProps, staticProps) { if (protoProps) Table_defineProperties(Constructor.prototype, protoProps); if (staticProps) Table_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 /**
  * @class Create a virtual table to create what actions to do in change.
@@ -4380,7 +4196,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * @param {bool} isSpan Inform if it is an span cell/row.
    */
 
-
   function setVirtualTablePosition(rowIndex, cellIndex, baseRow, baseCell, isRowSpan, isColSpan, isVirtualCell) {
     var objPosition = {
       'baseRow': baseRow,
@@ -4403,7 +4218,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * @param {enum} resultAction Action to be applied in that item.
    */
 
-
   function getActionCell(virtualTableCellObj, resultAction, virtualRowPosition, virtualColPosition) {
     return {
       'baseCell': virtualTableCellObj.baseCell,
@@ -4420,7 +4234,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * @param {int} rowIndex Index of row to find free space.
    * @param {int} cellIndex Index of cell to find free space in table.
    */
-
 
   function recoverCellIndex(rowIndex, cellIndex) {
     if (!_virtualTable[rowIndex]) {
@@ -4448,7 +4261,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * @param {object} cell Cell to recover information.
    */
 
-
   function addCellInfoToVirtual(row, cell) {
     var cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
     var cellHasColspan = cell.colSpan > 1;
@@ -4465,7 +4277,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
         setVirtualTablePosition(rowspanIndex, cellIndex, row, cell, true, cellHasColspan, true);
       }
     } // Add span cols to virtual table.
-
 
     var colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
 
@@ -4486,7 +4297,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * @param {bool} isSelectedCell
    */
 
-
   function adjustStartPoint(rowIndex, cellIndex, cell, isSelectedCell) {
     if (rowIndex === _startPoint.rowPos && _startPoint.colPos >= cell.cellIndex && cell.cellIndex <= cellIndex && !isSelectedCell) {
       _startPoint.colPos++;
@@ -4495,7 +4305,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
   /**
    * Create virtual table of cells with all cells, including span cells.
    */
-
 
   function createVirtualTable() {
     var rows = domTable.rows;
@@ -4513,7 +4322,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    *
    * @param {object} cell virtual table cell to apply action
    */
-
 
   function getDeleteResultActionToCell(cell) {
     switch (where) {
@@ -4541,7 +4349,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    *
    * @param {object} cell virtual table cell to apply action
    */
-
 
   function getAddResultActionToCell(cell) {
     switch (where) {
@@ -4578,7 +4385,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
    * Recover array os what to do in table.
    */
 
-
   this.getActionList = function () {
     var fixedRow = where === TableResultAction.where.Row ? _startPoint.rowPos : -1;
     var fixedCol = where === TableResultAction.where.Column ? _startPoint.colPos : -1;
@@ -4601,7 +4407,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
         canContinue = false;
         return _actionCellList;
       } // Define action to be applied in this cell
-
 
       var resultAction = TableResultAction.resultAction.Ignore;
 
@@ -4629,7 +4434,6 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
 *
 * Where action occours enum.
 */
-
 
 TableResultAction.where = {
   'Row': 0,
@@ -4695,7 +4499,6 @@ var Table = /*#__PURE__*/function () {
      * @param {String} position (top/bottom)
      * @return {Node}
      */
-
   }, {
     key: "addRow",
     value: function addRow(rng, position) {
@@ -4757,7 +4560,6 @@ var Table = /*#__PURE__*/function () {
      * @param {String} position (left/right)
      * @return {Node}
      */
-
   }, {
     key: "addCol",
     value: function addCol(rng, position) {
@@ -4801,7 +4603,6 @@ var Table = /*#__PURE__*/function () {
     * @param {object} Element to recover attributes.
     * @return {string} Copied string elements.
     */
-
   }, {
     key: "recoverAttributes",
     value: function recoverAttributes(el) {
@@ -4831,7 +4632,6 @@ var Table = /*#__PURE__*/function () {
      * @param {WrappedRange} rng
      * @return {Node}
      */
-
   }, {
     key: "deleteRow",
     value: function deleteRow(rng) {
@@ -4915,7 +4715,6 @@ var Table = /*#__PURE__*/function () {
      * @param {WrappedRange} rng
      * @return {Node}
      */
-
   }, {
     key: "deleteCol",
     value: function deleteCol(rng) {
@@ -4973,7 +4772,6 @@ var Table = /*#__PURE__*/function () {
      * @param {Number} colCount
      * @return {Node}
      */
-
   }, {
     key: "createTable",
     value: function createTable(colCount, rowCount, options) {
@@ -5007,7 +4805,6 @@ var Table = /*#__PURE__*/function () {
      * @param {WrappedRange} rng
      * @return {Node}
      */
-
   }, {
     key: "deleteTable",
     value: function deleteTable(rng) {
@@ -5019,26 +4816,12 @@ var Table = /*#__PURE__*/function () {
   return Table;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Editor.js
 function Editor_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Editor_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Editor_createClass(Constructor, protoProps, staticProps) { if (protoProps) Editor_defineProperties(Constructor.prototype, protoProps); if (staticProps) Editor_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var KEY_BOGUS = 'bogus';
 /**
@@ -5380,7 +5163,6 @@ var Editor = /*#__PURE__*/function () {
 
         _this2.context.triggerEvent('keydown', event); // keep a snapshot to limit text on input event
 
-
         _this2.snapshot = _this2.history.makeSnapshot();
         _this2.hasKeyShortCut = false;
 
@@ -5401,7 +5183,6 @@ var Editor = /*#__PURE__*/function () {
         }
 
         _this2.setLastRange(); // record undo in the key event except keyMap.
-
 
         if (_this2.options.recordEveryKeystroke) {
           if (_this2.hasKeyShortCut === false) {
@@ -5444,7 +5225,6 @@ var Editor = /*#__PURE__*/function () {
       if (this.options.disableGrammar) {
         this.$editable.attr('data-gramm', false);
       } // init content before set event
-
 
       this.$editable.html(dom.html(this.$note) || dom.emptyPara);
       this.$editable.on(env.inputEventName, func.debounce(function () {
@@ -5561,7 +5341,6 @@ var Editor = /*#__PURE__*/function () {
      * create range
      * @return {WrappedRange}
      */
-
   }, {
     key: "createRange",
     value: function createRange() {
@@ -5575,7 +5354,6 @@ var Editor = /*#__PURE__*/function () {
      * @param {list} dom element list
      * @return {WrappedRange}
      */
-
   }, {
     key: "createRangeFromList",
     value: function createRangeFromList(lst) {
@@ -5593,7 +5371,6 @@ var Editor = /*#__PURE__*/function () {
      *
      * @param {WrappedRange} rng
      */
-
   }, {
     key: "setLastRange",
     value: function setLastRange(rng) {
@@ -5615,7 +5392,6 @@ var Editor = /*#__PURE__*/function () {
      *
      * @return {WrappedRange}
      */
-
   }, {
     key: "getLastRange",
     value: function getLastRange() {
@@ -5632,7 +5408,6 @@ var Editor = /*#__PURE__*/function () {
      *
      * @param {Boolean} [thenCollapse=false]
      */
-
   }, {
     key: "saveRange",
     value: function saveRange(thenCollapse) {
@@ -5645,7 +5420,6 @@ var Editor = /*#__PURE__*/function () {
      *
      * restore lately range
      */
-
   }, {
     key: "restoreRange",
     value: function restoreRange() {
@@ -5675,7 +5449,6 @@ var Editor = /*#__PURE__*/function () {
      * current style
      * @return {Object|Boolean} unfocus
      */
-
   }, {
     key: "currentStyle",
     value: function currentStyle() {
@@ -5693,7 +5466,6 @@ var Editor = /*#__PURE__*/function () {
      * @param {jQuery} $node
      * @return {Object}
      */
-
   }, {
     key: "styleFromNode",
     value: function styleFromNode($node) {
@@ -5702,7 +5474,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * undo
      */
-
   }, {
     key: "undo",
     value: function undo() {
@@ -5713,7 +5484,6 @@ var Editor = /*#__PURE__*/function () {
     /*
     * commit
     */
-
   }, {
     key: "commit",
     value: function commit() {
@@ -5724,7 +5494,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * redo
      */
-
   }, {
     key: "redo",
     value: function redo() {
@@ -5735,7 +5504,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * before command
      */
-
   }, {
     key: "beforeCommand",
     value: function beforeCommand() {
@@ -5749,7 +5517,6 @@ var Editor = /*#__PURE__*/function () {
      * after command
      * @param {Boolean} isPreventTrigger
      */
-
   }, {
     key: "afterCommand",
     value: function afterCommand(isPreventTrigger) {
@@ -5763,7 +5530,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * handle tab key
      */
-
   }, {
     key: "tab",
     value: function tab() {
@@ -5786,7 +5552,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * handle shift+tab key
      */
-
   }, {
     key: "untab",
     value: function untab() {
@@ -5803,7 +5568,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * run given function between beforeCommand and afterCommand
      */
-
   }, {
     key: "wrapCommand",
     value: function wrapCommand(fn) {
@@ -5820,7 +5584,6 @@ var Editor = /*#__PURE__*/function () {
      * @param {String|Function} param
      * @return {Promise}
      */
-
   }, {
     key: "insertImage",
     value: function insertImage(src, param) {
@@ -5854,7 +5617,6 @@ var Editor = /*#__PURE__*/function () {
      * insertImages
      * @param {File[]} files
      */
-
   }, {
     key: "insertImagesAsDataURL",
     value: function insertImagesAsDataURL(files) {
@@ -5878,7 +5640,6 @@ var Editor = /*#__PURE__*/function () {
      * insertImagesOrCallback
      * @param {File[]} files
      */
-
   }, {
     key: "insertImagesOrCallback",
     value: function insertImagesOrCallback(files) {
@@ -5894,7 +5655,6 @@ var Editor = /*#__PURE__*/function () {
      * return selected plain text
      * @return {String} text
      */
-
   }, {
     key: "getSelectedText",
     value: function getSelectedText() {
@@ -5972,7 +5732,6 @@ var Editor = /*#__PURE__*/function () {
      *
      * @type command
      */
-
   }, {
     key: "unlink",
     value: function unlink() {
@@ -5997,7 +5756,6 @@ var Editor = /*#__PURE__*/function () {
      * @return {Boolean} [return.isNewWindow=true]
      * @return {String} [return.url=""]
      */
-
   }, {
     key: "getLinkInfo",
     value: function getLinkInfo() {
@@ -6077,7 +5835,6 @@ var Editor = /*#__PURE__*/function () {
      * @param {jQuery} $target - target element
      * @param {Boolean} [bKeepRatio] - keep ratio
      */
-
   }, {
     key: "resizeTo",
     value: function resizeTo(pos, $target, bKeepRatio) {
@@ -6102,7 +5859,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * returns whether editable area has focus or not.
      */
-
   }, {
     key: "hasFocus",
     value: function hasFocus() {
@@ -6111,7 +5867,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * set focus
      */
-
   }, {
     key: "focus",
     value: function focus() {
@@ -6125,7 +5880,6 @@ var Editor = /*#__PURE__*/function () {
      * returns whether contents is empty or not.
      * @return {Boolean}
      */
-
   }, {
     key: "isEmpty",
     value: function isEmpty() {
@@ -6134,7 +5888,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * Removes all contents and restores the editable instance to an _emptyPara_.
      */
-
   }, {
     key: "empty",
     value: function empty() {
@@ -6143,7 +5896,6 @@ var Editor = /*#__PURE__*/function () {
     /**
      * normalize content
      */
-
   }, {
     key: "normalizeContent",
     value: function normalizeContent() {
@@ -6154,15 +5906,12 @@ var Editor = /*#__PURE__*/function () {
   return Editor;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Clipboard.js
 function Clipboard_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Clipboard_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Clipboard_createClass(Constructor, protoProps, staticProps) { if (protoProps) Clipboard_defineProperties(Constructor.prototype, protoProps); if (staticProps) Clipboard_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Clipboard = /*#__PURE__*/function () {
   function Clipboard(context) {
@@ -6182,7 +5931,6 @@ var Clipboard = /*#__PURE__*/function () {
      *
      * @param {Event} event
      */
-
   }, {
     key: "pasteByEvent",
     value: function pasteByEvent(event) {
@@ -6212,7 +5960,6 @@ var Clipboard = /*#__PURE__*/function () {
         }
       } // Call editor.afterCommand after proceeding default event handler
 
-
       setTimeout(function () {
         _this.context.invoke('editor.afterCommand');
       }, 10);
@@ -6222,15 +5969,12 @@ var Clipboard = /*#__PURE__*/function () {
   return Clipboard;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Dropzone.js
 function Dropzone_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Dropzone_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Dropzone_createClass(Constructor, protoProps, staticProps) { if (protoProps) Dropzone_defineProperties(Constructor.prototype, protoProps); if (staticProps) Dropzone_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Dropzone = /*#__PURE__*/function () {
   function Dropzone(context) {
@@ -6249,7 +5993,6 @@ var Dropzone = /*#__PURE__*/function () {
    * attach Drag and Drop Events
    */
 
-
   Dropzone_createClass(Dropzone, [{
     key: "initialize",
     value: function initialize() {
@@ -6258,7 +6001,6 @@ var Dropzone = /*#__PURE__*/function () {
         this.documentEventHandlers.onDrop = function (e) {
           e.preventDefault();
         }; // do not consider outside of dropzone
-
 
         this.$eventListener = this.$dropzone;
         this.$eventListener.on('drop', this.documentEventHandlers.onDrop);
@@ -6269,7 +6011,6 @@ var Dropzone = /*#__PURE__*/function () {
     /**
      * attach Drag and Drop Events
      */
-
   }, {
     key: "attachDragAndDropEvent",
     value: function attachDragAndDropEvent() {
@@ -6312,7 +6053,6 @@ var Dropzone = /*#__PURE__*/function () {
         _this.$editor.removeClass('dragover');
       }; // show dropzone on dragenter when dragging a object to document
       // -but only if the editor is visible, i.e. has a positive width and height
-
 
       this.$eventListener.on('dragenter', this.documentEventHandlers.onDragenter).on('dragleave', this.documentEventHandlers.onDragleave).on('drop', this.documentEventHandlers.onDrop); // change dropzone's message on hover.
 
@@ -6370,7 +6110,6 @@ var Dropzone = /*#__PURE__*/function () {
   return Dropzone;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Codeview.js
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -6383,8 +6122,6 @@ function Codeview_classCallCheck(instance, Constructor) { if (!(instance instanc
 function Codeview_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Codeview_createClass(Constructor, protoProps, staticProps) { if (protoProps) Codeview_defineProperties(Constructor.prototype, protoProps); if (staticProps) Codeview_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 /**
  * @class Codeview
@@ -6440,7 +6177,6 @@ var CodeView = /*#__PURE__*/function () {
     /**
      * @return {Boolean}
      */
-
   }, {
     key: "isActivated",
     value: function isActivated() {
@@ -6449,7 +6185,6 @@ var CodeView = /*#__PURE__*/function () {
     /**
      * toggle codeview
      */
-
   }, {
     key: "toggle",
     value: function toggle() {
@@ -6466,7 +6201,6 @@ var CodeView = /*#__PURE__*/function () {
      * @param value
      * @returns {*}
      */
-
   }, {
     key: "purify",
     value: function purify(value) {
@@ -6510,7 +6244,6 @@ var CodeView = /*#__PURE__*/function () {
     /**
      * activate code view
      */
-
   }, {
     key: "activate",
     value: function activate() {
@@ -6556,7 +6289,6 @@ var CodeView = /*#__PURE__*/function () {
     /**
      * deactivate code view
      */
-
   }, {
     key: "deactivate",
     value: function deactivate() {
@@ -6594,14 +6326,12 @@ var CodeView = /*#__PURE__*/function () {
   return CodeView;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Statusbar.js
 function Statusbar_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Statusbar_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Statusbar_createClass(Constructor, protoProps, staticProps) { if (protoProps) Statusbar_defineProperties(Constructor.prototype, protoProps); if (staticProps) Statusbar_defineProperties(Constructor, staticProps); return Constructor; }
-
 
 var EDITABLE_PADDING = 24;
 
@@ -6663,15 +6393,12 @@ var Statusbar = /*#__PURE__*/function () {
   return Statusbar;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Fullscreen.js
 function Fullscreen_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Fullscreen_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Fullscreen_createClass(Constructor, protoProps, staticProps) { if (protoProps) Fullscreen_defineProperties(Constructor.prototype, protoProps); if (staticProps) Fullscreen_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Fullscreen = /*#__PURE__*/function () {
   function Fullscreen(context) {
@@ -6708,7 +6435,6 @@ var Fullscreen = /*#__PURE__*/function () {
     /**
      * toggle fullscreen
      */
-
   }, {
     key: "toggle",
     value: function toggle() {
@@ -6746,16 +6472,12 @@ var Fullscreen = /*#__PURE__*/function () {
   return Fullscreen;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Handle.js
 function Handle_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Handle_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Handle_createClass(Constructor, protoProps, staticProps) { if (protoProps) Handle_defineProperties(Constructor.prototype, protoProps); if (staticProps) Handle_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
 
 var Handle = /*#__PURE__*/function () {
   function Handle(context) {
@@ -6885,7 +6607,6 @@ var Handle = /*#__PURE__*/function () {
      *
      * @param {jQuery} $handle
      */
-
   }, {
     key: "hide",
     value: function hide() {
@@ -6897,16 +6618,12 @@ var Handle = /*#__PURE__*/function () {
   return Handle;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/AutoLink.js
 function AutoLink_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function AutoLink_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function AutoLink_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoLink_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoLink_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
 
 var defaultScheme = 'http://';
 var linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/]{2}|tel:|mailto:[A-Z0-9._%+-]+@|xmpp:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
@@ -6985,14 +6702,12 @@ var AutoLink = /*#__PURE__*/function () {
   return AutoLink;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/AutoSync.js
 function AutoSync_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function AutoSync_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function AutoSync_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoSync_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoSync_defineProperties(Constructor, staticProps); return Constructor; }
-
 
 /**
  * textarea auto sync.
@@ -7022,17 +6737,12 @@ var AutoSync = /*#__PURE__*/function () {
   return AutoSync;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/AutoReplace.js
 function AutoReplace_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function AutoReplace_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function AutoReplace_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoReplace_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoReplace_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 var AutoReplace = /*#__PURE__*/function () {
   function AutoReplace(context) {
@@ -7128,15 +6838,12 @@ var AutoReplace = /*#__PURE__*/function () {
   return AutoReplace;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Placeholder.js
 function Placeholder_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Placeholder_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Placeholder_createClass(Constructor, protoProps, staticProps) { if (protoProps) Placeholder_defineProperties(Constructor.prototype, protoProps); if (staticProps) Placeholder_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Placeholder = /*#__PURE__*/function () {
   function Placeholder(context) {
@@ -7195,18 +6902,12 @@ var Placeholder = /*#__PURE__*/function () {
   return Placeholder;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Buttons.js
 function Buttons_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Buttons_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Buttons_createClass(Constructor, protoProps, staticProps) { if (protoProps) Buttons_defineProperties(Constructor.prototype, protoProps); if (staticProps) Buttons_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
 
 var Buttons = /*#__PURE__*/function () {
   function Buttons(context) {
@@ -7754,7 +7455,6 @@ var Buttons = /*#__PURE__*/function () {
      *   ['remove', ['removeMedia']],
      * ],
      */
-
   }, {
     key: "addImagePopoverButtons",
     value: function addImagePopoverButtons() {
@@ -7846,7 +7546,6 @@ var Buttons = /*#__PURE__*/function () {
      *  ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
      * ],
      */
-
   }, {
     key: "addTablePopoverButtons",
     value: function addTablePopoverButtons() {
@@ -7934,7 +7633,6 @@ var Buttons = /*#__PURE__*/function () {
     /**
      * @param {jQuery} [$container]
      */
-
   }, {
     key: "updateCurrentStyle",
     value: function updateCurrentStyle($container) {
@@ -8067,15 +7765,12 @@ var Buttons = /*#__PURE__*/function () {
   return Buttons;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/Toolbar.js
 function Toolbar_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Toolbar_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function Toolbar_createClass(Constructor, protoProps, staticProps) { if (protoProps) Toolbar_defineProperties(Constructor.prototype, protoProps); if (staticProps) Toolbar_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Toolbar = /*#__PURE__*/function () {
   function Toolbar(context) {
@@ -8243,18 +7938,12 @@ var Toolbar = /*#__PURE__*/function () {
   return Toolbar;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/LinkDialog.js
 function LinkDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function LinkDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function LinkDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) LinkDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) LinkDialog_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
 
 var LinkDialog = /*#__PURE__*/function () {
   function LinkDialog(context) {
@@ -8311,7 +8000,6 @@ var LinkDialog = /*#__PURE__*/function () {
     /**
      * toggle update button
      */
-
   }, {
     key: "toggleLinkBtn",
     value: function toggleLinkBtn($linkBtn, $linkText, $linkUrl) {
@@ -8323,7 +8011,6 @@ var LinkDialog = /*#__PURE__*/function () {
      * @param {Object} linkInfo
      * @return {Promise}
      */
-
   }, {
     key: "showLinkDialog",
     value: function showLinkDialog(linkInfo) {
@@ -8342,7 +8029,6 @@ var LinkDialog = /*#__PURE__*/function () {
 
         _this.ui.onDialogShown(_this.$dialog, function () {
           _this.context.triggerEvent('dialog.shown'); // If no url was given and given text is valid URL then copy that into URL Field
-
 
           if (!linkInfo.url && func.isValidUrl(linkInfo.text)) {
             linkInfo.url = linkInfo.text;
@@ -8410,7 +8096,6 @@ var LinkDialog = /*#__PURE__*/function () {
     /**
      * @param {Object} layoutInfo
      */
-
   }, {
     key: "show",
     value: function show() {
@@ -8431,17 +8116,12 @@ var LinkDialog = /*#__PURE__*/function () {
   return LinkDialog;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/LinkPopover.js
 function LinkPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function LinkPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function LinkPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) LinkPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) LinkPopover_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 var LinkPopover = /*#__PURE__*/function () {
   function LinkPopover(context) {
@@ -8535,17 +8215,12 @@ var LinkPopover = /*#__PURE__*/function () {
   return LinkPopover;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/ImageDialog.js
 function ImageDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function ImageDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function ImageDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) ImageDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) ImageDialog_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 var ImageDialog = /*#__PURE__*/function () {
   function ImageDialog(context) {
@@ -8631,7 +8306,6 @@ var ImageDialog = /*#__PURE__*/function () {
      * @param {jQuery} $dialog
      * @return {Promise}
      */
-
   }, {
     key: "showImageDialog",
     value: function showImageDialog() {
@@ -8646,7 +8320,6 @@ var ImageDialog = /*#__PURE__*/function () {
 
         _this2.ui.onDialogShown(_this2.$dialog, function () {
           _this2.context.triggerEvent('dialog.shown'); // Cloning imageInput to clear element.
-
 
           $imageInput.replaceWith($imageInput.clone().on('change', function (event) {
             deferred.resolve(event.target.files || event.target.value);
@@ -8685,16 +8358,12 @@ var ImageDialog = /*#__PURE__*/function () {
   return ImageDialog;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/ImagePopover.js
 function ImagePopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function ImagePopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function ImagePopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) ImagePopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) ImagePopover_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
 
 /**
  * Image popover module
@@ -8786,18 +8455,12 @@ var ImagePopover = /*#__PURE__*/function () {
   return ImagePopover;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/TablePopover.js
 function TablePopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function TablePopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function TablePopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) TablePopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) TablePopover_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
 
 var TablePopover = /*#__PURE__*/function () {
   function TablePopover(context) {
@@ -8892,17 +8555,12 @@ var TablePopover = /*#__PURE__*/function () {
   return TablePopover;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/VideoDialog.js
 function VideoDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function VideoDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function VideoDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) VideoDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) VideoDialog_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
 
 var VideoDialog = /*#__PURE__*/function () {
   function VideoDialog(context) {
@@ -9048,7 +8706,6 @@ var VideoDialog = /*#__PURE__*/function () {
 
         _this.context.invoke('editor.restoreRange'); // build node
 
-
         var $node = _this.createVideoNode(url);
 
         if ($node) {
@@ -9065,7 +8722,6 @@ var VideoDialog = /*#__PURE__*/function () {
      * @param {jQuery} $dialog
      * @return {Promise}
      */
-
   }, {
     key: "showVideoDialog",
     value: function showVideoDialog() {
@@ -9112,16 +8768,12 @@ var VideoDialog = /*#__PURE__*/function () {
   return VideoDialog;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/HelpDialog.js
 function HelpDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function HelpDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function HelpDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) HelpDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) HelpDialog_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
 
 var HelpDialog = /*#__PURE__*/function () {
   function HelpDialog(context) {
@@ -9180,7 +8832,6 @@ var HelpDialog = /*#__PURE__*/function () {
      *
      * @return {Promise}
      */
-
   }, {
     key: "showHelpDialog",
     value: function showHelpDialog() {
@@ -9211,15 +8862,12 @@ var HelpDialog = /*#__PURE__*/function () {
   return HelpDialog;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/AirPopover.js
 function AirPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function AirPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function AirPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) AirPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) AirPopover_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var AIRMODE_POPOVER_X_OFFSET = -5;
 var AIRMODE_POPOVER_Y_OFFSET = 5;
@@ -9345,19 +8993,12 @@ var AirPopover = /*#__PURE__*/function () {
   return AirPopover;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/module/HintPopover.js
 function HintPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function HintPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function HintPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) HintPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) HintPopover_defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
-
 
 var POPOVER_DIST = 5;
 
@@ -9659,35 +9300,7 @@ var HintPopover = /*#__PURE__*/function () {
   return HintPopover;
 }();
 
-
 ;// CONCATENATED MODULE: ./src/js/settings.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 (external_jQuery_default()).summernote = external_jQuery_default().extend((external_jQuery_default()).summernote, {
   version: '0.8.20',
@@ -9949,8 +9562,6 @@ function renderer_defineProperties(target, props) { for (var i = 0; i < props.le
 
 function renderer_createClass(Constructor, protoProps, staticProps) { if (protoProps) renderer_defineProperties(Constructor.prototype, protoProps); if (staticProps) renderer_defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
 var Renderer = /*#__PURE__*/function () {
   function Renderer(markup, children, options, callback) {
     renderer_classCallCheck(this, Renderer);
@@ -10030,8 +9641,6 @@ function TooltipUI_classCallCheck(instance, Constructor) { if (!(instance instan
 function TooltipUI_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function TooltipUI_createClass(Constructor, protoProps, staticProps) { if (protoProps) TooltipUI_defineProperties(Constructor.prototype, protoProps); if (staticProps) TooltipUI_defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var TooltipUI = /*#__PURE__*/function () {
   function TooltipUI($node, options) {
@@ -10139,8 +9748,6 @@ function DropdownUI_defineProperties(target, props) { for (var i = 0; i < props.
 
 function DropdownUI_createClass(Constructor, protoProps, staticProps) { if (protoProps) DropdownUI_defineProperties(Constructor.prototype, protoProps); if (staticProps) DropdownUI_defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
 var DropdownUI = /*#__PURE__*/function () {
   function DropdownUI($node, options) {
     DropdownUI_classCallCheck(this, DropdownUI);
@@ -10228,8 +9835,6 @@ function ModalUI_defineProperties(target, props) { for (var i = 0; i < props.len
 
 function ModalUI_createClass(Constructor, protoProps, staticProps) { if (protoProps) ModalUI_defineProperties(Constructor.prototype, protoProps); if (staticProps) ModalUI_defineProperties(Constructor, staticProps); return Constructor; }
 
-
-
 var ModalUI = /*#__PURE__*/function () {
   function ModalUI($node
   /*, options */
@@ -10272,12 +9877,6 @@ var ModalUI = /*#__PURE__*/function () {
 
 /* harmony default export */ const js_ModalUI = (ModalUI);
 ;// CONCATENATED MODULE: ./src/styles/lite/summernote-lite.js
-
-
-
-
-
-
 
 var editor = renderer.create('<div class="note-editor note-frame"></div>');
 var toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');

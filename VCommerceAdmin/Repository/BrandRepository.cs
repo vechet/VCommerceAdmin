@@ -1,17 +1,15 @@
-﻿using VCommerceAdmin.ApiModels;
+﻿using Microsoft.EntityFrameworkCore;
+using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Models;
 using VCommerceAdmin.Repository.Interface;
-using Microsoft.EntityFrameworkCore;
-using VCommerceAdmin.ApiModels;
-using System.Collections.Generic;
 
 namespace VCommerceAdmin.Repository
 {
     public class BrandRepository : IBrandRepository
     {
-       private readonly IDbContextFactory<VcommerceContext> _contextFactory;
+        private readonly IDbContextFactory<VcommerceContext> _contextFactory;
 
         public BrandRepository(IDbContextFactory<VcommerceContext> contextFactory)
         {
@@ -36,9 +34,9 @@ namespace VCommerceAdmin.Repository
                     context.SaveChanges();
                     code = ApiReturnError.Success.Value();
                     msg = ApiReturnError.Success.Description();
-                    return new CreateBrandResponse(newBrand, 0, ApiReturnError.Success.ToString());
+                    return new CreateBrandResponse(newBrand);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     code = ApiReturnError.DbError.Value();
                     msg = ApiReturnError.DbError.Description();
@@ -70,7 +68,7 @@ namespace VCommerceAdmin.Repository
                     msg = ApiReturnError.Success.Description();
                     return new List<GetBrandsResponse>(result);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     code = ApiReturnError.DbError.Value();
                     msg = ApiReturnError.DbError.Description();
@@ -97,7 +95,7 @@ namespace VCommerceAdmin.Repository
                     msg = ApiReturnError.Success.Description();
                     return new UpdateBrandResponse(currentBrand);
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
                     code = ApiReturnError.DbError.Value();
                     msg = ApiReturnError.DbError.Description();

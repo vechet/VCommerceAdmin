@@ -1,5 +1,4 @@
-﻿
-namespace VCommerceAdmin.ApiModels
+﻿namespace VCommerceAdmin.ApiModels
 {
     public class GetBrandsRequest
     {

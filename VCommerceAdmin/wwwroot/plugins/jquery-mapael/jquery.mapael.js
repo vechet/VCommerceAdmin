@@ -23,7 +23,6 @@
         factory(jQuery, Raphael, jQuery.fn.mousewheel);
     }
 }(function ($, Raphael, mousewheel, undefined) {
-
     "use strict";
 
     // The plugin name (used on several places)
@@ -121,7 +120,6 @@
      * Each mapael object inherits their properties and methods from this prototype
      */
     Mapael.prototype = {
-
         /* Filtering TimeOut value in ms
          * Used for mouseover trigger over elements */
         MouseOverFilteringTO: 120,
@@ -370,7 +368,6 @@
          * @return new options object
          */
         extendDefaultOptions: function (options) {
-
             // Extend default options with user options
             options = $.extend(true, {}, Mapael.prototype.defaultOptions, options);
 
@@ -447,7 +444,6 @@
                     } else if (type === 'legend-elem' || type === 'legend-label') {
                         /* Nothing to do */
                     }
-
                 }, 0);
             });
 
@@ -517,7 +513,6 @@
                     }
                 });
             });
-
         },
 
         /*
@@ -842,9 +837,7 @@
                 // Take the min between zoomLevel on width vs. height to be able to see the whole area
                 zoomLevel = Math.min(Math.floor((self.mapConf.width / areaFullWidth - 1) / self.options.map.zoom.step),
                                      Math.floor((self.mapConf.height / areaFullHeight - 1) / self.options.map.zoom.step));
-
             } else {
-
                 // Get user defined zoom level
                 if (zoomOptions.level !== undefined) {
                     if (typeof zoomOptions.level === "string") {
@@ -1112,7 +1105,6 @@
             // This function remove an element using animation (or not, depending on animDuration)
             // Used for deletePlotKeys and deleteLinkKeys
             var fnRemoveElement = function (elem) {
-
                 self.animate(elem.mapElem, {"opacity": 0}, animDuration, function () {
                     elem.mapElem.remove();
                 });
@@ -1393,7 +1385,6 @@
                                                    (plot.coords.y - plot.options.height / 2);
 
                 plot.options.attrs.transform = plot.mapElem.baseTransform + plot.options.attrs.transform;
-
             } else { // Default : circle
                 plot.options.attrs.x = plot.coords.x;
                 plot.options.attrs.y = plot.coords.y;
@@ -1788,7 +1779,6 @@
                         }
 
                         legendElem = legendPaper.rect(x, y, scale * (sliceOptions[i].attrs.width), scale * (sliceOptions[i].attrs.height));
-
                     } else if (sliceOptions[i].type === "image" || sliceOptions[i].type === "svg") {
                         if (legendOptions.mode === "horizontal") {
                             x = width + legendOptions.marginLeft;
@@ -1996,7 +1986,6 @@
                     }
                 });
             }
-
         },
 
         /*
@@ -2752,7 +2741,6 @@
                 mode: "vertical"
             }
         }
-
     };
 
     // Mapael version number
@@ -2777,5 +2765,4 @@
     };
 
     return Mapael;
-
 }));

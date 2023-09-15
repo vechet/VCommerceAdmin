@@ -62,7 +62,6 @@ DataTable.Buttons.jszip = function (_) {
 	jszip = _;
 }
 
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * FileSaver.js dependency
  */
@@ -232,11 +231,9 @@ var _saveAs = (function(view) {
 	|| this.content
 ));
 
-
 // Expose file saver on the DataTables API. Can't attach to `DataTables.Buttons`
 // since this file can be loaded before Button's core!
 DataTable.fileSave = _saveAs;
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Local (private) functions
@@ -786,8 +783,6 @@ var _excelSpecials = [
 	{ match: /^[\d]{4}\-[\d]{2}\-[\d]{2}$/, style: 67, fmt: function (d) {return Math.round(25569 + (Date.parse(d) / (86400 * 1000)));}} //Date yyyy-mm-dd
 ];
 
-
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Buttons
  */
@@ -1036,7 +1031,6 @@ DataTable.ext.buttons.excelHtml5 = {
 				"worksheets": {
 					"sheet1.xml": rels
 				}
-
 			},
 			"[Content_Types].xml": getXml('[Content_Types].xml')
 		};
@@ -1175,19 +1169,18 @@ DataTable.ext.buttons.excelHtml5 = {
 			mergeCells( rowPos, data.header.length-1 );
 		}
 
-
 		// Table itself
 		if ( config.header ) {
 			addRow( data.header, rowPos );
 			$('row:last c', rels).attr( 's', '2' ); // bold
 		}
-	
+
 		dataStartRow = rowPos;
 
 		for ( var n=0, ie=data.body.length ; n<ie ; n++ ) {
 			addRow( data.body[n], rowPos );
 		}
-	
+
 		dataEndRow = rowPos;
 
 		if ( config.footer && data.footer ) {
@@ -1457,7 +1450,6 @@ DataTable.ext.buttons.pdfHtml5 = {
 
 	download: 'download'
 };
-
 
 return DataTable.Buttons;
 }));

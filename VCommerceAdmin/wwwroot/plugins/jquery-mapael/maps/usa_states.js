@@ -22,7 +22,6 @@
         factory(jQuery, jQuery.mapael);
     }
 }(function ($, Mapael) {
-
     "use strict";
 
     $.extend(true, Mapael,
@@ -66,7 +65,6 @@
                             yOffset = 543;
                             scaleX= 1;
                             scaleY= -1;
-
                         } else if (lon < -140) { // hawaii
                             phi1= 0;
                             phi2= 26;
@@ -147,5 +145,4 @@
     );
 
     return Mapael;
-
 }));

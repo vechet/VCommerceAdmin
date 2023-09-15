@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.ViewModels;
@@ -10,7 +9,7 @@ namespace VCommerceAdmin.Controllers
     {
         private readonly VcommerceContext _db;
 
-        public BrandController(VcommerceContext db) 
+        public BrandController(VcommerceContext db)
         {
             _db = db;
         }
