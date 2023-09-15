@@ -54,7 +54,19 @@ namespace VCommerceAdmin.Repository
             {
                 try
                 {
-                    var result = context.Categories.Where(x => x.ParentId == req.ParentId).Select(x => new GetCategoriesResponse
+                    var filter = context.Categories.AsQueryable();
+
+                    if(req.ParentId != 0)
+                    {
+                        filter = filter.Where(x => x.ParentId == req.ParentId);
+                    }
+
+                    if (!req.ShowAllRecord)
+                    {
+                        filter = filter.Where(x => x.Status.KeyName == "Active");
+                    }
+
+                    var result = filter.Select(x => new GetCategoriesResponse
                     {
                         Id = x.Id,
                         Name = x.Name,
