@@ -39,6 +39,7 @@ public partial class VcommerceContext : DbContext
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Um> Ums { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Brand>(entity =>

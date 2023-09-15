@@ -21,6 +21,7 @@ builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
 builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSingleton<IProductTypeRepository, ProductTypeRepository>();
 builder.Services.AddSingleton<IPaymentMethodRepository, PaymentMethodRepository>();
+builder.Services.AddSingleton<IUnitMeasurementRepository, UnitMeasurementRepository>();
 
 var app = builder.Build();
 

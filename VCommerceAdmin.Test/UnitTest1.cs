@@ -9,6 +9,15 @@ namespace VCommerceAdmin.Test
         [TestMethod]
         public void TestMethod1()
         {
+            //Arrage
+            var a = 1;
+            var b = 2;
+
+            //Act
+            var c = a + b;
+
+            //Assert
+            Assert.AreEqual(3, c);
         }
     }
 }
