@@ -19,6 +19,8 @@ builder.Services.AddDbContextFactory<VcommerceContext>(options =>
 //repository in dependency injection
 builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
 builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<IProductTypeRepository, ProductTypeRepository>();
+builder.Services.AddSingleton<IPaymentMethodRepository, PaymentMethodRepository>();
 
 var app = builder.Build();
 

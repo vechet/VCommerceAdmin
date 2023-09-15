@@ -1,4 +1,7 @@
-﻿namespace VCommerceAdmin.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace VCommerceAdmin.Models;
 
 public partial class GlobalParam
 {

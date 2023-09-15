@@ -1,4 +1,7 @@
-﻿namespace VCommerceAdmin.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace VCommerceAdmin.Models;
 
 public partial class PaymentMethod
 {
@@ -21,4 +24,6 @@ public partial class PaymentMethod
     public int? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDate { get; set; }
+
+    public virtual Status Status { get; set; } = null!;
 }

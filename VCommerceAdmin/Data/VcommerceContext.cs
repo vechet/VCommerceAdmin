@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.Data;
@@ -37,7 +39,6 @@ public partial class VcommerceContext : DbContext
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Um> Ums { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Brand>(entity =>
@@ -241,6 +242,11 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.PaymentMethods)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_PaymentMethod_Status");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -294,12 +300,14 @@ public partial class VcommerceContext : DbContext
         {
             entity.ToTable("ProductType");
 
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.KeyName)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.Memo)
                 .HasMaxLength(500)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");

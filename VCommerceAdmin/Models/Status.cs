@@ -1,4 +1,7 @@
-﻿namespace VCommerceAdmin.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace VCommerceAdmin.Models;
 
 public partial class Status
 {
@@ -19,6 +22,8 @@ public partial class Status
     public virtual ICollection<Brand> Brands { get; set; } = new List<Brand>();
 
     public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+
+    public virtual ICollection<PaymentMethod> PaymentMethods { get; set; } = new List<PaymentMethod>();
 
     public virtual ICollection<ProductType> ProductTypes { get; set; } = new List<ProductType>();
 
