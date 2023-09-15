@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json;
+using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.Helpers
 {
@@ -25,12 +27,23 @@ namespace VCommerceAdmin.Helpers
             };
         }
 
+        public static string GetUserName(int userId, VcommerceContext db = null)
+        {
+            //if (db == null)
+            //{
+            //    db = new VcommerceContext();
+            //}
+            //var account = db.UserAccounts.Find(userId);
+            //return account != null ? account.UserName : "";
+            return "Vechet Dev";
+        }
+
         public static int GetCurrentUserId(VcommerceContext db = null, string token = "")
         {
-            if (db == null)
-            {
-                db = new VcommerceContext();
-            }
+            //if (db == null)
+            //{
+            //    db = new VcommerceContext();
+            //}
             //var userIdList = db.UserAccountTokens.Where(x => x.Token == token).Select(x => x.UserAccountId).ToList();
             //var currentUser = db.UserAccounts.Where(x => userIdList.Contains(x.Id)).ToList();
             //return currentUser[0].Id;
@@ -79,6 +92,30 @@ namespace VCommerceAdmin.Helpers
                 }
             }
             return cipherText;
+        }
+
+        public static void RecordErrorLog(string moduleName, Exception error, VcommerceContext db)
+        {
+            try
+            {
+                var currentUserId = GetCurrentUserId();
+                var currentDateTime = GetCurrentDateTime();
+                var errorString = error.Message + "\n" + error.StackTrace;
+
+                var errorReport = new ErrorReport
+                {
+                    ModuleName = moduleName,
+                    Message = string.Format("Project Name: {0}\nUser Name: {1}\nError Date: {2}\n\n{3}", "VCommerce", GetUserName(currentUserId), currentDateTime, errorString),
+                    CreatedBy = currentUserId,
+                    CreatedDate = GetCurrentDateTime()
+                };
+                db.ErrorReports.Add(errorReport);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

@@ -26,6 +26,8 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<DocumentFormat> DocumentFormats { get; set; }
 
+    public virtual DbSet<ErrorReport> ErrorReports { get; set; }
+
     public virtual DbSet<GlobalParam> GlobalParams { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
@@ -37,6 +39,10 @@ public partial class VcommerceContext : DbContext
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Um> Ums { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-R1KJCVP;Database=VCommerce;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -189,6 +195,19 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Type)
                 .HasMaxLength(100)
                 .HasComment("1 : Purchased, 2 : SaleReturn, 3 : SaleChanged, 4 : Transfer, 5 : AdjustQty, 6 : AdjustCost, 7 : Sale, 8 : PurchaseReturn")
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
+        modelBuilder.Entity<ErrorReport>(entity =>
+        {
+            entity.ToTable("ErrorReport");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Message)
+                .HasMaxLength(4000)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModuleName)
+                .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
         });
 

@@ -1,22 +1,25 @@
-﻿using VCommerceAdmin.CustomModels;
+﻿using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Models;
 using VCommerceAdmin.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using VCommerceAdmin.ApiModels;
+using System.Collections.Generic;
 
 namespace VCommerceAdmin.Repository
 {
     public class BrandRepository : IBrandRepository
     {
-        private readonly IDbContextFactory<VcommerceContext> _contextFactory;
+       private readonly IDbContextFactory<VcommerceContext> _contextFactory;
 
         public BrandRepository(IDbContextFactory<VcommerceContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }
 
-        public BrandCreateResponse BrandCreate(CreateBrandRequest req)
+
+        public CreateBrandResponse CreateBrand(CreateBrandRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
@@ -30,30 +33,43 @@ namespace VCommerceAdmin.Repository
                 };
                 context.Brands.Add(newBrand);
                 context.SaveChanges();
-                return new BrandCreateResponse(newBrand, 0, ApiReturnError.Success.ToString());
+                return new CreateBrandResponse(newBrand, 0, ApiReturnError.Success.ToString());
             }
         }
 
-        public List<GetBrandsResponse> Brands(GetBrandsRequest req)
+        public List<GetBrandsResponse> GetBrands(GetBrandsRequest req, out int code, out string msg)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
-                return context.Brands.Select(x => new GetBrandsResponse 
+                try
                 {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Memo = x.Memo,
-                    CreatedBy = x.CreatedBy,
-                    CreatedDate = x.CreatedDate,
-                    ModifiedBy = x.ModifiedBy,
-                    ModifiedDate = x.ModifiedDate,
-                    StatusId = x.StatusId,
-                    StatusName = x.Status.Name,
-                }).OrderByDescending(x => x.Id).ToList();
+                    var result = context.Brands.Select(x => new GetBrandsResponse
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Memo = x.Memo,
+                        CreatedBy = x.CreatedBy,
+                        CreatedDate = x.CreatedDate,
+                        ModifiedBy = x.ModifiedBy,
+                        ModifiedDate = x.ModifiedDate,
+                        StatusId = x.StatusId,
+                        StatusName = x.Status.Name,
+                    }).OrderByDescending(x => x.Id).Skip(req.Skip).Take(req.Limit).ToList();
+                    code = ApiReturnError.Success.Value();
+                    msg = ApiReturnError.Success.Description();
+                    return new List<GetBrandsResponse>(result);
+                }
+                catch(Exception ex)
+                {
+                    code = ApiReturnError.DbError.Value();
+                    msg = ApiReturnError.DbError.Description();
+                    GlobalFunction.RecordErrorLog("BrandRepository/GetBrands", ex, context);
+                    return new List<GetBrandsResponse>();
+                }
             }
         }
 
-        public UpdateBrandResponse BrandUpdate(UpdateBrandRequest req)
+        public UpdateBrandResponse UpdateBrand(UpdateBrandRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {

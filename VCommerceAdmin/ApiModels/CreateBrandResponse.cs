@@ -1,14 +1,15 @@
 ﻿using Newtonsoft.Json;
+using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Models;
 
-namespace VCommerceAdmin.CustomModels
+namespace VCommerceAdmin.ApiModels
 {
-    public class BrandCreateResponse : GetBrandsResponse
+    public class CreateBrandResponse : GetBrandsResponse
     {
-        public BrandCreateResponse() { }
+        public CreateBrandResponse() { }
 
-        public BrandCreateResponse(Brand data, int code, string message)
+        public CreateBrandResponse(Brand data, int code, string message)
         {
             Id = data.Id;
             Name = data.Name;

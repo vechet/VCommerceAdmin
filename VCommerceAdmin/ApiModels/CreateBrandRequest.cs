@@ -1,4 +1,4 @@
-﻿namespace VCommerceAdmin.CustomModels
+﻿namespace VCommerceAdmin.ApiModels
 {
     public class CreateBrandRequest
     {

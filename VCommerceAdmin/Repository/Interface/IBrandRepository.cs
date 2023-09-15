@@ -1,12 +1,11 @@
-﻿using VCommerceAdmin.CustomModels;
-using VCommerceAdmin.Helpers;
+﻿using VCommerceAdmin.ApiModels;
 
 namespace VCommerceAdmin.Repository.Interface
 {
     public interface IBrandRepository
     {
-        List<GetBrandsResponse> Brands(GetBrandsRequest req);
-        BrandCreateResponse BrandCreate(CreateBrandRequest req);
-        UpdateBrandResponse BrandUpdate(UpdateBrandRequest req);
+        List<GetBrandsResponse> GetBrands(GetBrandsRequest req, out int code, out string msg);
+        CreateBrandResponse CreateBrand(CreateBrandRequest req);
+        UpdateBrandResponse UpdateBrand(UpdateBrandRequest req);
     }
 }

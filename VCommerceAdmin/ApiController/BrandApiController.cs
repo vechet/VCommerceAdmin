@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VCommerceAdmin.CustomModels;
+using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Repository.Interface;
 
@@ -16,22 +16,23 @@ namespace VCommerceAdmin.ApiController
             _brandRepository = brandRepository;
         }
 
-        [HttpPost("v1/brand/create-brand")]
-        public ApiResponse<BrandCreateResponse> CreateBrand([FromBody] CreateBrandRequest req)
-        {
-            return new ApiResponse<BrandCreateResponse>(_brandRepository.BrandCreate(req));
-        }
+        //[HttpPost("v1/brand/create-brand")]
+        //public ApiResponse<CreateBrandResponse> CreateBrand([FromBody] CreateBrandRequest req)
+        //{
+        //    return new ApiResponse<CreateBrandResponse>(_brandRepository.BrandCreate(req));
+        //}
 
         [HttpPost("v1/brand/get-brands")]
         public ApiResponse<List<GetBrandsResponse>> GetBrands([FromBody] GetBrandsRequest req)
         {
-            return new ApiResponse<List<GetBrandsResponse>>(_brandRepository.Brands(req));
+            var result = _brandRepository.GetBrands(req, out int code, out string msg);
+            return new ApiResponse<List<GetBrandsResponse>>(result, code, msg);
         }
 
-        [HttpPost("v1/brand/update-brand")]
-        public ApiResponse<UpdateBrandResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
-        {
-            return new ApiResponse<UpdateBrandResponse>(_brandRepository.BrandUpdate(req));
-        }
+        //[HttpPost("v1/brand/update-brand")]
+        //public ApiResponse<UpdateBrandResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
+        //{
+        //    return new ApiResponse<UpdateBrandResponse>(_brandRepository.BrandUpdate(req));
+        //}
     }
 }
