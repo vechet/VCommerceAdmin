@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}</ProjectGuid>
+    <ProjectGuid>{47DD01A5-2429-4304-860B-BA6944C4F23D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VCommerce.Test</RootNamespace>
-    <AssemblyName>VCommerce.Test</AssemblyName>
+    <RootNamespace>VCommerceAdmin.Test</RootNamespace>
+    <AssemblyName>VCommerceAdmin.Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

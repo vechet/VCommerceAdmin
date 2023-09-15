@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCommerceAdmin", "VCommerceAdmin\VCommerceAdmin.csproj", "{4C16DB88-A303-40B7-BC62-AE09EA744BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCommerce.Test", "VCommerce.Test\VCommerce.Test.csproj", "{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCommerceAdmin.Test", "VCommerceAdmin.Test\VCommerceAdmin.Test.csproj", "{47DD01A5-2429-4304-860B-BA6944C4F23D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{4C16DB88-A303-40B7-BC62-AE09EA744BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C16DB88-A303-40B7-BC62-AE09EA744BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C16DB88-A303-40B7-BC62-AE09EA744BF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0557F0C-8FEC-4851-B25E-70AA827BF8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DD01A5-2429-4304-860B-BA6944C4F23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DD01A5-2429-4304-860B-BA6944C4F23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DD01A5-2429-4304-860B-BA6944C4F23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DD01A5-2429-4304-860B-BA6944C4F23D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
