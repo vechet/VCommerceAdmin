@@ -16,11 +16,12 @@ namespace VCommerceAdmin.ApiController
             _brandRepository = brandRepository;
         }
 
-        //[HttpPost("v1/brand/create-brand")]
-        //public ApiResponse<CreateBrandResponse> CreateBrand([FromBody] CreateBrandRequest req)
-        //{
-        //    return new ApiResponse<CreateBrandResponse>(_brandRepository.BrandCreate(req));
-        //}
+        [HttpPost("v1/brand/create-brand")]
+        public ApiResponse<CreateBrandResponse> CreateBrand([FromBody] CreateBrandRequest req)
+        {
+            var result = _brandRepository.CreateBrand(req, out int code, out string msg);
+            return new ApiResponse<CreateBrandResponse>(result, code, msg);
+        }
 
         [HttpPost("v1/brand/get-brands")]
         public ApiResponse<List<GetBrandsResponse>> GetBrands([FromBody] GetBrandsRequest req)
@@ -29,10 +30,11 @@ namespace VCommerceAdmin.ApiController
             return new ApiResponse<List<GetBrandsResponse>>(result, code, msg);
         }
 
-        //[HttpPost("v1/brand/update-brand")]
-        //public ApiResponse<UpdateBrandResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
-        //{
-        //    return new ApiResponse<UpdateBrandResponse>(_brandRepository.BrandUpdate(req));
-        //}
+        [HttpPost("v1/brand/update-brand")]
+        public ApiResponse<UpdateBrandResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
+        {
+            var result = _brandRepository.UpdateBrand(req, out int code, out string msg);
+            return new ApiResponse<UpdateBrandResponse>(result, code, msg);
+        }
     }
 }

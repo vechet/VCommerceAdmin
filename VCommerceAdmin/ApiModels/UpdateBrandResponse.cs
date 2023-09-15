@@ -6,6 +6,8 @@ namespace VCommerceAdmin.ApiModels
 {
     public class UpdateBrandResponse : GetBrandsResponse
     {
+        public UpdateBrandResponse() { }
+
         public UpdateBrandResponse(Brand data)
         {
             Id = data.Id;
