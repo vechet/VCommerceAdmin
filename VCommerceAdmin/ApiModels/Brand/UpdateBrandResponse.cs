@@ -1,15 +1,18 @@
-﻿using VCommerceAdmin.Models;
+﻿using VCommerceAdmin.Data;
+using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.ApiModels
 {
     public class UpdateBrandResponse : GetBrandsResponse
     {
-        public UpdateBrandResponse(Brand data)
+        public UpdateBrandResponse() { }
+
+        public UpdateBrandResponse(Brand data, VcommerceContext context)
         {
             Id = data.Id;
             Name = data.Name;
             Memo = data.Memo;
-            Photo = data.PhotoAndVideos.FirstOrDefault(z => z.BrandId == data.Id).FileName;
+            Photo = context.PhotoAndVideos.FirstOrDefault(z => z.BrandId == data.Id).FileName;
             CreatedBy = data.CreatedBy;
             CreatedDate = data.CreatedDate;
             ModifiedBy = data.ModifiedBy;

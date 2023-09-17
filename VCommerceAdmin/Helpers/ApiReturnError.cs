@@ -12,5 +12,8 @@ namespace VCommerceAdmin.Helpers
 
         [Description("Invalid Request Parameter")]
         InvalidParameter = 101,
+
+        [Description("Duplicate Name")]
+        DuplicateName = 114,
     }
 }

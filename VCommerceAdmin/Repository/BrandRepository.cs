@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
@@ -10,10 +11,25 @@ namespace VCommerceAdmin.Repository
     public class BrandRepository : IBrandRepository
     {
         private readonly IDbContextFactory<VcommerceContext> _contextFactory;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BrandRepository(IDbContextFactory<VcommerceContext> contextFactory)
+        public BrandRepository(IDbContextFactory<VcommerceContext> contextFactory, IWebHostEnvironment webHostEnvironment)
         {
             _contextFactory = contextFactory;
+            _webHostEnvironment = webHostEnvironment;
+
+        }
+
+        private string UploadSinglePhoto(IFormFile file)
+        {
+            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+            return uniqueFileName;
         }
 
         public CreateBrandResponse CreateBrand(CreateBrandRequest req, out int code, out string msg)
@@ -22,6 +38,14 @@ namespace VCommerceAdmin.Repository
             {
                 try
                 {
+                    // check duplicate name
+                    if (context.Brands.Any(x => x.Name.ToLower() == req.Name.ToLower()))
+                    {
+                        code = ApiReturnError.DuplicateName.Value();
+                        msg = ApiReturnError.DuplicateName.Description();
+                        return new CreateBrandResponse();
+                    }
+
                     var newBrand = new Brand
                     {
                         Name = req.Name,
@@ -31,10 +55,22 @@ namespace VCommerceAdmin.Repository
                         StatusId = req.StatusId
                     };
                     context.Brands.Add(newBrand);
+
+                    if(req.Photo != null)
+                    {
+                        var photo = UploadSinglePhoto(req.Photo);
+                        var newPhotoAndVideo = new PhotoAndVideo
+                        {
+                            FileName = photo,
+                            SortOrder = 100
+                        };
+                        newBrand.PhotoAndVideos.Add(newPhotoAndVideo);
+                    }
+                  
                     context.SaveChanges();
                     code = ApiReturnError.Success.Value();
                     msg = ApiReturnError.Success.Description();
-                    return new CreateBrandResponse(newBrand);
+                    return new CreateBrandResponse(newBrand, context);
                 }
                 catch (Exception ex)
                 {
@@ -84,16 +120,30 @@ namespace VCommerceAdmin.Repository
             {
                 try
                 {
+                    // check duplicate name
+                    if (context.Brands.Any(x => x.Name.ToLower() == req.Name.ToLower() && x.Id != req.Id))
+                    {
+                        code = ApiReturnError.DuplicateName.Value();
+                        msg = ApiReturnError.DuplicateName.Description();
+                        return new UpdateBrandResponse();
+                    }
+
                     var currentBrand = context.Brands.Find(req.Id);
                     currentBrand.Name = req.Name;
                     currentBrand.Memo = req.Memo;
                     currentBrand.StatusId = req.StatusId;
                     currentBrand.ModifiedBy = 1;
                     currentBrand.ModifiedDate = GlobalFunction.GetCurrentDateTime();
+
+                    if (req.Photo != null)
+                    {
+                        var currentPhoto = context.PhotoAndVideos.FirstOrDefault(x => x.BrandId == currentBrand.Id);
+                        currentPhoto.FileName = UploadSinglePhoto(req.Photo);
+                    }
                     context.SaveChanges();
                     code = ApiReturnError.Success.Value();
                     msg = ApiReturnError.Success.Description();
-                    return new UpdateBrandResponse(currentBrand);
+                    return new UpdateBrandResponse(currentBrand, context);
                 }
                 catch (Exception ex)
                 {

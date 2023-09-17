@@ -17,7 +17,7 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/brand/create-brand")]
-        public ApiResponse<CreateBrandResponse> CreateBrand([FromBody] CreateBrandRequest req)
+        public ApiResponse<CreateBrandResponse> CreateBrand([FromForm] CreateBrandRequest req)
         {
             var result = _brandRepository.CreateBrand(req, out int code, out string msg);
             return new ApiResponse<CreateBrandResponse>(result, code, msg);
@@ -31,7 +31,7 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/brand/update-brand")]
-        public ApiResponse<UpdateBrandResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
+        public ApiResponse<UpdateBrandResponse> UpdateBrand([FromForm] UpdateBrandRequest req)
         {
             var result = _brandRepository.UpdateBrand(req, out int code, out string msg);
             return new ApiResponse<UpdateBrandResponse>(result, code, msg);
