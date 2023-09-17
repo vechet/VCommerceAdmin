@@ -21,7 +21,9 @@ public partial class Brand
 
     public DateTime? ModifiedDate { get; set; }
 
-    public byte[]? Photo { get; set; }
+    public virtual ICollection<PhotoAndVideo> PhotoAndVideos { get; set; } = new List<PhotoAndVideo>();
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     public virtual Status Status { get; set; } = null!;
 }

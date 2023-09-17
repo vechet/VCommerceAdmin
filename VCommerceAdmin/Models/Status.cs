@@ -27,5 +27,7 @@ public partial class Status
 
     public virtual ICollection<ProductType> ProductTypes { get; set; } = new List<ProductType>();
 
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
     public virtual ICollection<Um> Ums { get; set; } = new List<Um>();
 }

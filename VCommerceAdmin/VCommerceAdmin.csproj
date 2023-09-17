@@ -9,13 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="ApiModels\NewFolder\**" />
-    <Compile Remove="Services\**" />
     <Content Remove="ApiModels\NewFolder\**" />
-    <Content Remove="Services\**" />
     <EmbeddedResource Remove="ApiModels\NewFolder\**" />
-    <EmbeddedResource Remove="Services\**" />
     <None Remove="ApiModels\NewFolder\**" />
-    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ApiModels\Product\UpdateProductResponse.cs~RF30d5e4.TMP" />
   </ItemGroup>
 
   <ItemGroup>

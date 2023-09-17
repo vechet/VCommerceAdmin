@@ -11,8 +11,6 @@ public partial class Category
 
     public string Name { get; set; } = null!;
 
-    public byte[]? Photo { get; set; }
-
     public string? Memo { get; set; }
 
     public bool IsSystemValue { get; set; }
@@ -30,6 +28,10 @@ public partial class Category
     public virtual ICollection<Category> InverseParent { get; set; } = new List<Category>();
 
     public virtual Category? Parent { get; set; }
+
+    public virtual ICollection<PhotoAndVideo> PhotoAndVideos { get; set; } = new List<PhotoAndVideo>();
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     public virtual Status Status { get; set; } = null!;
 }

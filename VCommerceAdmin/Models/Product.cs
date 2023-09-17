@@ -15,8 +15,6 @@ public partial class Product
 
     public decimal Cost { get; set; }
 
-    public string? Photo { get; set; }
-
     public decimal ReorderPoint { get; set; }
 
     public decimal MaxPoint { get; set; }
@@ -44,6 +42,8 @@ public partial class Product
     public virtual Brand? Brand { get; set; }
 
     public virtual Category Category { get; set; } = null!;
+
+    public virtual ICollection<PhotoAndVideo> PhotoAndVideos { get; set; } = new List<PhotoAndVideo>();
 
     public virtual ProductType ProductType { get; set; } = null!;
 

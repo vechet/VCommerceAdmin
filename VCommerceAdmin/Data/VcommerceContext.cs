@@ -32,6 +32,8 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
+    public virtual DbSet<PhotoAndVideo> PhotoAndVideos { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<ProductType> ProductTypes { get; set; }
@@ -250,11 +252,30 @@ public partial class VcommerceContext : DbContext
                 .HasConstraintName("FK_PaymentMethod_Status");
         });
 
+        modelBuilder.Entity<PhotoAndVideo>(entity =>
+        {
+            entity.ToTable("PhotoAndVideo");
+
+            entity.Property(e => e.FileName)
+                .HasMaxLength(200)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.Brand).WithMany(p => p.PhotoAndVideos)
+                .HasForeignKey(d => d.BrandId)
+                .HasConstraintName("FK_PhotoAndVideo_Brand");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.PhotoAndVideos)
+                .HasForeignKey(d => d.CategoryId)
+                .HasConstraintName("FK_PhotoAndVideo_Category");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.PhotoAndVideos)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_PhotoAndVideo_Product");
+        });
+
         modelBuilder.Entity<Product>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Product");
+            entity.ToTable("Product");
 
             entity.Property(e => e.Barcode)
                 .HasMaxLength(100)
@@ -264,7 +285,6 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(200)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.MaxPoint).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.Memo)
                 .HasMaxLength(500)
@@ -274,24 +294,23 @@ public partial class VcommerceContext : DbContext
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.OpenningBalanceDate).HasColumnType("datetime");
-            entity.Property(e => e.Photo).UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.ReorderPoint).HasColumnType("decimal(18, 4)");
 
-            entity.HasOne(d => d.Brand).WithMany()
+            entity.HasOne(d => d.Brand).WithMany(p => p.Products)
                 .HasForeignKey(d => d.BrandId)
                 .HasConstraintName("FK_Product_Brand");
 
-            entity.HasOne(d => d.Category).WithMany()
+            entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Product_Category");
 
-            entity.HasOne(d => d.ProductType).WithMany()
+            entity.HasOne(d => d.ProductType).WithMany(p => p.Products)
                 .HasForeignKey(d => d.ProductTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Product_ProductType");
 
-            entity.HasOne(d => d.Status).WithMany()
+            entity.HasOne(d => d.Status).WithMany(p => p.Products)
                 .HasForeignKey(d => d.StatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Product_Status");
