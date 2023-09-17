@@ -62,9 +62,9 @@
     </div>
 </section>
 <!-- /.content -->
-@section Scripts {
-    <script>
-        $(document).ready(function ()
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
             //Assign Variable
             var isCreate = '@(Model == null || Model.Id == 0)' == 'True';
 
@@ -86,9 +86,9 @@
                 if (!e.result) return; //check validation
 
                 var serializeData = $('#form').serializeArray();
-               
+
                 $.ajax({
-                    url: isCreate ? '@Url.Action("Create")' : '@Url.Action("Update")'
+                    url: isCreate ? '@Url.Action("Create")' : '@Url.Action("Update")',
                     data: serializeData,
                     type: 'POST',
                     contentType: "application/json",
