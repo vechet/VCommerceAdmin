@@ -22,14 +22,21 @@ namespace VCommerceAdmin.Repository
 
         private string UploadSinglePhoto(IFormFile file)
         {
-            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            //var memoryStream = new MemoryStream();
+            //file.CopyTo(memoryStream);
+            //var buffer = memoryStream.ToArray();
+            string path = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            var filename = Guid.NewGuid().ToString() + "_a.jpg";
+            string filePath = Path.Combine(path, filename);
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
-            return uniqueFileName;
+            return filename;
         }
 
         public CreateBrandResponse CreateBrand(CreateBrandRequest req, out int code, out string msg)
