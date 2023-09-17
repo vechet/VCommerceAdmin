@@ -7,13 +7,6 @@ namespace VCommerceAdmin.Controllers
 {
     public class BrandController : Controller
     {
-        private readonly VcommerceContext _db;
-
-        public BrandController(VcommerceContext db)
-        {
-            _db = db;
-        }
-
         public IActionResult Index()
         {
             return View();

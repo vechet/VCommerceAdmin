@@ -11,7 +11,7 @@ namespace VCommerceAdmin.ApiModels
             Description = data.Description;
             Barcode = data.Barcode;
             Cost = data.Cost;
-            Photo = data.PhotoAndVideos.FirstOrDefault().FileName;
+            Photo = data.PhotoAndVideos.FirstOrDefault(z => z.ProductId == data.Id).FileName;
             ReorderPoint = data.ReorderPoint;
             MaxPoint = data.MaxPoint;
             OpenningBalanceDate = data.OpenningBalanceDate;
