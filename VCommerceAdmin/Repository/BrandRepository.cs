@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Drawing;
 using System.Drawing.Imaging;
 using VCommerceAdmin.ApiModels;
@@ -34,7 +33,8 @@ namespace VCommerceAdmin.Repository
             //save original photo
             var filename = Guid.NewGuid().ToString();
             string filePath = Path.Combine(path, filename);
-            using (var fileStream = new FileStream(filePath + ".jpg", FileMode.Create))
+            var fullPath = filePath + ".jpg";
+            using (var fileStream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
