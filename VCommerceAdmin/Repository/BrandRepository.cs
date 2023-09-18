@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
+using System.Drawing.Imaging;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
@@ -22,21 +24,78 @@ namespace VCommerceAdmin.Repository
 
         private string UploadSinglePhoto(IFormFile file)
         {
-            //var memoryStream = new MemoryStream();
-            //file.CopyTo(memoryStream);
-            //var buffer = memoryStream.ToArray();
+            
             string path = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            var filename = Guid.NewGuid().ToString() + "_a.jpg";
+
+            //save original photo
+            var filename = Guid.NewGuid().ToString();
             string filePath = Path.Combine(path, filename);
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            using (var fileStream = new FileStream(filePath + ".jpg", FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
+
+            //convert 4 size photo
+            var memoryStream = new MemoryStream();
+            file.CopyTo(memoryStream);
+            var photo = memoryStream.ToArray();
+            Convert4SizeImage(filePath, photo);
+
             return filename;
+        }
+
+        public void Convert4SizeImage(string filePath, byte[] photo)
+        {
+            decimal[] pSizes = { 50M, 150M, 400M, 1000M };
+            foreach(var pSize in pSizes)
+            {
+                var ps = Convert.ToInt32(pSize);
+                var buffer = ResizeImage(pSize, pSize, photo);
+                using (var stream = new MemoryStream(buffer, 0, buffer.Length))
+                {
+                    var image = Image.FromStream(stream, true);
+                    image.Save(string.Format("{0}-{1}x{2}.jpg",filePath, ps, ps), ImageFormat.Jpeg);
+                }
+            }
+        }
+
+        public byte[] ResizeImage(decimal width, decimal height, byte[] image)
+        {
+            if (image == null) return null;
+            var stream = new MemoryStream(image);
+            var image2 = Image.FromStream(stream, true);
+            var bitmapImage = (Bitmap)(image2);
+
+            var imageWidth = image2.Width;
+            var imageHeight = image2.Height;
+            var widthMultiple = width / imageWidth;
+            var heightMultiple = height / imageHeight;
+            if (widthMultiple > heightMultiple)
+            {
+                width = imageWidth * heightMultiple;
+            }
+            else
+            {
+                height = imageHeight * widthMultiple;
+            }
+
+
+            Bitmap newBmp = new Bitmap(Convert.ToInt32(width), Convert.ToInt32(height), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            newBmp.SetResolution(72, 72);
+            Graphics newGraphic = Graphics.FromImage(newBmp);
+            newGraphic.Clear(Color.White);
+            newGraphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            newGraphic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            newGraphic.DrawImage(bitmapImage, 0, 0, Convert.ToInt32(width), Convert.ToInt32(height));
+
+            MemoryStream ms = new MemoryStream();
+            newBmp.Save(ms, ImageFormat.Jpeg);
+            byte[] bmpBytes = ms.ToArray();
+            return bmpBytes;
         }
 
         public CreateBrandResponse CreateBrand(CreateBrandRequest req, out int code, out string msg)
@@ -50,7 +109,7 @@ namespace VCommerceAdmin.Repository
                     {
                         code = ApiReturnError.DuplicateName.Value();
                         msg = ApiReturnError.DuplicateName.Description();
-                        return new CreateBrandResponse();
+                        return null;
                     }
 
                     var newBrand = new Brand
@@ -132,7 +191,7 @@ namespace VCommerceAdmin.Repository
                     {
                         code = ApiReturnError.DuplicateName.Value();
                         msg = ApiReturnError.DuplicateName.Description();
-                        return new UpdateBrandResponse();
+                        return null;
                     }
 
                     var currentBrand = context.Brands.Find(req.Id);
