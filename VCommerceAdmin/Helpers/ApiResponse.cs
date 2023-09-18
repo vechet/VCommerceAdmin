@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System.Xml.Linq;
 
 namespace VCommerceAdmin.Helpers
@@ -41,8 +41,11 @@ namespace VCommerceAdmin.Helpers
             ErrorCode = code;
             ErrorMessage = msg;
         }
+        [JsonIgnore]
         public int Id { get; set; }
+        [JsonIgnore]
         public int ErrorCode { get; set; }
+        [JsonIgnore]
         public string ErrorMessage { get; set; }
     }
 

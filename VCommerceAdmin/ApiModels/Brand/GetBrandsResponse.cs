@@ -4,7 +4,7 @@ namespace VCommerceAdmin.ApiModels
 {
     public class GetBrandsResponse : BaseResponse
     {
-        public List<BrandsResponse> Brands;
+        public List<BrandsResponse> Brands { get; set; }
         public GetBrandsResponse(List<BrandsResponse> brands, int code, string msg) 
         {
             Brands = brands;
