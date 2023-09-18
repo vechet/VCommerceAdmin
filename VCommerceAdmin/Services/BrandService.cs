@@ -44,8 +44,11 @@ namespace VCommerceAdmin.Services
 
         public BaseResponse CreateBrand(CreateBrandRequest req)
         {
-            var photoName = UploadSinglePhoto(req.Photo);
-            req.PhotoName = photoName;
+            if(req.Photo != null)
+            {
+                var photoName = UploadSinglePhoto(req.Photo);
+                req.PhotoName = photoName;
+            }
             return _brandRepository.CreateBrand(req);
         }
 
@@ -56,8 +59,11 @@ namespace VCommerceAdmin.Services
 
         public BaseResponse UpdateBrand(UpdateBrandRequest req)
         {
-            var photoName = UploadSinglePhoto(req.Photo);
-            req.PhotoName = photoName;
+            if (req.Photo != null)
+            {
+                var photoName = UploadSinglePhoto(req.Photo);
+                req.PhotoName = photoName;
+            }
             return _brandRepository.UpdateBrand(req);
         }
     }
