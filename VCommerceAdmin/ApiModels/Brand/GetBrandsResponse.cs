@@ -1,6 +1,19 @@
-﻿namespace VCommerceAdmin.ApiModels
+﻿using VCommerceAdmin.Helpers;
+
+namespace VCommerceAdmin.ApiModels
 {
-    public class GetBrandsResponse
+    public class GetBrandsResponse : BaseResponse
+    {
+        public List<BrandsResponse> Brands;
+        public GetBrandsResponse(List<BrandsResponse> brands, int code, string msg) 
+        {
+            Brands = brands;
+            ErrorCode = code;
+            ErrorMessage = msg;
+        }
+    }
+
+    public class BrandsResponse
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

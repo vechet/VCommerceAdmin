@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 using VCommerceAdmin.Data;
@@ -116,6 +118,56 @@ namespace VCommerceAdmin.Helpers
             {
                 throw;
             }
+        }
+
+        public static void Convert4SizeImage(string filePath, byte[] photo)
+        {
+            decimal[] pSizes = { 50M, 150M, 400M, 1000M };
+            foreach (var pSize in pSizes)
+            {
+                var ps = Convert.ToInt32(pSize);
+                var buffer = ResizeImage(pSize, pSize, photo);
+                using (var stream = new MemoryStream(buffer, 0, buffer.Length))
+                {
+                    var image = Image.FromStream(stream, true);
+                    image.Save(string.Format("{0}-{1}x{2}.jpg", filePath, ps, ps), ImageFormat.Jpeg);
+                }
+            }
+        }
+
+        public static byte[] ResizeImage(decimal width, decimal height, byte[] image)
+        {
+            if (image == null) return null;
+            var stream = new MemoryStream(image);
+            var image2 = Image.FromStream(stream, true);
+            var bitmapImage = (Bitmap)(image2);
+
+            var imageWidth = image2.Width;
+            var imageHeight = image2.Height;
+            var widthMultiple = width / imageWidth;
+            var heightMultiple = height / imageHeight;
+            if (widthMultiple > heightMultiple)
+            {
+                width = imageWidth * heightMultiple;
+            }
+            else
+            {
+                height = imageHeight * widthMultiple;
+            }
+
+
+            Bitmap newBmp = new Bitmap(Convert.ToInt32(width), Convert.ToInt32(height), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            newBmp.SetResolution(72, 72);
+            Graphics newGraphic = Graphics.FromImage(newBmp);
+            newGraphic.Clear(Color.White);
+            newGraphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            newGraphic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            newGraphic.DrawImage(bitmapImage, 0, 0, Convert.ToInt32(width), Convert.ToInt32(height));
+
+            MemoryStream ms = new MemoryStream();
+            newBmp.Save(ms, ImageFormat.Jpeg);
+            byte[] bmpBytes = ms.ToArray();
+            return bmpBytes;
         }
     }
 }

@@ -15,5 +15,8 @@ namespace VCommerceAdmin.Helpers
 
         [Description("Duplicate Name")]
         DuplicateName = 114,
+
+        [Description("General Error")]
+        GeneralError = 999,
     }
 }

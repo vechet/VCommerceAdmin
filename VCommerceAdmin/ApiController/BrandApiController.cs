@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
-using VCommerceAdmin.Repository.Interface;
+using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.ApiController
 {
@@ -9,32 +9,29 @@ namespace VCommerceAdmin.ApiController
     [ApiController]
     public class BrandApiController : ControllerBase
     {
-        private readonly IBrandRepository _brandRepository;
+        private readonly IBrandService _brandService;
 
-        public BrandApiController(IBrandRepository brandRepository)
+        public BrandApiController(IBrandService brandService)
         {
-            _brandRepository = brandRepository;
+            _brandService = brandService;
         }
 
         [HttpPost("v1/brand/create-brand")]
-        public ApiResponse<CreateBrandResponse> CreateBrand([FromForm] CreateBrandRequest req)
+        public ApiResponse<BaseResponse> CreateBrand([FromForm] CreateBrandRequest req)
         {
-            var result = _brandRepository.CreateBrand(req, out int code, out string msg);
-            return new ApiResponse<CreateBrandResponse>(result, code, msg);
+            return new ApiResponse<BaseResponse>(_brandService.CreateBrand(req));
         }
 
         [HttpPost("v1/brand/get-brands")]
-        public ApiResponse<List<GetBrandsResponse>> GetBrands([FromBody] GetBrandsRequest req)
+        public ApiResponse<GetBrandsResponse> GetBrands([FromForm] GetBrandsRequest req)
         {
-            var result = _brandRepository.GetBrands(req, out int code, out string msg);
-            return new ApiResponse<List<GetBrandsResponse>>(result, code, msg);
+            return new ApiResponse<GetBrandsResponse>(_brandService.GetBrands(req));
         }
 
         [HttpPost("v1/brand/update-brand")]
-        public ApiResponse<UpdateBrandResponse> UpdateBrand([FromForm] UpdateBrandRequest req)
+        public ApiResponse<BaseResponse> UpdateBrand([FromForm] UpdateBrandRequest req)
         {
-            var result = _brandRepository.UpdateBrand(req, out int code, out string msg);
-            return new ApiResponse<UpdateBrandResponse>(result, code, msg);
+            return new ApiResponse<BaseResponse>(_brandService.UpdateBrand(req));
         }
     }
 }

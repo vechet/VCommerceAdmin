@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Repository;
 using VCommerceAdmin.Repository.Interface;
+using VCommerceAdmin.Services;
+using VCommerceAdmin.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +20,9 @@ builder.Services.AddDbContextFactory<VcommerceContext>(options =>
 
 //repository in dependency injection
 builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
-builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
-builder.Services.AddSingleton<IProductTypeRepository, ProductTypeRepository>();
-builder.Services.AddSingleton<IPaymentMethodRepository, PaymentMethodRepository>();
-builder.Services.AddSingleton<IUnitMeasurementRepository, UnitMeasurementRepository>();
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+
+//repository in dependency injection
+builder.Services.AddSingleton<IBrandService, BrandService>();
 
 var app = builder.Build();
 

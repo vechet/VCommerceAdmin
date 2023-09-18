@@ -1,9 +1,9 @@
 ﻿using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
 
-namespace VCommerceAdmin.Repository.Interface
+namespace VCommerceAdmin.Services.Interface
 {
-    public interface IBrandRepository
+    public interface IBrandService
     {
         GetBrandsResponse GetBrands(GetBrandsRequest req);
 
