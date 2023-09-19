@@ -16,14 +16,12 @@ namespace VCommerceAdmin.Helpers
 
         public T Data
         {
-            ////get => typeof(T) != typeof(BaseResponse) && (_data != null && (ApiReturnError)_data.ErrorCode == ApiReturnError.Success) ? _data : default(T);
             get => _data;
             set => _data = value;
         }
 
         public ApiReturnError ErrorCode
         {
-            //get => _errCode != ApiReturnError.GeneralError ? _errCode : _data == null || (ApiReturnError)_data.ErrorCode != ApiReturnError.Success ? (ApiReturnError)_data.ErrorCode : _errCode;
             get => _errCode;
             set => _errCode = value;
         }
@@ -41,7 +39,7 @@ namespace VCommerceAdmin.Helpers
             ErrorCode = code;
             ErrorMessage = msg;
         }
-        [JsonIgnore]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int Id { get; set; }
         [JsonIgnore]
         public int ErrorCode { get; set; }
