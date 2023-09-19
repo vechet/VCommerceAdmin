@@ -80,8 +80,15 @@ namespace VCommerceAdmin.Repository
                         ModifiedDate = x.ModifiedDate,
                         StatusId = x.StatusId,
                         StatusName = x.Status.Name,
-                    }).OrderByDescending(x => x.Id).Skip(req.Skip).Take(req.Limit).ToList();
-                    return new GetBrandsResponse(result, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    })
+                    .OrderByDescending(x => x.Id)
+                    .Skip((req.PageNumber - 1) * req.PageSize)
+                    .Take(req.PageSize).ToList();
+
+                    var totalRecords = context.Brands.Count();
+                    var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
+                    
+                    return new GetBrandsResponse(result, pageResponse, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
                 }
                 catch (Exception ex)
                 {

@@ -5,26 +5,15 @@ namespace VCommerceAdmin.Helpers
 {
     public class ApiResponse<T> where T : IResponse
     {
-        private T _data;
-        private ApiReturnError _errCode = ApiReturnError.GeneralError;
-
         public ApiResponse(T data)
         {
-            _data = data;
-            _errCode = (ApiReturnError)data.ErrorCode;
+            Data = data;
+            ErrorCode = (ApiReturnError)data.ErrorCode;
         }
 
-        public T Data
-        {
-            get => _data;
-            set => _data = value;
-        }
+        public T Data { get; set; }
 
-        public ApiReturnError ErrorCode
-        {
-            get => _errCode;
-            set => _errCode = value;
-        }
+        public ApiReturnError ErrorCode { get; set; }
 
         public string Message => ErrorCode.Description();
     }
