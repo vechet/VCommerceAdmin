@@ -69,7 +69,8 @@ namespace VCommerceAdmin.Repository
             {
                 try
                 {
-                    var result = context.Brands.Select(x => new BrandsResponse
+                    var data = context.Brands.Where(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
+                    var result = data.Select(x => new BrandsResponse
                     {
                         Id = x.Id,
                         Name = x.Name,
@@ -85,7 +86,8 @@ namespace VCommerceAdmin.Repository
                     .Skip((req.PageNumber - 1) * req.PageSize)
                     .Take(req.PageSize).ToList();
 
-                    var totalRecords = context.Brands.Count();
+                    //pagination
+                    var totalRecords = context.Brands.Count(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
                     var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
                     
                     return new GetBrandsResponse(result, pageResponse, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
