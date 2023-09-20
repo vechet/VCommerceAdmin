@@ -44,7 +44,11 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductStore> ProductStores { get; set; }
+
     public virtual DbSet<ProductType> ProductTypes { get; set; }
+
+    public virtual DbSet<ProductUmPrice> ProductUmPrices { get; set; }
 
     public virtual DbSet<SaleOrder> SaleOrders { get; set; }
 
@@ -438,7 +442,6 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(200)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
-            entity.Property(e => e.MaxPoint).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.Memo)
                 .HasMaxLength(500)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
@@ -447,7 +450,6 @@ public partial class VcommerceContext : DbContext
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.OpenningBalanceDate).HasColumnType("datetime");
-            entity.Property(e => e.ReorderPoint).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Brand).WithMany(p => p.Products)
@@ -468,6 +470,26 @@ public partial class VcommerceContext : DbContext
                 .HasForeignKey(d => d.StatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Product_Status");
+        });
+
+        modelBuilder.Entity<ProductStore>(entity =>
+        {
+            entity.ToTable("ProductStore");
+
+            entity.Property(e => e.MaxPoint).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.QtyAvailable).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.QtyOnHand).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.ReorderPoint).HasColumnType("decimal(18, 4)");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductStores)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductStore_Product");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.ProductStores)
+                .HasForeignKey(d => d.StoreId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductStore_Store");
         });
 
         modelBuilder.Entity<ProductType>(entity =>
@@ -491,6 +513,24 @@ public partial class VcommerceContext : DbContext
                 .HasForeignKey(d => d.StatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ProductType_Status");
+        });
+
+        modelBuilder.Entity<ProductUmPrice>(entity =>
+        {
+            entity.ToTable("ProductUmPrice");
+
+            entity.Property(e => e.Multiplier).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 4)");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductUmPrices)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductUmPrice_Product");
+
+            entity.HasOne(d => d.Um).WithMany(p => p.ProductUmPrices)
+                .HasForeignKey(d => d.UmId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductUmPrice_Um");
         });
 
         modelBuilder.Entity<SaleOrder>(entity =>

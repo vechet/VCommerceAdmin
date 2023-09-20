@@ -27,6 +27,8 @@ public partial class Um
 
     public int Version { get; set; }
 
+    public virtual ICollection<ProductUmPrice> ProductUmPrices { get; set; } = new List<ProductUmPrice>();
+
     public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; } = new List<SaleOrderDetail>();
 
     public virtual Status Status { get; set; } = null!;

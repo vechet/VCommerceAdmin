@@ -15,10 +15,6 @@ public partial class Product
 
     public decimal Cost { get; set; }
 
-    public decimal ReorderPoint { get; set; }
-
-    public decimal MaxPoint { get; set; }
-
     public DateTime OpenningBalanceDate { get; set; }
 
     public int ProductTypeId { get; set; }
@@ -47,7 +43,11 @@ public partial class Product
 
     public virtual ICollection<PhotoAndVideo> PhotoAndVideos { get; set; } = new List<PhotoAndVideo>();
 
+    public virtual ICollection<ProductStore> ProductStores { get; set; } = new List<ProductStore>();
+
     public virtual ProductType ProductType { get; set; } = null!;
+
+    public virtual ICollection<ProductUmPrice> ProductUmPrices { get; set; } = new List<ProductUmPrice>();
 
     public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; } = new List<SaleOrderDetail>();
 

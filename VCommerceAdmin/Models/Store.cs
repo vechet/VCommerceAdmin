@@ -49,6 +49,8 @@ public partial class Store
 
     public int? ParrentId { get; set; }
 
+    public virtual ICollection<ProductStore> ProductStores { get; set; } = new List<ProductStore>();
+
     public virtual ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();
 
     public virtual Status Status { get; set; } = null!;
