@@ -33,14 +33,14 @@
                 <form method="post" id="form">
                     <div>
                         <div class="form-group">
-                            <label asp-for="Name" class="label">Email address</label>
+                            <label asp-for="Name" class="label">Name</label>
                             <input asp-for="Name" type="text" class="form-control form-control-sm">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <small><span asp-validation-for="Name" class="text-danger"></span></small>
                         </div>
                         <div class="form-group">
                             <label asp-for="Memo" class="label">Memo</label>
                             <input asp-for="Memo"  type="text" class="form-control form-control-sm">
-                            <span asp-validation-for="Memo" class="text-danger"></span>
+                            <small><span asp-validation-for="Memo" class="text-danger"></span></small>
                         </div>
                         <div class="form-group">
                             <label asp-for="Status" class="label">Status</label>
@@ -49,7 +49,7 @@
                                 <option value="1">Active</option>
                                 <option value="2">Inactive</option>
                             </select>
-                            <span asp-validation-for="Status" class="text-danger"></span>
+                            <small><span asp-validation-for="Status" class="text-danger"></span></small>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end gx-20">

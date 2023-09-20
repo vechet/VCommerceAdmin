@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Drawing;
-using System.Drawing.Imaging;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
@@ -41,9 +39,9 @@ namespace VCommerceAdmin.Repository
                         Version = 1
                     };
                     context.Brands.Add(newBrand);
-                    
+
                     //check add new photo
-                    if(req.Photo != null)
+                    if (req.Photo != null)
                     {
                         var newPhotoAndVideo = new PhotoAndVideo
                         {
@@ -90,7 +88,7 @@ namespace VCommerceAdmin.Repository
                     //pagination
                     var totalRecords = context.Brands.Count(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
                     var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
-                    
+
                     return new GetBrandsResponse(result, pageResponse, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
                 }
                 catch (Exception ex)
