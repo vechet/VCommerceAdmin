@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace VCommerceAdmin.Models;
 
-public partial class PaymentMethod
+public partial class CustomerType
 {
     public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public string? KeyName { get; set; }
+    public string? Memo { get; set; }
 
     public bool IsSystemValue { get; set; }
-
-    public string? Memo { get; set; }
 
     public short StatusId { get; set; }
 
@@ -25,7 +23,7 @@ public partial class PaymentMethod
 
     public DateTime? ModifiedDate { get; set; }
 
-    public virtual ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();
+    public int Version { get; set; }
 
-    public virtual Status Status { get; set; } = null!;
+    public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 }

@@ -47,5 +47,7 @@ public partial class Product
 
     public virtual ProductType ProductType { get; set; } = null!;
 
+    public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; } = new List<SaleOrderDetail>();
+
     public virtual Status Status { get; set; } = null!;
 }

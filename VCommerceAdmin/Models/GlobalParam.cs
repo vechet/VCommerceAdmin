@@ -20,4 +20,6 @@ public partial class GlobalParam
     public string? Memo { get; set; }
 
     public short StatusId { get; set; }
+
+    public virtual ICollection<Store> Stores { get; set; } = new List<Store>();
 }

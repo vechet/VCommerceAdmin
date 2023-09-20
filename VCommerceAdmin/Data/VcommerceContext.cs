@@ -24,6 +24,14 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<ConfigurationParam> ConfigurationParams { get; set; }
 
+    public virtual DbSet<Currency> Currencies { get; set; }
+
+    public virtual DbSet<Customer> Customers { get; set; }
+
+    public virtual DbSet<CustomerShippingAddress> CustomerShippingAddresses { get; set; }
+
+    public virtual DbSet<CustomerType> CustomerTypes { get; set; }
+
     public virtual DbSet<DocumentFormat> DocumentFormats { get; set; }
 
     public virtual DbSet<ErrorReport> ErrorReports { get; set; }
@@ -38,7 +46,17 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<ProductType> ProductTypes { get; set; }
 
+    public virtual DbSet<SaleOrder> SaleOrders { get; set; }
+
+    public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
+
     public virtual DbSet<Status> Statuses { get; set; }
+
+    public virtual DbSet<Store> Stores { get; set; }
+
+    public virtual DbSet<Supplier> Suppliers { get; set; }
+
+    public virtual DbSet<SupplierType> SupplierTypes { get; set; }
 
     public virtual DbSet<Um> Ums { get; set; }
 
@@ -118,6 +136,135 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Value)
                 .HasMaxLength(300)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
+        modelBuilder.Entity<Currency>(entity =>
+        {
+            entity.ToTable("Currency");
+
+            entity.Property(e => e.Abbreviate)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.RoundValue).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.StatusId).HasDefaultValueSql("((1))");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.Currencies)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Currency_Status");
+        });
+
+        modelBuilder.Entity<Customer>(entity =>
+        {
+            entity.ToTable("Customer");
+
+            entity.Property(e => e.Address)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ContactName)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.CreditLimited).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Fax)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.OpenningBalance).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.OpenningBalanceDate).HasColumnType("datetime");
+            entity.Property(e => e.Phone1)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Phone2)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Vatin)
+                .HasMaxLength(50)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Website)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.CustomerType).WithMany(p => p.Customers)
+                .HasForeignKey(d => d.CustomerTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Customer_CustomerType");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.Customers)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Customer_Status");
+        });
+
+        modelBuilder.Entity<CustomerShippingAddress>(entity =>
+        {
+            entity.ToTable("CustomerShippingAddress");
+
+            entity.Property(e => e.AddressDisplay)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ContactNumber)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ContactPerson)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Latitude)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Longitude)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.Customer).WithMany(p => p.CustomerShippingAddresses)
+                .HasForeignKey(d => d.CustomerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_CustomerShippingAddress_Customer");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.CustomerShippingAddresses)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_CustomerShippingAddress_Status");
+        });
+
+        modelBuilder.Entity<CustomerType>(entity =>
+        {
+            entity.ToTable("CustomerType");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
         });
 
         modelBuilder.Entity<DocumentFormat>(entity =>
@@ -338,6 +485,112 @@ public partial class VcommerceContext : DbContext
                 .HasConstraintName("FK_ProductType_Status");
         });
 
+        modelBuilder.Entity<SaleOrder>(entity =>
+        {
+            entity.ToTable("SaleOrder");
+
+            entity.Property(e => e.ClosedDate).HasColumnType("datetime");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.DepositAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.DiscountPercentage).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.ExchangeRate).HasColumnType("decimal(24, 10)");
+            entity.Property(e => e.GrandTotalAmount)
+                .HasComment("Amount after discount invoice")
+                .HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.InternalMemo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .HasComment("1= Pending, 2 = Purchased, 3 = Reject")
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.PaymentReferenceNo)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ReferenceNo)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.RemainAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.SaleDate).HasColumnType("datetime");
+            entity.Property(e => e.SaleOrderNo)
+                .HasMaxLength(50)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.TotalAmount)
+                .HasComment("Amount before discount invoice and deposit")
+                .HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TotalAmountAfterDiscount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TotalAmountAfterItemDiscount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TotalItemDiscountAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TransactionDate).HasColumnType("datetime");
+            entity.Property(e => e.TransactionFlag).HasComment("Pending, Sale, Deleted");
+            entity.Property(e => e.VatAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.VatPercentage).HasColumnType("decimal(18, 4)");
+
+            entity.HasOne(d => d.Currency).WithMany(p => p.SaleOrders)
+                .HasForeignKey(d => d.CurrencyId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrder_Currency");
+
+            entity.HasOne(d => d.Customer).WithMany(p => p.SaleOrders)
+                .HasForeignKey(d => d.CustomerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrder_Customer");
+
+            entity.HasOne(d => d.CustomerShippingAddress).WithMany(p => p.SaleOrders)
+                .HasForeignKey(d => d.CustomerShippingAddressId)
+                .HasConstraintName("FK_SaleOrder_CustomerShippingAddress");
+
+            entity.HasOne(d => d.PaymentMethod).WithMany(p => p.SaleOrders)
+                .HasForeignKey(d => d.PaymentMethodId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrder_PaymentMethod");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.SaleOrders)
+                .HasForeignKey(d => d.StoreId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrder_Store");
+        });
+
+        modelBuilder.Entity<SaleOrderDetail>(entity =>
+        {
+            entity.ToTable("SaleOrderDetail");
+
+            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.DiscountPercentage).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.GrandTotalAmount)
+                .HasComment("Amount after disount on item")
+                .HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(300)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Price)
+                .HasComment("Price has changed by cashier in backend sale module")
+                .HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Qty).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.QtySold).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TotalAmount)
+                .HasComment("Amount before disount on item,Amount=Qty* Price")
+                .HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.TotalQty).HasColumnType("decimal(18, 4)");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.SaleOrderDetails)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrderDetail_Product");
+
+            entity.HasOne(d => d.SaleOrder).WithMany(p => p.SaleOrderDetails)
+                .HasForeignKey(d => d.SaleOrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrderDetail_SaleOrder");
+
+            entity.HasOne(d => d.Um).WithMany(p => p.SaleOrderDetails)
+                .HasForeignKey(d => d.UmId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleOrderDetail_Um");
+        });
+
         modelBuilder.Entity<Status>(entity =>
         {
             entity.ToTable("Status");
@@ -350,6 +603,119 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
+        modelBuilder.Entity<Store>(entity =>
+        {
+            entity.ToTable("Store");
+
+            entity.Property(e => e.Address)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Fax)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.InvoiceName)
+                .HasMaxLength(50)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ShortcutInvoice)
+                .HasMaxLength(50)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Vatin)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Website)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.Stores)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Store_Status");
+
+            entity.HasOne(d => d.TypeNavigation).WithMany(p => p.Stores)
+                .HasForeignKey(d => d.Type)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Store_GlobalParam");
+        });
+
+        modelBuilder.Entity<Supplier>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Supplier");
+
+            entity.Property(e => e.Address)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ContactName)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.CreditLimited).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Fax)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.OpenningBalance).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.OpenningBalanceDate).HasColumnType("datetime");
+            entity.Property(e => e.Phone1)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Phone2)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Website)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+
+            entity.HasOne(d => d.Status).WithMany()
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Supplier_Status");
+
+            entity.HasOne(d => d.SupplierType).WithMany()
+                .HasForeignKey(d => d.SupplierTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Supplier_SupplierType");
+        });
+
+        modelBuilder.Entity<SupplierType>(entity =>
+        {
+            entity.ToTable("SupplierType");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
         });
 
         modelBuilder.Entity<Um>(entity =>
