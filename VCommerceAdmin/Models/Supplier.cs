@@ -47,6 +47,8 @@ public partial class Supplier
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public int GenerateId { get; set; }
 
     public bool? IsReversed { get; set; }

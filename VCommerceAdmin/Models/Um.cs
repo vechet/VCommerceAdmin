@@ -25,6 +25,8 @@ public partial class Um
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; } = new List<SaleOrderDetail>();
 
     public virtual Status Status { get; set; } = null!;

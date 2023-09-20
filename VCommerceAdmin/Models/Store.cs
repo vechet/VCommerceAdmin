@@ -37,6 +37,8 @@ public partial class Store
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public string? InvoiceName { get; set; }
 
     public byte[]? ReceiptLogo { get; set; }

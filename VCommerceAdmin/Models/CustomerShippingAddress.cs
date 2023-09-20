@@ -33,6 +33,8 @@ public partial class CustomerShippingAddress
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();

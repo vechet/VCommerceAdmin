@@ -37,7 +37,8 @@ namespace VCommerceAdmin.Repository
                         Memo = req.Memo,
                         CreatedBy = 1,
                         CreatedDate = GlobalFunction.GetCurrentDateTime(),
-                        StatusId = req.StatusId
+                        StatusId = req.StatusId,
+                        Version = 1
                     };
                     context.Brands.Add(newBrand);
                     
@@ -119,6 +120,7 @@ namespace VCommerceAdmin.Repository
                     currentBrand.StatusId = req.StatusId;
                     currentBrand.ModifiedBy = 1;
                     currentBrand.ModifiedDate = GlobalFunction.GetCurrentDateTime();
+                    currentBrand.Version = currentBrand.Version + 1;
 
                     //check update photo
                     if (req.Photo != null)

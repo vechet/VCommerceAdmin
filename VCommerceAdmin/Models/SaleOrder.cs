@@ -71,6 +71,8 @@ public partial class SaleOrder
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public int? QuotationId { get; set; }
 
     public int? ClosedBy { get; set; }

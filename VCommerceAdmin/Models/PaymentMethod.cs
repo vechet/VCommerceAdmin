@@ -25,6 +25,8 @@ public partial class PaymentMethod
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();
 
     public virtual Status Status { get; set; } = null!;

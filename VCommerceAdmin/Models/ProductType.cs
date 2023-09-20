@@ -27,6 +27,8 @@ public partial class ProductType
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     public virtual Status Status { get; set; } = null!;

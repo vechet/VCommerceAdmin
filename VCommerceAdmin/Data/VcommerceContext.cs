@@ -74,6 +74,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Brands)
                 .HasForeignKey(d => d.StatusId)
@@ -93,6 +94,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Parent).WithMany(p => p.InverseParent)
                 .HasForeignKey(d => d.ParentId)
@@ -155,6 +157,7 @@ public partial class VcommerceContext : DbContext
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.RoundValue).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.StatusId).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Currencies)
                 .HasForeignKey(d => d.StatusId)
@@ -198,6 +201,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Vatin)
                 .HasMaxLength(50)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
             entity.Property(e => e.Website)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
@@ -240,6 +244,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Customer).WithMany(p => p.CustomerShippingAddresses)
                 .HasForeignKey(d => d.CustomerId)
@@ -392,6 +397,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Status).WithMany(p => p.PaymentMethods)
                 .HasForeignKey(d => d.StatusId)
@@ -442,6 +448,7 @@ public partial class VcommerceContext : DbContext
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.OpenningBalanceDate).HasColumnType("datetime");
             entity.Property(e => e.ReorderPoint).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Brand).WithMany(p => p.Products)
                 .HasForeignKey(d => d.BrandId)
@@ -478,6 +485,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Status).WithMany(p => p.ProductTypes)
                 .HasForeignKey(d => d.StatusId)
@@ -527,6 +535,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.TransactionFlag).HasComment("Pending, Sale, Deleted");
             entity.Property(e => e.VatAmount).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.VatPercentage).HasColumnType("decimal(18, 4)");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Currency).WithMany(p => p.SaleOrders)
                 .HasForeignKey(d => d.CurrencyId)
@@ -603,6 +612,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
         });
 
         modelBuilder.Entity<Store>(entity =>
@@ -638,6 +648,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Vatin)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
             entity.Property(e => e.Website)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
@@ -688,6 +699,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Phone2)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
             entity.Property(e => e.Website)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
@@ -733,6 +745,7 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Ums)
                 .HasForeignKey(d => d.StatusId)

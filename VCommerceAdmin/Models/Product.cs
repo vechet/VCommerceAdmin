@@ -39,6 +39,8 @@ public partial class Product
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual Brand? Brand { get; set; }
 
     public virtual Category Category { get; set; } = null!;

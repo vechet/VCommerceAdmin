@@ -19,6 +19,8 @@ public partial class Currency
 
     public bool IsSystemValue { get; set; }
 
+    public short StatusId { get; set; }
+
     public int CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }
@@ -27,7 +29,7 @@ public partial class Currency
 
     public DateTime? ModifiedDate { get; set; }
 
-    public short StatusId { get; set; }
+    public int Version { get; set; }
 
     public virtual ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();
 

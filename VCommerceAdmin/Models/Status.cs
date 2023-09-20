@@ -19,6 +19,8 @@ public partial class Status
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public virtual ICollection<Brand> Brands { get; set; } = new List<Brand>();
 
     public virtual ICollection<Category> Categories { get; set; } = new List<Category>();

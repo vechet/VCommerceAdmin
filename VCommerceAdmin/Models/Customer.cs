@@ -49,6 +49,8 @@ public partial class Customer
 
     public DateTime? ModifiedDate { get; set; }
 
+    public int Version { get; set; }
+
     public string? Vatin { get; set; }
 
     public int GenerateId { get; set; }
