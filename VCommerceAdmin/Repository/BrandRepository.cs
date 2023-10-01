@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
@@ -52,6 +54,9 @@ namespace VCommerceAdmin.Repository
                     }
                     context.SaveChanges();
 
+                    // add audit log
+                    GlobalFunction.RecordAuditLog("Brand", "CreateBrand", newBrand.Id, newBrand.Name, newBrand.Version, GetAuditDescription(context, newBrand.Id), context);
+
                     return new BaseResponse(newBrand.Id, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
                 }
                 catch (Exception ex)
@@ -88,7 +93,7 @@ namespace VCommerceAdmin.Repository
                     //pagination
                     var totalRecords = context.Brands.Count(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
                     var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
-
+                    
                     return new GetBrandsResponse(result, pageResponse, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
                 }
                 catch (Exception ex)
@@ -128,6 +133,9 @@ namespace VCommerceAdmin.Repository
                     }
                     context.SaveChanges();
 
+                    // add audit log
+                    GlobalFunction.RecordAuditLog("Brand", "UpdateBrand", currentBrand.Id, currentBrand.Name, currentBrand.Version, GetAuditDescription(context, currentBrand.Id), context);
+
                     return new BaseResponse(currentBrand.Id, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
                 }
                 catch (Exception ex)
@@ -136,6 +144,25 @@ namespace VCommerceAdmin.Repository
                     return new BaseResponse(0, ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
                 }
             }
+        }
+
+        public string GetAuditDescription(VcommerceContext context, int id)
+        {
+            var type = (context.Brands.Where(x => x.Id == id).Select(x => new
+            {
+                x.Id,
+                x.Name,
+                x.Memo,
+                x.StatusId,
+                StatusName = x.Status.Name,
+                CreatedBy = x.CreatedBy,
+                CreatedDate = x.CreatedDate,
+                ModifiedBy = x.ModifiedBy,
+                ModifiedDate = x.ModifiedDate,
+                x.Version,
+                PhotoName = context.PhotoAndVideos.Any(z => z.BrandId == x.Id) ? context.PhotoAndVideos.FirstOrDefault(z => z.BrandId == x.Id).FileName : "",
+            })).FirstOrDefault();
+            return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.IsoDateFormat });
         }
     }
 }

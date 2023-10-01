@@ -11,6 +11,8 @@ public partial class Brand
 
     public string? Memo { get; set; }
 
+    public bool IsSystemValue { get; set; }
+
     public short StatusId { get; set; }
 
     public int CreatedBy { get; set; }

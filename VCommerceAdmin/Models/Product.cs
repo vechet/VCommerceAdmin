@@ -25,6 +25,8 @@ public partial class Product
 
     public string? Memo { get; set; }
 
+    public bool IsSystemValue { get; set; }
+
     public short StatusId { get; set; }
 
     public int CreatedBy { get; set; }

@@ -39,7 +39,7 @@ namespace VCommerceAdmin.Helpers
             return "Vechet Dev";
         }
 
-        public static int GetCurrentUserId(VcommerceContext db = null, string token = "")
+        public static int GetCurrentUserId()
         {
             //if (db == null)
             //{
@@ -168,6 +168,58 @@ namespace VCommerceAdmin.Helpers
             newBmp.Save(ms, ImageFormat.Jpeg);
             byte[] bmpBytes = ms.ToArray();
             return bmpBytes;
+        }
+
+        public static bool RecordAuditLog(string controllerName, string actionName, int transactionId, string transactionKeyValue, int version, string description, VcommerceContext db)
+        {
+            try
+            {
+                var auditLogController = db.AuditLogControllers.FirstOrDefault(r => r.KeyName == controllerName);
+                if (auditLogController == null)
+                {
+                    auditLogController = new AuditLogController
+                    {
+                        KeyName = controllerName,
+                        Name = controllerName,
+                        CreatedBy = GetCurrentUserId(),
+                        CreatedDate = GetCurrentDateTime()
+                    };
+                    db.AuditLogControllers.Add(auditLogController);
+                    db.SaveChanges();
+                }
+                var action = db.AuditLogActions.FirstOrDefault(r => r.KeyName == actionName);
+                if (action == null)
+                {
+                    action = new AuditLogAction
+                    {
+                        KeyName = actionName,
+                        Name = actionName,
+                        AuditAction = 1,
+                        CreatedBy = GetCurrentUserId(),
+                        CreatedDate = GetCurrentDateTime()
+                    };
+                    db.AuditLogActions.Add(action);
+                    db.SaveChanges();
+                }
+                var log = new AuditLog
+                {
+                    AuditLogControllerId = auditLogController.Id,
+                    AuditLogActionId = action.Id,
+                    TransactionId = transactionId,
+                    TransactionKeyValue = transactionKeyValue,
+                    Version = version,
+                    Description = description,
+                    CreatedBy = GetCurrentUserId(),
+                    CreatedDate = GlobalFunction.GetCurrentDateTime()
+                };
+                db.AuditLogs.Add(log);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -16,6 +16,12 @@ public partial class VcommerceContext : DbContext
     {
     }
 
+    public virtual DbSet<AuditLog> AuditLogs { get; set; }
+
+    public virtual DbSet<AuditLogAction> AuditLogActions { get; set; }
+
+    public virtual DbSet<AuditLogController> AuditLogControllers { get; set; }
+
     public virtual DbSet<Brand> Brands { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -66,6 +72,41 @@ public partial class VcommerceContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AuditLog>(entity =>
+        {
+            entity.ToTable("AuditLog");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description).UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.TransactionKeyValue).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<AuditLogAction>(entity =>
+        {
+            entity.ToTable("AuditLogAction");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.KeyName)
+                .HasMaxLength(200)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Name)
+                .HasMaxLength(200)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
+        modelBuilder.Entity<AuditLogController>(entity =>
+        {
+            entity.ToTable("AuditLogController");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.KeyName)
+                .HasMaxLength(200)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.Name)
+                .HasMaxLength(200)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
         modelBuilder.Entity<Brand>(entity =>
         {
             entity.ToTable("Brand");
