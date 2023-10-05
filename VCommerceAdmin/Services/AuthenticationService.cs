@@ -68,5 +68,11 @@ namespace VCommerceAdmin.Services
             userAccount.Name = username;
             return new GetMeResponse(userAccount, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
         }
+
+        public RefreshTokenResponse RefreshToken()
+        {
+            var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
+            return new RefreshTokenResponse(null, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+        }
     }
 }

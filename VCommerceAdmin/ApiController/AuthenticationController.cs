@@ -40,5 +40,12 @@ namespace VCommerceAdmin.ApiController
         {
             return new ApiResponse<GetMeResponse>(_authenticationService.GetMe());
         }
+
+        [HttpPost("v1/authentication/refresh-token")]
+        public ApiResponse<RefreshTokenResponse> RefreshToken()
+        {
+            var refreshToken = Request.Cookies["refreshToken"];
+            return new ApiResponse<RefreshTokenResponse>(_authenticationService.RefreshToken());
+        }
     }
 }
