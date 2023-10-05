@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Repository;
 using VCommerceAdmin.Repository.Interface;
@@ -18,12 +21,25 @@ builder.Services.AddSwaggerGen(option =>
 {
     option.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
         In = ParameterLocation.Header,
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey
     });
     option.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(option =>
+    {
+        option.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+            .GetBytes(builder.Configuration.GetSection("AppSetting:Token").Value)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 //DbContext factory in dependency injection
 builder.Services.AddDbContextFactory<VcommerceContext>(options =>
@@ -32,6 +48,7 @@ builder.Services.AddDbContextFactory<VcommerceContext>(options =>
 //repository in dependency injection
 builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
 builder.Services.AddSingleton<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddHttpContextAccessor();
 
 //service in dependency injection
 builder.Services.AddSingleton<IBrandService, BrandService>();
@@ -58,6 +75,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

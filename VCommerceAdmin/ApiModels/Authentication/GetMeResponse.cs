@@ -1,13 +1,14 @@
 ﻿using VCommerceAdmin.Helpers;
+using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.ApiModels.Authentication
 {
-    public class LoginResponse : BaseResponse
+    public class GetMeResponse : BaseResponse
     {
         public UserAccount UserAccount { get; set; }
-        public LoginResponse(UserAccount userAccount, int code, string msg)
+        public GetMeResponse(UserAccount userAccount, int code, string msg)
         {
-           UserAccount = userAccount;
+            UserAccount = userAccount;
             ErrorCode = code;
             ErrorMessage = msg;
         }

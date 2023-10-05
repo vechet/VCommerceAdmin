@@ -6,5 +6,7 @@ namespace VCommerceAdmin.Services.Interface
     {
         LoginResponse Login(LoginRequest req);
         RegisterResponse Register(RegisterRequest req);
+
+        GetMeResponse GetMe();
     }
 }

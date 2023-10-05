@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.ApiModels.Authentication;
+using VCommerceAdmin.Helpers;
+using VCommerceAdmin.Services;
 using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.ApiController
@@ -20,9 +23,9 @@ namespace VCommerceAdmin.ApiController
 
         [AllowAnonymous]
         [HttpPost("v1/authentication/login")]
-        public LoginResponse Login([FromForm] LoginRequest req)
+        public ApiResponse<LoginResponse> Login([FromForm] LoginRequest req)
         {
-            return _authenticationService.Login(req);
+            return new ApiResponse<LoginResponse>(_authenticationService.Login(req));
         }
 
         [AllowAnonymous]
@@ -30,6 +33,12 @@ namespace VCommerceAdmin.ApiController
         public RegisterResponse Register([FromForm] RegisterRequest req)
         {
             return _authenticationService.Register(req);
+        }
+
+        [HttpPost("v1/authentication/get-me")]
+        public ApiResponse<GetMeResponse> GetMe()
+        {
+            return new ApiResponse<GetMeResponse>(_authenticationService.GetMe());
         }
     }
 }
