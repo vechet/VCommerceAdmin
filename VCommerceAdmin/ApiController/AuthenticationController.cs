@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Helpers;
-using VCommerceAdmin.Services;
 using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.ApiController
@@ -16,7 +13,7 @@ namespace VCommerceAdmin.ApiController
     {
         private readonly IAuthenticationService _authenticationService;
 
-        public AuthenticationController(IAuthenticationService authenticationService) 
+        public AuthenticationController(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }
