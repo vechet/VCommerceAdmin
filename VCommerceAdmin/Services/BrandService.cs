@@ -18,30 +18,6 @@ namespace VCommerceAdmin.Services
             _webHostEnvironment = webHostEnvironment;
         }
 
-        private string UploadSinglePhoto(IFormFile file)
-        {
-            string path = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            //save original photo
-            var filename = Guid.NewGuid().ToString();
-            string filePath = Path.Combine(path, filename);
-            var fullPath = filePath + ".jpg";
-            using (var fileStream = new FileStream(fullPath, FileMode.Create))
-            {
-                file.CopyTo(fileStream);
-            }
-
-            //convert 4 size photo
-            var photo = File.ReadAllBytes(fullPath);
-            GlobalFunction.Convert4SizeImage(filePath, photo);
-
-            return filename;
-        }
-
         public BaseResponse CreateBrand(CreateBrandRequest req)
         {
             if(req.Photo != null)
@@ -65,6 +41,30 @@ namespace VCommerceAdmin.Services
                 req.PhotoName = photoName;
             }
             return _brandRepository.UpdateBrand(req);
+        }
+
+        private string UploadSinglePhoto(IFormFile file)
+        {
+            string path = Path.Combine(_webHostEnvironment.WebRootPath, "UploadFile/Photos");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //save original photo
+            var filename = Guid.NewGuid().ToString();
+            string filePath = Path.Combine(path, filename);
+            var fullPath = filePath + ".jpg";
+            using (var fileStream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+
+            //convert 4 size photo
+            var photo = File.ReadAllBytes(fullPath);
+            GlobalFunction.Convert4SizeImage(filePath, photo);
+
+            return filename;
         }
     }
 }
