@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Repository;
 using VCommerceAdmin.Repository.Interface;
@@ -12,7 +14,16 @@ builder.Services.AddControllersWithViews();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+    option.OperationFilter<SecurityRequirementsOperationFilter>();
+});
 
 //DbContext factory in dependency injection
 builder.Services.AddDbContextFactory<VcommerceContext>(options =>
@@ -20,9 +31,11 @@ builder.Services.AddDbContextFactory<VcommerceContext>(options =>
 
 //repository in dependency injection
 builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
+builder.Services.AddSingleton<IAuthenticationRepository, AuthenticationRepository>();
 
-//repository in dependency injection
+//service in dependency injection
 builder.Services.AddSingleton<IBrandService, BrandService>();
+builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();
 

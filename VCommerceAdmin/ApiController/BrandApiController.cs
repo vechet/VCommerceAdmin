@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.ApiController
 {
+    [Authorize]
     [Route("api")]
     [ApiController]
     public class BrandApiController : ControllerBase
