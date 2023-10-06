@@ -61,8 +61,8 @@ namespace VCommerceAdmin.Services
             }
 
             //convert 4 size photo
-            var photo = File.ReadAllBytes(fullPath);
-            GlobalFunction.Convert4SizeImage(filePath, photo);
+            //var photo = File.ReadAllBytes(fullPath);
+            //GlobalFunction.Convert4SizeImage(filePath, photo);
 
             return filename;
         }

@@ -35,7 +35,7 @@ namespace VCommerceAdmin.Repository
                     {
                         Name = req.Name,
                         Memo = req.Memo,
-                        CreatedBy = 1,
+                        CreatedBy = GlobalFunction.GetCurrentUserId(),
                         CreatedDate = GlobalFunction.GetCurrentDateTime(),
                         StatusId = req.StatusId,
                         Version = 1

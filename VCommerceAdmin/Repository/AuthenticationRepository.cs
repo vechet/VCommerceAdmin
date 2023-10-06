@@ -5,7 +5,17 @@ namespace VCommerceAdmin.Repository
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {
+        public GetMeResponse GetMe()
+        {
+            throw new NotImplementedException();
+        }
+
         public LoginResponse Login(LoginRequest req)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RefreshTokenResponse RefreshToken()
         {
             throw new NotImplementedException();
         }
