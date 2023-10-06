@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.Models;
 
 namespace VCommerceAdmin.Data;
 
-public partial class VcommerceContext : DbContext
+public partial class VcommerceContext : IdentityDbContext<IdentityUser>
 {
-    public VcommerceContext()
-    {
-    }
-
     public VcommerceContext(DbContextOptions<VcommerceContext> options)
         : base(options)
     {
@@ -42,6 +40,8 @@ public partial class VcommerceContext : DbContext
 
     public virtual DbSet<ErrorReport> ErrorReports { get; set; }
 
+    public virtual DbSet<Gender> Genders { get; set; }
+
     public virtual DbSet<GlobalParam> GlobalParams { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
@@ -72,6 +72,8 @@ public partial class VcommerceContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<AuditLog>(entity =>
         {
             entity.ToTable("AuditLog");
@@ -79,6 +81,16 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).UseCollation("SQL_Latin1_General_CP850_BIN");
             entity.Property(e => e.TransactionKeyValue).HasMaxLength(100);
+
+            entity.HasOne(d => d.AuditLogAction).WithMany(p => p.AuditLogs)
+                .HasForeignKey(d => d.AuditLogActionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AuditLog_AuditLogAction");
+
+            entity.HasOne(d => d.AuditLogController).WithMany(p => p.AuditLogs)
+                .HasForeignKey(d => d.AuditLogControllerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AuditLog_AuditLogController");
         });
 
         modelBuilder.Entity<AuditLogAction>(entity =>
@@ -404,6 +416,29 @@ public partial class VcommerceContext : DbContext
             entity.Property(e => e.ModuleName)
                 .HasMaxLength(100)
                 .UseCollation("SQL_Latin1_General_CP850_BIN");
+        });
+
+        modelBuilder.Entity<Gender>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_Gender_1");
+
+            entity.ToTable("Gender");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Memo)
+                .HasMaxLength(500)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .UseCollation("SQL_Latin1_General_CP850_BIN");
+            entity.Property(e => e.StatusId).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Version).HasDefaultValueSql("((1))");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.Genders)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Gender_Status");
         });
 
         modelBuilder.Entity<GlobalParam>(entity =>

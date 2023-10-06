@@ -31,6 +31,8 @@ public partial class Status
 
     public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 
+    public virtual ICollection<Gender> Genders { get; set; } = new List<Gender>();
+
     public virtual ICollection<PaymentMethod> PaymentMethods { get; set; } = new List<PaymentMethod>();
 
     public virtual ICollection<ProductType> ProductTypes { get; set; } = new List<ProductType>();

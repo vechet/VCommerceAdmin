@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Repository;
 using VCommerceAdmin.Repository.Interface;
@@ -11,6 +12,13 @@ using VCommerceAdmin.Services;
 using VCommerceAdmin.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//DbContext factory in dependency injection
+builder.Services.AddDbContextFactory<VcommerceContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("VCommerce")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddEntityFrameworkStores<VcommerceContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -40,10 +48,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
-
-//DbContext factory in dependency injection
-builder.Services.AddDbContextFactory<VcommerceContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("VCommerce")));
 
 //repository in dependency injection
 builder.Services.AddSingleton<IBrandRepository, BrandRepository>();

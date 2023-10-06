@@ -22,4 +22,8 @@ public partial class AuditLog
     public int CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }
+
+    public virtual AuditLogAction AuditLogAction { get; set; } = null!;
+
+    public virtual AuditLogController AuditLogController { get; set; } = null!;
 }
