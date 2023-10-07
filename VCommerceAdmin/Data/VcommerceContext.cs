@@ -9,6 +9,10 @@ namespace VCommerceAdmin.Data;
 
 public partial class VcommerceContext : IdentityDbContext<IdentityUser>
 {
+    public VcommerceContext()
+    {
+    }
+
     public VcommerceContext(DbContextOptions<VcommerceContext> options)
         : base(options)
     {
