@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Helpers;
+using VCommerceAdmin.Services;
 using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.ApiController
@@ -27,9 +28,9 @@ namespace VCommerceAdmin.ApiController
 
         [AllowAnonymous]
         [HttpPost("v1/authentication/register")]
-        public RegisterResponse Register([FromForm] RegisterRequest req)
+        public async Task<ApiResponse<BaseResponse>> Register([FromForm] RegisterRequest req)
         {
-            return _authenticationService.Register(req);
+            return new ApiResponse<BaseResponse>(await _authenticationService.Register(req));
         }
 
         [HttpPost("v1/authentication/get-me")]

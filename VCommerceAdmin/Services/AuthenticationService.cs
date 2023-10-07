@@ -5,6 +5,7 @@ using System.Text;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Helpers;
+using VCommerceAdmin.Repository.Interface;
 using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.Services
@@ -14,11 +15,16 @@ namespace VCommerceAdmin.Services
     {
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IAuthenticationRepository _authenticationRepository;
 
-        public AuthenticationService(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public AuthenticationService(
+            IConfiguration configuration, 
+            IHttpContextAccessor httpContextAccessor,
+            IAuthenticationRepository authenticationRepository)
         {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
+            _authenticationRepository = authenticationRepository;
         }
 
         public LoginResponse Login(LoginRequest req)
@@ -29,9 +35,9 @@ namespace VCommerceAdmin.Services
 
         }
 
-        public RegisterResponse Register(RegisterRequest req)
+        public async Task<BaseResponse> Register(RegisterRequest req)
         {
-            throw new NotImplementedException();
+            return await _authenticationRepository.Register(req);
         }
 
         private string CreateToken(LoginRequest req)
