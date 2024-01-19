@@ -19,19 +19,19 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/brand/create-brand")]
-        public ApiResponse<BaseResponse> CreateBrand([FromForm] CreateBrandRequest req)
+        public ApiResponse<BaseResponse> CreateBrand([FromBody] CreateBrandRequest req)
         {
             return new ApiResponse<BaseResponse>(_brandService.CreateBrand(req));
         }
 
         [HttpPost("v1/brand/get-brands")]
-        public ApiResponse<GetBrandsResponse> GetBrands([FromForm] GetBrandsRequest req)
+        public ApiResponse<GetBrandsResponse> GetBrands([FromBody] GetBrandsRequest req)
         {
             return new ApiResponse<GetBrandsResponse>(_brandService.GetBrands(req));
         }
 
         [HttpPost("v1/brand/update-brand")]
-        public ApiResponse<BaseResponse> UpdateBrand([FromForm] UpdateBrandRequest req)
+        public ApiResponse<BaseResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
         {
             return new ApiResponse<BaseResponse>(_brandService.UpdateBrand(req));
         }

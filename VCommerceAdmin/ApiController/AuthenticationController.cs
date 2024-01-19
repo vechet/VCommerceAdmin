@@ -21,14 +21,14 @@ namespace VCommerceAdmin.ApiController
 
         [AllowAnonymous]
         [HttpPost("v1/authentication/login")]
-        public ApiResponse<LoginResponse> Login([FromForm] LoginRequest req)
+        public ApiResponse<LoginResponse> Login([FromBody] LoginRequest req)
         {
             return new ApiResponse<LoginResponse>(_authenticationService.Login(req));
         }
 
         [AllowAnonymous]
         [HttpPost("v1/authentication/register")]
-        public async Task<ApiResponse<BaseResponse>> Register([FromForm] RegisterRequest req)
+        public async Task<ApiResponse<BaseResponse>> Register([FromBody] RegisterRequest req)
         {
             return new ApiResponse<BaseResponse>(await _authenticationService.Register(req));
         }
