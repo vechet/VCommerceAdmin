@@ -7,9 +7,9 @@ namespace VCommerceAdmin.ApiModels.Authentication
         public UserAccount UserAccount { get; set; }
         public LoginResponse(UserAccount userAccount, int code, string msg)
         {
-           UserAccount = userAccount;
-            ErrorCode = code;
-            ErrorMessage = msg;
+            UserAccount = userAccount;
+            Code = code;
+            Message = msg;
         }
     }
 }

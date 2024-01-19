@@ -17,15 +17,15 @@ namespace VCommerceAdmin.ApiModels
             PageSize = pageResponse.PageSize;
             TotalPages = pageResponse.TotalPages;
             TotalRecords = pageResponse.TotalRecords;
-            ErrorCode = code;
-            ErrorMessage = msg;
+            Code = code;
+            Message = msg;
         }
 
         public GetBrandsResponse(List<BrandsResponse> brands, int code, string msg)
         {
             Brands = brands;
-            ErrorCode = code;
-            ErrorMessage = msg;
+            Code = code;
+            Message = msg;
         }
     }
 

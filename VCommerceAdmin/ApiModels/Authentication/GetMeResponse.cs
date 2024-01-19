@@ -9,8 +9,8 @@ namespace VCommerceAdmin.ApiModels.Authentication
         public GetMeResponse(UserAccount userAccount, int code, string msg)
         {
             UserAccount = userAccount;
-            ErrorCode = code;
-            ErrorMessage = msg;
+            Code = code;
+            Message = msg;
         }
     }
 }

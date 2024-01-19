@@ -8,8 +8,8 @@ namespace VCommerceAdmin.ApiModels.Authentication
         public RefreshTokenResponse(UserAccount userAccount, int code, string msg)
         {
             UserAccount = userAccount;
-            ErrorCode = code;
-            ErrorMessage = msg;
+            Code = code;
+            Message = msg;
         }
     }
 }
