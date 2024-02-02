@@ -17,8 +17,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContextFactory<VcommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VCommerce")));
 
+//user identity
 builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<VcommerceContext>();
+
+//configure CORS 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5500")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -77,6 +90,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseRouting();
 
