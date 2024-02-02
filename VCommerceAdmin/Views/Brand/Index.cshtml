@@ -50,40 +50,35 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var data = [
-                {
-                    "id": 1,
-                    "name": "Tiger Nixon",
-                    "position": "System Architect",
-                    "salary": "$3,120",
-                    "office": "Edinburgh",
-                },
-                {
-                    "id": 2,
-                    "name": "Garrett Winters",
-                    "position": "Director",
-                    "salary": "$5,300",
-                    "office": "Edinburgh",
-                }
-            ];
+            // Get the full URL of the current page
+            var fullURL = window.location.href;
+            var orderNo = 1;
 
             $('#tableDatas').DataTable({
-                scrollY: "370pt",
-                paging: true,
-                lengthChange: true,
-                searching: true,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-                responsive: true,
-                rowId: 'Id',
-                data: data,
+                ajax: {
+                    url: fullURL + 'api/v1/table/get-tables',
+                    dataSrc: 'data'
+                },
                 columns: [
-                    { title: "Id", data: 'id' },
+                    { 
+                        title: "Id",
+                        mRender: function (data, type, row) {
+                            return orderNo++;
+                        }
+                    },
                     { title: "Name", data: 'name' },
-                    { title: "Salary", data: 'salary' },
-                    { title: "Office", data: 'office' },
-                    { title: "Position", data: 'position' },
+                    {
+                        title: "",
+                        width: '10%',
+                        mRender: function (data, type, row) {
+                            var btn = '<div class="btn-group">' +
+                                          '<a class="btn btn-primary btn-sm" href="" title="View"><i class="fas fa-folder"></i></a>' +
+                                          '<a class="btn btn-primary btn-sm" href="#" title="Edit"><i class="fas fa-pencil-alt"></i></a>' +
+                                          // '<a class="btn btn-primary btn-sm" href="#"><i class="fas fa-trash"></i></a>' +
+                                      '</div>';
+                            return btn;
+                        }
+                    }
                 ]
             });
 
@@ -96,4 +91,17 @@
 
         });
     </script>
+}
+
+@section styles {
+    <style>
+        .btn-group a {
+            margin-right: 8px; 
+        }
+
+        .btn-group a:last-child {
+            margin-right: 0;
+        }
+
+    </style>
 }

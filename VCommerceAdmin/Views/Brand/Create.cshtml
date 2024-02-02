@@ -5,7 +5,7 @@
 
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <div class="container-fluid mb-2">
+    <div class="container-fluid">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -19,6 +19,14 @@
                 Add New Brand
             </li>
         </ol>
+
+        <div class="alert alert-success alert-dismissible" id="SaveSuccess" role="alert" style="margin-top: 1rem; margin-bottom: 0px; display: none" >
+        </div>
+        <div class="alert alert-danger alert-dismissible" id="SaveError" style="margin-top: 1rem; margin-bottom: 0px; display: none">
+            <button type="button" class="close" id="closeErrorMessage">x</button>
+            <span id="SaveErrorText"></span>
+        </div>
+
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -67,6 +75,7 @@
         $(document).ready(function () {
             //Assign Variable
             var isCreate = '@(Model == null || Model.Id == 0)' == 'True';
+            var fullURL = window.location.href;
 
             $('#CancelButton').click(function (e) {
                 e.preventDefault();
@@ -78,6 +87,11 @@
                 $("#form").submit();
             });
 
+            $('#closeErrorMessage').click(function (e) {
+                e.preventDefault();
+                $('#SaveError').hide();
+            });
+
             //Initialize Select2 Elements
             $('.select2').select2();
 
@@ -85,14 +99,15 @@
                 e.preventDefault();
                 if (!e.result) return; //check validation
 
-                var serializeData = $('#form').serializeArray();
+                var requestBody = {
+                    "name": $("#Name").val()
+                };
 
                 $.ajax({
-                    url: isCreate ? '@Url.Action("Create")' : '@Url.Action("Update")',
-                    data: serializeData,
+                    url: "https://localhost:44345/api/v1/table/create-table",
+                    data: JSON.stringify(requestBody),
                     type: 'POST',
                     contentType: "application/json",
-                    dataType: 'json',
                     beforeSend: function () {
                         $('#wait').show();
                     },
@@ -100,21 +115,21 @@
                         $('#wait').hide();
                     },
                     success: function (result) {
-                        console.log("====", result)
                         $('body, html').animate({
                             scrollTop: 0
                         }, 500);
-                        if (result.errorCode == 0) // Save or update success
+                        if (result.code == 0) // Save or update success
                         {
+                            $('#SaveSuccess').text(result.message);
                             $('#SaveSuccess').fadeIn('slow');
                             window.setTimeout(function () {
-                                $("#SaveSuccess").hide();
-                            }, 5000);
+                                window.location.href = '@Url.Action("Index", "Brand")';
+                            }, 3000);
                         } else {
-                            $('#ErrorMessage').text(result.errorMessage);
-                            $('#ErrorMessage').fadeIn('slow');
+                            $('#SaveErrorText').text(result.message);
+                            $('#SaveError').fadeIn('slow');
                             window.setTimeout(function () {
-                                $("#ErrorMessage").hide();
+                                $("#SaveError").hide();
                             }, 5000);
                         }
                     }
