@@ -21,9 +21,9 @@ namespace VCommerceAdmin.ApiController
 
         [AllowAnonymous]
         [HttpPost("v1/authentication/login")]
-        public ApiResponse<LoginResponse> Login([FromBody] LoginRequest req)
+        public async Task<ApiResponse<LoginResponse>> Login([FromBody] LoginRequest req)
         {
-            return new ApiResponse<LoginResponse>(_authenticationService.Login(req));
+            return new ApiResponse<LoginResponse>(await _authenticationService.Login(req));
         }
 
         [AllowAnonymous]
@@ -34,9 +34,9 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/authentication/get-me")]
-        public ApiResponse<GetMeResponse> GetMe()
+        public async Task<ApiResponse<GetMeResponse>> GetMe()
         {
-            return new ApiResponse<GetMeResponse>(_authenticationService.GetMe());
+            return new ApiResponse<GetMeResponse>(await _authenticationService.GetMe());
         }
 
         [HttpPost("v1/authentication/refresh-token")]

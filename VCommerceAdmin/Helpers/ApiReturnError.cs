@@ -21,5 +21,11 @@ namespace VCommerceAdmin.Helpers
 
         [Description("General Error")]
         GeneralError = 999,
+
+        //Login
+        [Description("Wrong Username Or Password")]
+        WrongUserNameOrPassword = 200,
+        [Description("Login token invalid")]
+        LoginTokenInvalid = 208
     }
 }

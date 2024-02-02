@@ -1,4 +1,6 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using NuGet.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -16,23 +18,37 @@ namespace VCommerceAdmin.Services
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IAuthenticationRepository _authenticationRepository;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public AuthenticationService(
             IConfiguration configuration, 
             IHttpContextAccessor httpContextAccessor,
-            IAuthenticationRepository authenticationRepository)
+            IAuthenticationRepository authenticationRepository,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager)
         {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
             _authenticationRepository = authenticationRepository;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
-        public LoginResponse Login(LoginRequest req)
+        public async Task<LoginResponse> Login(LoginRequest req)
         {
-            var userAccount = new UserAccount();
-            userAccount.Token = CreateToken(req);
-            return new LoginResponse(userAccount, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
-
+            var result = await _signInManager.PasswordSignInAsync(req.Username, req.Password, false, false);
+            if (result.Succeeded)
+            {
+                var user = await _userManager.FindByNameAsync(req.Username);
+                var userToken = new LoginToken();
+                userToken = CreateToken(user);
+                return new LoginResponse(userToken, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+            }
+            else
+            {
+                return new LoginResponse(null, ApiReturnError.WrongUserNameOrPassword.Value(), ApiReturnError.WrongUserNameOrPassword.Description());
+            }
         }
 
         public async Task<BaseResponse> Register(RegisterRequest req)
@@ -40,11 +56,12 @@ namespace VCommerceAdmin.Services
             return await _authenticationRepository.Register(req);
         }
 
-        private string CreateToken(LoginRequest req)
+        private LoginToken CreateToken(IdentityUser user)
         {
-            List<Claim> claims = new List<Claim>
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, req.Username)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Name, user.UserName)
                 //new Claim(ClaimTypes.Role, "Admin")
             };
 
@@ -59,20 +76,23 @@ namespace VCommerceAdmin.Services
                 signingCredentials: creds
             );
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
+            var expirationTime = token.Claims.Last().Value;
+            var loginToken = new LoginToken(jwt, expirationTime);
+            return loginToken;
         }
 
-        public GetMeResponse GetMe()
+        public async Task<GetMeResponse> GetMe()
         {
             var userAccount =new UserAccount();
-            var username = "";
             if (_httpContextAccessor.HttpContext != null)
             {
-                username = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
+                var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var user = await _userManager.FindByIdAsync(userId);
+                userAccount.Id = user.Id;
+                userAccount.Name = user.UserName;
+                userAccount.Email = user.Email;
             }
-            userAccount.Name = username;
-            return new GetMeResponse(userAccount, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+            return  new GetMeResponse(userAccount, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
         }
 
         public RefreshTokenResponse RefreshToken()

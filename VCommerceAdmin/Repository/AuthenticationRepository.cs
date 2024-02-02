@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using System.Security.Claims;
 using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
@@ -13,13 +14,16 @@ namespace VCommerceAdmin.Repository
     {
         private readonly IDbContextFactory<VcommerceContext> _contextFactory;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         public AuthenticationRepository(
             IDbContextFactory<VcommerceContext> contextFactory,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
             _contextFactory = contextFactory;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public GetMeResponse GetMe()
@@ -27,7 +31,7 @@ namespace VCommerceAdmin.Repository
             throw new NotImplementedException();
         }
 
-        public LoginResponse Login(LoginRequest req)
+        public async Task<LoginResponse> Login(LoginRequest req)
         {
             throw new NotImplementedException();
         }

@@ -4,13 +4,10 @@ namespace VCommerceAdmin.ApiModels.Authentication
 {
     public class UserAccount
     {
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         public string Name { get; set; } = null!;
 
         public string Email { get; set; } = null!;
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string Token { get; set; } = null!;
     }
 }

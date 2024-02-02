@@ -5,9 +5,9 @@ namespace VCommerceAdmin.Services.Interface
 {
     public interface IAuthenticationService
     {
-        LoginResponse Login(LoginRequest req);
+        Task<LoginResponse> Login(LoginRequest req);
         Task<BaseResponse> Register(RegisterRequest req);
-        GetMeResponse GetMe();
+        Task<GetMeResponse> GetMe();
         RefreshTokenResponse RefreshToken();
     }
 }

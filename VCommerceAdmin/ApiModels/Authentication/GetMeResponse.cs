@@ -5,10 +5,10 @@ namespace VCommerceAdmin.ApiModels.Authentication
 {
     public class GetMeResponse : BaseResponse
     {
-        public UserAccount UserAccount { get; set; }
-        public GetMeResponse(UserAccount userAccount, int code, string msg)
+        public UserAccount User { get; set; }
+        public GetMeResponse(UserAccount user, int code, string msg)
         {
-            UserAccount = userAccount;
+            User = user;
             Code = code;
             Message = msg;
         }
