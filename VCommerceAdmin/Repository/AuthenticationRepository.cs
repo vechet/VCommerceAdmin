@@ -50,7 +50,7 @@ namespace VCommerceAdmin.Repository
                     var duplicateUser = await _userManager.FindByNameAsync(req.Username);
                     if (duplicateUser != null)
                     {
-                        return new BaseResponse(0, ApiReturnError.DuplicateName.Value(), ApiReturnError.DuplicateName.Description());
+                        return new BaseResponse(0, ApiResponseStatus.DuplicateName.Value(), ApiResponseStatus.DuplicateName.Description());
                     }
 
                     var user = new IdentityUser
@@ -63,17 +63,17 @@ namespace VCommerceAdmin.Repository
 
                     if(result.Errors.Count() > 0 && result.Errors.FirstOrDefault().Code.ToLower().Contains("password"))
                     {
-                        return new BaseResponse(0, ApiReturnError.InvalidPasswordFormat.Value(), ApiReturnError.InvalidPasswordFormat.Description());
+                        return new BaseResponse(0, ApiResponseStatus.InvalidPasswordFormat.Value(), ApiResponseStatus.InvalidPasswordFormat.Description());
                     }
 
                     // add audit log
                     //GlobalFunction.RecordAuditLog("Authentication", "Register", newBrand.Id, newBrand.Name, newBrand.Version, GetAuditDescription(context, newBrand.Id), context);
-                    return new BaseResponse(0, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    return new BaseResponse(0, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("AuthenticationRepository/Register", ex, context);
-                    return new BaseResponse(0, ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
                 }
             }
         }

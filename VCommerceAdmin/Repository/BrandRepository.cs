@@ -27,7 +27,7 @@ namespace VCommerceAdmin.Repository
                     // check duplicate name
                     if (context.Brands.Any(x => x.Name.ToLower() == req.Name.ToLower()))
                     {
-                        return new BaseResponse(0, ApiReturnError.DuplicateName.Value(), ApiReturnError.DuplicateName.Description());
+                        return new BaseResponse(0, ApiResponseStatus.DuplicateName.Value(), ApiResponseStatus.DuplicateName.Description());
                     }
 
                     //add new brand
@@ -57,12 +57,12 @@ namespace VCommerceAdmin.Repository
                     // add audit log
                     GlobalFunction.RecordAuditLog("Brand", "CreateBrand", newBrand.Id, newBrand.Name, newBrand.Version, GetAuditDescription(context, newBrand.Id), context);
 
-                    return new BaseResponse(newBrand.Id, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    return new BaseResponse(newBrand.Id, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/CreateBrand", ex, context);
-                    return new BaseResponse(0, ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
                 }
             }
         }
@@ -94,12 +94,12 @@ namespace VCommerceAdmin.Repository
                     var totalRecords = context.Brands.Count(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
                     var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
                     
-                    return new GetBrandsResponse(result, pageResponse, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    return new GetBrandsResponse(result, pageResponse, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/GetBrands", ex, context);
-                    return new GetBrandsResponse(new List<BrandsResponse>(), ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                    return new GetBrandsResponse(new List<BrandsResponse>(), ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace VCommerceAdmin.Repository
                     // check duplicate name
                     if (context.Brands.Any(x => x.Name.ToLower() == req.Name.ToLower() && x.Id != req.Id))
                     {
-                        return new BaseResponse(0, ApiReturnError.DuplicateName.Value(), ApiReturnError.DuplicateName.Description());
+                        return new BaseResponse(0, ApiResponseStatus.DuplicateName.Value(), ApiResponseStatus.DuplicateName.Description());
                     }
 
                     //update brand
@@ -136,12 +136,12 @@ namespace VCommerceAdmin.Repository
                     // add audit log
                     GlobalFunction.RecordAuditLog("Brand", "UpdateBrand", currentBrand.Id, currentBrand.Name, currentBrand.Version, GetAuditDescription(context, currentBrand.Id), context);
 
-                    return new BaseResponse(currentBrand.Id, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    return new BaseResponse(currentBrand.Id, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/UpdateBrand", ex, context);
-                    return new BaseResponse(0, ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
                 }
             }
         }
@@ -185,12 +185,12 @@ namespace VCommerceAdmin.Repository
                             StatusName = x.Status.Name,
                         }).FirstOrDefault();
 
-                    return new GetDetailBrandResponse(result, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                    return new GetDetailBrandResponse(result, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/GetDetailBrand", ex, context);
-                    return new GetDetailBrandResponse(new DetailBrandResponse(), ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                    return new GetDetailBrandResponse(new DetailBrandResponse(), ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
                 }
             }
         }

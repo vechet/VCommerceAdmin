@@ -43,11 +43,11 @@ namespace VCommerceAdmin.Services
                 var user = await _userManager.FindByNameAsync(req.Username);
                 var userToken = new LoginToken();
                 userToken = CreateToken(user);
-                return new LoginResponse(userToken, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                return new LoginResponse(userToken, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
             }
             else
             {
-                return new LoginResponse(null, ApiReturnError.WrongUserNameOrPassword.Value(), ApiReturnError.WrongUserNameOrPassword.Description());
+                return new LoginResponse(null, ApiResponseStatus.WrongUserNameOrPassword.Value(), ApiResponseStatus.WrongUserNameOrPassword.Description());
             }
         }
 
@@ -92,13 +92,13 @@ namespace VCommerceAdmin.Services
                 userAccount.Name = user.UserName;
                 userAccount.Email = user.Email;
             }
-            return  new GetMeResponse(userAccount, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+            return  new GetMeResponse(userAccount, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
         }
 
         public RefreshTokenResponse RefreshToken()
         {
             var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
-            return new RefreshTokenResponse(null, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+            return new RefreshTokenResponse(null, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
         }
     }
 }

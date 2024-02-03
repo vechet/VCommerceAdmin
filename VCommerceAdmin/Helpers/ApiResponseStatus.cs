@@ -2,7 +2,7 @@
 
 namespace VCommerceAdmin.Helpers
 {
-    public enum ApiReturnError
+    public enum ApiResponseStatus
     {
         [Description("Internal Error")]
         DbError = -1,
@@ -26,6 +26,12 @@ namespace VCommerceAdmin.Helpers
         [Description("Wrong Username Or Password")]
         WrongUserNameOrPassword = 200,
         [Description("Login token invalid")]
-        LoginTokenInvalid = 208
+        LoginTokenInvalid = 208,
+
+        [Description("Not found")]
+        NotFound = 404,
+
+        [Description("This resource has been deleted")]
+        Gone = 410,
     }
 }

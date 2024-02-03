@@ -8,10 +8,10 @@ namespace VCommerceAdmin.Helpers
         public ApiResponse(T data)
         {
             Data = data;
-            Code = (ApiReturnError)data.Code;
+            Code = (ApiResponseStatus)data.Code;
         }
 
-        public ApiReturnError Code { get; set; }
+        public ApiResponseStatus Code { get; set; }
 
         public string Message => Code.Description();
 
