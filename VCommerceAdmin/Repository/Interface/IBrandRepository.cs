@@ -9,8 +9,8 @@ namespace VCommerceAdmin.Repository.Interface
         
         GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req);
 
-        BaseResponse CreateBrand(CreateBrandRequest req);
+        Task<BaseResponse> CreateBrand(CreateBrandRequest req);
 
-        BaseResponse UpdateBrand(UpdateBrandRequest req);
+        Task<BaseResponse> UpdateBrand(UpdateBrandRequest req);
     }
 }

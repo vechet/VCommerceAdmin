@@ -18,14 +18,14 @@ namespace VCommerceAdmin.Services
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public BaseResponse CreateBrand(CreateBrandRequest req)
+        public async Task<BaseResponse> CreateBrand(CreateBrandRequest req)
         {
             if(req.Photo != null)
             {
                 var photoName = UploadSinglePhoto(req.Photo);
                 req.PhotoName = photoName;
             }
-            return _brandRepository.CreateBrand(req);
+            return await _brandRepository.CreateBrand(req);
         }
 
         public GetBrandsResponse GetBrands(GetBrandsRequest req)
@@ -38,14 +38,14 @@ namespace VCommerceAdmin.Services
             return _brandRepository.GetDetailBrand(req);
         }
 
-        public BaseResponse UpdateBrand(UpdateBrandRequest req)
+        public async Task<BaseResponse> UpdateBrand(UpdateBrandRequest req)
         {
             if (req.Photo != null)
             {
                 var photoName = UploadSinglePhoto(req.Photo);
                 req.PhotoName = photoName;
             }
-            return _brandRepository.UpdateBrand(req);
+            return await _brandRepository.UpdateBrand(req);
         }
 
         private string UploadSinglePhoto(IFormFile file)

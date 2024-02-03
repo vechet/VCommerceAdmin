@@ -63,12 +63,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 //repository in dependency injection
-builder.Services.AddSingleton<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 builder.Services.AddHttpContextAccessor();
 
 //service in dependency injection
-builder.Services.AddSingleton<IBrandService, BrandService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();

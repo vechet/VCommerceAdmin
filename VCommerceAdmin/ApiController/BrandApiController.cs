@@ -19,9 +19,9 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/brand/create-brand")]
-        public ApiResponse<BaseResponse> CreateBrand([FromBody] CreateBrandRequest req)
+        public async Task<ApiResponse<BaseResponse>> CreateBrand([FromBody] CreateBrandRequest req)
         {
-            return new ApiResponse<BaseResponse>(_brandService.CreateBrand(req));
+            return new ApiResponse<BaseResponse>(await _brandService.CreateBrand(req));
         }
 
         [HttpPost("v1/brand/get-brands")]
@@ -31,9 +31,9 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/brand/update-brand")]
-        public ApiResponse<BaseResponse> UpdateBrand([FromBody] UpdateBrandRequest req)
+        public async Task<ApiResponse<BaseResponse>> UpdateBrand([FromBody] UpdateBrandRequest req)
         {
-            return new ApiResponse<BaseResponse>(_brandService.UpdateBrand(req));
+            return new ApiResponse<BaseResponse>(await _brandService.UpdateBrand(req));
         }
 
         [HttpPost("v1/brand/get-detial-brand")]

@@ -8,8 +8,8 @@ namespace VCommerceAdmin.Services.Interface
         GetBrandsResponse GetBrands(GetBrandsRequest req);
 
         GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req);
-        BaseResponse CreateBrand(CreateBrandRequest req);
+        Task<BaseResponse> CreateBrand(CreateBrandRequest req);
 
-        BaseResponse UpdateBrand(UpdateBrandRequest req);
+        Task<BaseResponse> UpdateBrand(UpdateBrandRequest req);
     }
 }

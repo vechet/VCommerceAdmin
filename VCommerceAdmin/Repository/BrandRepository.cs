@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Numerics;
+using System.Security.Claims;
 using VCommerceAdmin.ApiModels;
+using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Models;
@@ -12,13 +16,20 @@ namespace VCommerceAdmin.Repository
     public class BrandRepository : IBrandRepository
     {
         private readonly IDbContextFactory<VcommerceContext> _contextFactory;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public BrandRepository(IDbContextFactory<VcommerceContext> contextFactory)
+        public BrandRepository(
+            IDbContextFactory<VcommerceContext> contextFactory,
+            IHttpContextAccessor httpContextAccessor,
+            UserManager<IdentityUser> userManager)
         {
             _contextFactory = contextFactory;
+            _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
-        public BaseResponse CreateBrand(CreateBrandRequest req)
+        public async Task<BaseResponse> CreateBrand(CreateBrandRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
@@ -30,12 +41,15 @@ namespace VCommerceAdmin.Repository
                         return new BaseResponse(0, ApiResponseStatus.DuplicateName.Value(), ApiResponseStatus.DuplicateName.Description());
                     }
 
+                    var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var user = await _userManager.FindByIdAsync(userId);
+
                     //add new brand
                     var newBrand = new Brand
                     {
                         Name = req.Name,
                         Memo = req.Memo,
-                        CreatedBy = GlobalFunction.GetCurrentUserId(),
+                        CreatedBy = user.Id,
                         CreatedDate = GlobalFunction.GetCurrentDateTime(),
                         StatusId = req.StatusId,
                         Version = 1
@@ -79,8 +93,10 @@ namespace VCommerceAdmin.Repository
                         Id = x.Id,
                         Name = x.Name,
                         Memo = x.Memo,
+                        CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
                         CreatedBy = x.CreatedBy,
                         CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
+                        ModifiedByUser = x.ModifiedBy.HasValue ? context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName : null,
                         ModifiedBy = x.ModifiedBy,
                         ModifiedDate = x.ModifiedDate.HasValue ? x.ModifiedDate.Value.ToString(GlobalVariable.dateFormat) : null,
                         StatusId = x.StatusId,
@@ -104,7 +120,7 @@ namespace VCommerceAdmin.Repository
             }
         }
 
-        public BaseResponse UpdateBrand(UpdateBrandRequest req)
+        public async Task<BaseResponse> UpdateBrand(UpdateBrandRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
@@ -116,12 +132,15 @@ namespace VCommerceAdmin.Repository
                         return new BaseResponse(0, ApiResponseStatus.DuplicateName.Value(), ApiResponseStatus.DuplicateName.Description());
                     }
 
+                    var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var user = await _userManager.FindByIdAsync(userId);
+
                     //update brand
                     var currentBrand = context.Brands.Find(req.Id);
                     currentBrand.Name = req.Name;
                     currentBrand.Memo = req.Memo;
                     currentBrand.StatusId = req.StatusId;
-                    currentBrand.ModifiedBy = 1;
+                    currentBrand.ModifiedBy = user.Id;
                     currentBrand.ModifiedDate = GlobalFunction.GetCurrentDateTime();
                     currentBrand.Version = currentBrand.Version + 1;
 
@@ -177,10 +196,11 @@ namespace VCommerceAdmin.Repository
                             Id = x.Id,
                             Name = x.Name,
                             Memo = x.Memo,
+                            CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
                             CreatedBy = x.CreatedBy,
                             CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
+                            ModifiedByUser = x.ModifiedBy.HasValue ? context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName : null,
                             ModifiedBy = x.ModifiedBy,
-                            ModifiedDate = x.ModifiedDate.HasValue ? x.ModifiedDate.Value.ToString(GlobalVariable.dateFormat) : null,
                             StatusId = x.StatusId,
                             StatusName = x.Status.Name,
                         }).FirstOrDefault();
