@@ -35,5 +35,12 @@ namespace VCommerceAdmin.ApiController
         {
             return new ApiResponse<BaseResponse>(_brandService.UpdateBrand(req));
         }
+
+        [HttpPost("v1/brand/get-detial-brand")]
+        public ApiResponse<GetDetailBrandResponse> GetDetailBrand([FromBody] GetDetailBrandRequest req)
+        {
+            var a = _brandService.GetDetailBrand(req);
+            return new ApiResponse<GetDetailBrandResponse>(_brandService.GetDetailBrand(req));
+        }
     }
 }

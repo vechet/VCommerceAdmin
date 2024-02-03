@@ -33,6 +33,11 @@ namespace VCommerceAdmin.Services
             return _brandRepository.GetBrands(req);
         }
 
+        public GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req)
+        {
+            return _brandRepository.GetDetailBrand(req);
+        }
+
         public BaseResponse UpdateBrand(UpdateBrandRequest req)
         {
             if (req.Photo != null)

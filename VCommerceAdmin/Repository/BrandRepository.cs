@@ -80,9 +80,9 @@ namespace VCommerceAdmin.Repository
                         Name = x.Name,
                         Memo = x.Memo,
                         CreatedBy = x.CreatedBy,
-                        CreatedDate = x.CreatedDate,
+                        CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
                         ModifiedBy = x.ModifiedBy,
-                        ModifiedDate = x.ModifiedDate,
+                        ModifiedDate = x.ModifiedDate.HasValue ? x.ModifiedDate.Value.ToString(GlobalVariable.dateFormat) : null,
                         StatusId = x.StatusId,
                         StatusName = x.Status.Name,
                     })
@@ -163,6 +163,36 @@ namespace VCommerceAdmin.Repository
                 PhotoName = context.PhotoAndVideos.Any(z => z.BrandId == x.Id) ? context.PhotoAndVideos.FirstOrDefault(z => z.BrandId == x.Id).FileName : "",
             })).FirstOrDefault();
             return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.IsoDateFormat });
+        }
+
+        public GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req)
+        {
+            using (var context = _contextFactory.CreateDbContext())
+            {
+                try
+                {
+                    var result = context.Brands.Where(x => x.Id == req.Id && x.Status.KeyName == "Active")
+                        .Select(x => new DetailBrandResponse
+                        {
+                            Id = x.Id,
+                            Name = x.Name,
+                            Memo = x.Memo,
+                            CreatedBy = x.CreatedBy,
+                            CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
+                            ModifiedBy = x.ModifiedBy,
+                            ModifiedDate = x.ModifiedDate.HasValue ? x.ModifiedDate.Value.ToString(GlobalVariable.dateFormat) : null,
+                            StatusId = x.StatusId,
+                            StatusName = x.Status.Name,
+                        }).FirstOrDefault();
+
+                    return new GetDetailBrandResponse(result, ApiReturnError.Success.Value(), ApiReturnError.Success.Description());
+                }
+                catch (Exception ex)
+                {
+                    GlobalFunction.RecordErrorLog("BrandRepository/GetDetailBrand", ex, context);
+                    return new GetDetailBrandResponse(new DetailBrandResponse(), ApiReturnError.DbError.Value(), ApiReturnError.DbError.Description());
+                }
+            }
         }
     }
 }
