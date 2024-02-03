@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Numerics;
 using System.Security.Claims;
@@ -87,6 +88,8 @@ namespace VCommerceAdmin.Repository
             {
                 try
                 {
+                    var a = context.Users.ToList();
+
                     var data = context.Brands.Where(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
                     var result = data.Select(x => new BrandsResponse
                     {
@@ -96,7 +99,7 @@ namespace VCommerceAdmin.Repository
                         CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
                         CreatedBy = x.CreatedBy,
                         CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
-                        ModifiedByUser = x.ModifiedBy.HasValue ? context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName : null,
+                        ModifiedByUser = x.ModifiedBy.IsNullOrEmpty() ? null : context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName,
                         ModifiedBy = x.ModifiedBy,
                         ModifiedDate = x.ModifiedDate.HasValue ? x.ModifiedDate.Value.ToString(GlobalVariable.dateFormat) : null,
                         StatusId = x.StatusId,
@@ -199,7 +202,7 @@ namespace VCommerceAdmin.Repository
                             CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
                             CreatedBy = x.CreatedBy,
                             CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
-                            ModifiedByUser = x.ModifiedBy.HasValue ? context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName : null,
+                            ModifiedByUser = x.ModifiedBy.IsNullOrEmpty() ? null : context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName,
                             ModifiedBy = x.ModifiedBy,
                             StatusId = x.StatusId,
                             StatusName = x.Status.Name,

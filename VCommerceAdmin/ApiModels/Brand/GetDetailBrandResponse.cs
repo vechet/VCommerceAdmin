@@ -20,10 +20,10 @@ namespace VCommerceAdmin.ApiModels
         public string? Memo { get; set; }
         public string? Photo { get; set; }
         public string CreatedByUser { get; set; } = null!;
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = null!;
         public string CreatedDate { get; set; } = null!;
         public string? ModifiedByUser { get; set; }
-        public int? ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
         public string? ModifiedDate { get; set; }
         public short StatusId { get; set; }
         public string StatusName { get; set; } = null!;
