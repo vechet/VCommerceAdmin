@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using VCommerceAdmin.Helpers;
 
-namespace VCommerceAdmin.Services
+namespace VCommerceAdmin.Helpers
 {
     public class HandleApiExceptionMiddleware
     {
@@ -30,7 +29,7 @@ namespace VCommerceAdmin.Services
                 var jsonErrorResponse = JsonConvert.SerializeObject(errorResponse);
                 await context.Response.WriteAsync(jsonErrorResponse);
             }
-            else if(context.Response.StatusCode == ApiResponseStatus.MethodNotAllow.Value())
+            else if (context.Response.StatusCode == ApiResponseStatus.MethodNotAllow.Value())
             {
                 if (context.Response.StatusCode == ApiResponseStatus.MethodNotAllow.Value())
                 {
