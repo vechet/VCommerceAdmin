@@ -76,7 +76,7 @@ namespace VCommerceAdmin.Repository
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("AuthenticationRepository/Register", ex, context);
-                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.InternalError.Value(), ApiResponseStatus.InternalError.Description());
                 }
             }
         }

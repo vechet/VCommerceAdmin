@@ -74,7 +74,7 @@ namespace VCommerceAdmin.Repository
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/CreateBrand", ex, context);
-                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.InternalError.Value(), ApiResponseStatus.InternalError.Description());
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace VCommerceAdmin.Repository
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/GetBrands", ex, context);
-                    return new GetBrandsResponse(new List<BrandsResponse>(), ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
+                    return new GetBrandsResponse(new List<BrandsResponse>(), ApiResponseStatus.InternalError.Value(), ApiResponseStatus.InternalError.Description());
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace VCommerceAdmin.Repository
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/UpdateBrand", ex, context);
-                    return new BaseResponse(0, ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
+                    return new BaseResponse(0, ApiResponseStatus.InternalError.Value(), ApiResponseStatus.InternalError.Description());
                 }
             }
         }
@@ -212,7 +212,7 @@ namespace VCommerceAdmin.Repository
                 catch (Exception ex)
                 {
                     GlobalFunction.RecordErrorLog("BrandRepository/GetDetailBrand", ex, context);
-                    return new GetDetailBrandResponse(new DetailBrandResponse(), ApiResponseStatus.DbError.Value(), ApiResponseStatus.DbError.Description());
+                    return new GetDetailBrandResponse(new DetailBrandResponse(), ApiResponseStatus.InternalError.Value(), ApiResponseStatus.InternalError.Description());
                 }
             }
         }

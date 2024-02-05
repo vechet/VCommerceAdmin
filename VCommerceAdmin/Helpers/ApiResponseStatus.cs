@@ -5,7 +5,7 @@ namespace VCommerceAdmin.Helpers
     public enum ApiResponseStatus
     {
         [Description("Internal Error")]
-        DbError = -1,
+        InternalError = 500,
 
         [Description("Success")]
         Success = 0,

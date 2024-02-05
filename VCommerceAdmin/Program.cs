@@ -102,6 +102,7 @@ app.UseAuthentication();
 
 //Handle Api Exception Middleware
 app.UseMiddleware<HandleApiExceptionMiddleware>();
+app.UseMiddleware<SqlExceptionMiddleware>();
 
 app.UseAuthorization();
 

@@ -42,8 +42,8 @@ namespace VCommerceAdmin.Helpers
                         message = ApiResponseStatus.MethodNotAllow.Description()
                     };
 
-                    var jsonErrorResponse = JsonConvert.SerializeObject(errorResponse);
-                    await context.Response.WriteAsync(jsonErrorResponse);
+                    var jsonResponse = JsonConvert.SerializeObject(errorResponse);
+                    await context.Response.WriteAsync(jsonResponse);
                 }
             }
 
