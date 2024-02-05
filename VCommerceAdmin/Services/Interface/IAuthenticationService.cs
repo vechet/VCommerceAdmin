@@ -8,6 +8,6 @@ namespace VCommerceAdmin.Services.Interface
         Task<LoginResponse> Login(LoginRequest req);
         Task<BaseResponse> Register(RegisterRequest req);
         Task<GetMeResponse> GetMe();
-        RefreshTokenResponse RefreshToken();
+        Task<RefreshTokenResponse> RefreshToken();
     }
 }

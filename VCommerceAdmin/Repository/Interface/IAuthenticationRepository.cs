@@ -7,7 +7,7 @@ namespace VCommerceAdmin.Repository.Interface
     {
         Task<LoginResponse> Login(LoginRequest req);
         Task<BaseResponse> Register(RegisterRequest req);
-        GetMeResponse GetMe();
-        RefreshTokenResponse RefreshToken();
+        Task<GetMeResponse> GetMe();
+        Task<RefreshTokenResponse> RefreshToken();
     }
 }

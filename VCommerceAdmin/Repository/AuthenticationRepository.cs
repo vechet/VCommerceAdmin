@@ -26,7 +26,7 @@ namespace VCommerceAdmin.Repository
             _signInManager = signInManager;
         }
 
-        public GetMeResponse GetMe()
+        public async Task<GetMeResponse> GetMe()
         {
             throw new NotImplementedException();
         }
@@ -36,7 +36,7 @@ namespace VCommerceAdmin.Repository
             throw new NotImplementedException();
         }
 
-        public RefreshTokenResponse RefreshToken()
+        public async Task<RefreshTokenResponse> RefreshToken()
         {
             throw new NotImplementedException();
         }

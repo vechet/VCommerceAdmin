@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using NuGet.Common;
+using NuGet.Protocol;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -41,8 +42,13 @@ namespace VCommerceAdmin.Services
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(req.Username);
-                var userToken = new LoginToken();
-                userToken = CreateToken(user);
+                var userToken = new TokenResponse();
+                var accessToken = GenerateToken(user, 1);
+                var refreshToken = GenerateToken(user, 30);
+                userToken.AccessToken = accessToken.Token;
+                userToken.ExpiresIn = accessToken.ExpiresIn;
+                userToken.RefreshToken = refreshToken.Token;
+                userToken.RefreshTokenExpiresIn = refreshToken.ExpiresIn;
                 return new LoginResponse(userToken, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
             }
             else
@@ -56,7 +62,7 @@ namespace VCommerceAdmin.Services
             return await _authenticationRepository.Register(req);
         }
 
-        private LoginToken CreateToken(IdentityUser user)
+        private GenerateToken GenerateToken(IdentityUser user, int period)
         {
             var claims = new List<Claim>
             {
@@ -64,21 +70,23 @@ namespace VCommerceAdmin.Services
                 new Claim(ClaimTypes.Name, user.UserName)
                 //new Claim(ClaimTypes.Role, "Admin")
             };
-
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 _configuration.GetSection("AppSetting:Token").Value));
-            
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var token = new JwtSecurityToken(
+            // generate access token
+            var generateAccessToken = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddDays(period),
                 signingCredentials: creds
             );
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-            var expirationTime = token.Claims.Last().Value;
-            var loginToken = new LoginToken(jwt, expirationTime);
-            return loginToken;
+            var token = new JwtSecurityTokenHandler().WriteToken(generateAccessToken);
+            var expiresIn = generateAccessToken.Claims.Last().Value;
+            return new GenerateToken
+            {
+                Token = token,
+                ExpiresIn = expiresIn,
+            };
         }
 
         public async Task<GetMeResponse> GetMe()
@@ -95,10 +103,75 @@ namespace VCommerceAdmin.Services
             return  new GetMeResponse(userAccount, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
         }
 
-        public RefreshTokenResponse RefreshToken()
+        private bool ValidateRefreshToken(string refreshToken)
         {
-            var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
-            return new RefreshTokenResponse(null, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                _configuration.GetSection("AppSetting:Token").Value));
+
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = key,
+                ValidateIssuer = false, // Customize these settings based on your requirements
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero // Adjust the clock skew if necessary
+            };
+
+            ClaimsPrincipal principal;
+            SecurityToken securityToken = null;
+
+            try
+            {
+                principal = tokenHandler.ValidateToken(refreshToken, validationParameters, out securityToken);
+            }
+            catch (SecurityTokenException ex)
+            {
+                // Log or handle specific token-related exceptions
+                return false;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle other exceptions
+                return false;
+            }
+
+            // Check if the token is still valid
+            return DateTime.UtcNow < securityToken.ValidTo;
+        }
+
+        private string ExtractRefreshToken(string authorizationHeader)
+        {
+            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
+            {
+                return authorizationHeader.Substring("Bearer ".Length).Trim();
+            }
+            return "";
+        }
+
+
+        public async Task<RefreshTokenResponse> RefreshToken()
+        {
+            var authorizationHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
+            var currentRefreshToken = ExtractRefreshToken(authorizationHeader);
+
+            //Validate Refresh Token
+            if (!ValidateRefreshToken(currentRefreshToken))
+            {
+                return new RefreshTokenResponse(null, ApiResponseStatus.Unauthorized.Value(), ApiResponseStatus.Unauthorized.Description());
+            }
+
+            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+            var userToken = new TokenResponse();
+            var accessToken = GenerateToken(user, 1);
+            var refreshToken = GenerateToken(user, 30);
+            userToken.AccessToken = accessToken.Token;
+            userToken.ExpiresIn = accessToken.ExpiresIn;
+            userToken.RefreshToken = refreshToken.Token;
+            userToken.RefreshTokenExpiresIn = refreshToken.ExpiresIn;
+            return new RefreshTokenResponse(userToken, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
         }
     }
 }

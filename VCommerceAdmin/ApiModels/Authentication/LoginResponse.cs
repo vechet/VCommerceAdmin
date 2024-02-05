@@ -5,8 +5,8 @@ namespace VCommerceAdmin.ApiModels.Authentication
     public class LoginResponse : BaseResponse
     {
         public LoginResponse() { }
-        public LoginToken UserToken { get; set; }
-        public LoginResponse(LoginToken userToken, int code, string msg)
+        public TokenResponse UserToken { get; set; }
+        public LoginResponse(TokenResponse userToken, int code, string msg)
         {
             UserToken = userToken;
             Code = code;

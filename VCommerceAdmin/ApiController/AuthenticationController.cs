@@ -40,10 +40,10 @@ namespace VCommerceAdmin.ApiController
         }
 
         [HttpPost("v1/authentication/refresh-token")]
-        public ApiResponse<RefreshTokenResponse> RefreshToken()
+        public async Task<ApiResponse<RefreshTokenResponse>> RefreshToken()
         {
             var refreshToken = Request.Cookies["refreshToken"];
-            return new ApiResponse<RefreshTokenResponse>(_authenticationService.RefreshToken());
+            return new ApiResponse<RefreshTokenResponse>(await _authenticationService.RefreshToken());
         }
     }
 }

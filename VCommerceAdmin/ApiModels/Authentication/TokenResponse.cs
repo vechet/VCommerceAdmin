@@ -1,9 +1,9 @@
 ﻿namespace VCommerceAdmin.ApiModels.Authentication
 {
-    public class LoginToken
+    public class TokenResponse
     {
-        public LoginToken() {}
-        public LoginToken(string accessToken, string expiresIn, string refreshToken, string refreshTokenExpiresIn)
+        public TokenResponse() {}
+        public TokenResponse(string accessToken, string expiresIn, string refreshToken, string refreshTokenExpiresIn)
         {
             AccessToken = accessToken;
             ExpiresIn = expiresIn;
