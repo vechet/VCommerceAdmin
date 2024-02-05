@@ -25,8 +25,6 @@ namespace VCommerceAdmin.Helpers
         //Login
         [Description("Wrong Username Or Password")]
         WrongUserNameOrPassword = 200,
-        [Description("Login token invalid")]
-        LoginTokenInvalid = 208,
 
         [Description("Not found")]
         NotFound = 404,

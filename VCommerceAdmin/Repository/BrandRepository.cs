@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using System.Numerics;
 using System.Security.Claims;
 using VCommerceAdmin.ApiModels;
-using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Data;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Models;
@@ -82,7 +79,7 @@ namespace VCommerceAdmin.Repository
             }
         }
 
-        public GetBrandsResponse GetBrands(GetBrandsRequest req)
+        public async Task<GetBrandsResponse> GetBrands(GetBrandsRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
@@ -189,7 +186,7 @@ namespace VCommerceAdmin.Repository
             return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.IsoDateFormat });
         }
 
-        public GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req)
+        public async Task<GetDetailBrandResponse> GetDetailBrand(GetDetailBrandRequest req)
         {
             using (var context = _contextFactory.CreateDbContext())
             {

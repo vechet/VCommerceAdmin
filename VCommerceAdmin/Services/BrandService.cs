@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System.Drawing;
-using System.Drawing.Imaging;
-using VCommerceAdmin.ApiModels;
+﻿using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Repository.Interface;
 using VCommerceAdmin.Services.Interface;
@@ -28,14 +25,14 @@ namespace VCommerceAdmin.Services
             return await _brandRepository.CreateBrand(req);
         }
 
-        public GetBrandsResponse GetBrands(GetBrandsRequest req)
+        public async Task<GetBrandsResponse> GetBrands(GetBrandsRequest req)
         {
-            return _brandRepository.GetBrands(req);
+            return await _brandRepository.GetBrands(req);
         }
 
-        public GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req)
+        public async Task<GetDetailBrandResponse> GetDetailBrand(GetDetailBrandRequest req)
         {
-            return _brandRepository.GetDetailBrand(req);
+            return await _brandRepository.GetDetailBrand(req);
         }
 
         public async Task<BaseResponse> UpdateBrand(UpdateBrandRequest req)

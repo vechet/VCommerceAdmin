@@ -5,9 +5,9 @@ namespace VCommerceAdmin.Repository.Interface
 {
     public interface IBrandRepository
     {
-        GetBrandsResponse GetBrands(GetBrandsRequest req);
-        
-        GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req);
+        Task<GetBrandsResponse> GetBrands(GetBrandsRequest req);
+
+        Task<GetDetailBrandResponse> GetDetailBrand(GetDetailBrandRequest req);
 
         Task<BaseResponse> CreateBrand(CreateBrandRequest req);
 

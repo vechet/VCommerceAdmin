@@ -5,9 +5,9 @@ namespace VCommerceAdmin.Services.Interface
 {
     public interface IBrandService
     {
-        GetBrandsResponse GetBrands(GetBrandsRequest req);
+        Task<GetBrandsResponse> GetBrands(GetBrandsRequest req);
 
-        GetDetailBrandResponse GetDetailBrand(GetDetailBrandRequest req);
+        Task<GetDetailBrandResponse> GetDetailBrand(GetDetailBrandRequest req);
         Task<BaseResponse> CreateBrand(CreateBrandRequest req);
 
         Task<BaseResponse> UpdateBrand(UpdateBrandRequest req);
