@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.Security.Claims;
 using VCommerceAdmin.ApiModels.Authentication;
 using VCommerceAdmin.Data;
@@ -57,7 +59,7 @@ namespace VCommerceAdmin.Repository
                     {
                         UserName = req.Username,
                         Email = req.Email,
-                        PhoneNumber = req.Phone
+                        PhoneNumber = req.Phone,
                     };
                     var result = await _userManager.CreateAsync(user, req.Password);
 
@@ -67,7 +69,8 @@ namespace VCommerceAdmin.Repository
                     }
 
                     // add audit log
-                    //GlobalFunction.RecordAuditLog("Authentication", "Register", newBrand.Id, newBrand.Name, newBrand.Version, GetAuditDescription(context, newBrand.Id), context);
+                    GlobalFunction.RecordAuditLog("Authentication", "Register", 1, user.UserName, 1, GetAuditDescription(context, user.Id), context);
+                    //GlobalFunction.RecordAuditLog("Authentication", "Register", user.Id, user.UserName, user.Version, GetAuditDescription(context, user.Id), context);
                     return new BaseResponse(0, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
                 catch (Exception ex)
@@ -77,5 +80,19 @@ namespace VCommerceAdmin.Repository
                 }
             }
         }
+
+        public string GetAuditDescription(VcommerceContext context, string id)
+        {
+            var type = (context.Users.Where(x => x.Id == id).Select(x => new
+            {
+                x.Id,
+                x.UserName,
+                x.Email,
+                x.PhoneNumber,
+                Version = 1
+            })).FirstOrDefault();
+            return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.IsoDateFormat });
+        }
+
     }
 }
