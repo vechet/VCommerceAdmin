@@ -33,5 +33,11 @@ namespace VCommerceAdmin.Helpers
 
         [Description("This resource has been deleted")]
         Gone = 410,
+
+        [Description("Unauthorized")]
+        Unauthorized = 401,
+
+        [Description("Method Not Allow")]
+        MethodNotAllow = 405,
     }
 }

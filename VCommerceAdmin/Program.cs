@@ -49,6 +49,8 @@ builder.Services.AddSwaggerGen(option =>
     });
     option.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
+//handle jwt token
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(option =>
     {
@@ -96,6 +98,9 @@ app.UseCors("AllowSpecificOrigin");
 app.UseRouting();
 
 app.UseAuthentication();
+
+//Handle Api Exception Middleware
+app.UseMiddleware<HandleApiExceptionMiddleware>();
 
 app.UseAuthorization();
 
