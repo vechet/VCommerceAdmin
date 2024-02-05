@@ -31,20 +31,31 @@ namespace VCommerceAdmin.Helpers
             }
             else if (context.Response.StatusCode == ApiResponseStatus.MethodNotAllow.Value())
             {
-                if (context.Response.StatusCode == ApiResponseStatus.MethodNotAllow.Value())
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = ApiResponseStatus.MethodNotAllow.Value();
+
+                var errorResponse = new
                 {
-                    context.Response.ContentType = "application/json";
-                    context.Response.StatusCode = ApiResponseStatus.MethodNotAllow.Value();
+                    code = ApiResponseStatus.MethodNotAllow.Value(),
+                    message = ApiResponseStatus.MethodNotAllow.Description()
+                };
 
-                    var errorResponse = new
-                    {
-                        code = ApiResponseStatus.MethodNotAllow.Value(),
-                        message = ApiResponseStatus.MethodNotAllow.Description()
-                    };
+                var jsonResponse = JsonConvert.SerializeObject(errorResponse);
+                await context.Response.WriteAsync(jsonResponse);
+            }
+            else if (context.Response.StatusCode == ApiResponseStatus.NotFound.Value())
+            {
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = ApiResponseStatus.NotFound.Value();
 
-                    var jsonResponse = JsonConvert.SerializeObject(errorResponse);
-                    await context.Response.WriteAsync(jsonResponse);
-                }
+                var errorResponse = new
+                {
+                    code = ApiResponseStatus.NotFound.Value(),
+                    message = ApiResponseStatus.NotFound.Description()
+                };
+
+                var jsonResponse = JsonConvert.SerializeObject(errorResponse);
+                await context.Response.WriteAsync(jsonResponse);
             }
 
         }
