@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using VCommerceAdmin.ApiModels;
 using VCommerceAdmin.Data;
+using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Repository.Interface;
 
 namespace VCommerceAdmin.Repository
@@ -22,7 +23,22 @@ namespace VCommerceAdmin.Repository
             _userManager = userManager;
         }
 
-        public Task<GetSaleOrdersResponse> GetSaleOrders(GetSaleOrdersRequest req)
+        public async Task<BaseResponse> CreateSaleOrder(CreateSaleOrderRequest req)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<GetDetailSaleOrderResponse> GetDetailSaleOrder(GetDetailSaleOrderRequest req)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<GetSaleOrdersResponse> GetSaleOrders(GetSaleOrdersRequest req)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<BaseResponse> UpdateSaleOrder(UpdateSaleOrderRequest req)
         {
             throw new NotImplementedException();
         }

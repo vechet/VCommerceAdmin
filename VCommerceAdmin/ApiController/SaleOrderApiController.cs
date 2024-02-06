@@ -18,28 +18,28 @@ namespace VCommerceAdmin.ApiController
             _saleOrdersService = saleOrdersService;
         }
 
-        //[HttpPost("v1/brand/create-brand")]
-        //public async Task<ApiResponse<BaseResponse>> CreateBrand([FromBody] CreateBrandRequest req)
-        //{
-        //    return new ApiResponse<BaseResponse>(await _brandService.CreateBrand(req));
-        //}
+        [HttpPost("v1/sale-order/create-sale-order")]
+        public async Task<ApiResponse<BaseResponse>> CreateSaleOrder([FromBody] CreateSaleOrderRequest req)
+        {
+            return new ApiResponse<BaseResponse>(await _saleOrdersService.CreateSaleOrder(req));
+        }
 
         [HttpPost("v1/sale-order/get-sale-orders")]
-        public async Task<ApiResponse<GetSaleOrdersResponse>> GetBrands([FromBody] GetSaleOrdersRequest req)
+        public async Task<ApiResponse<GetSaleOrdersResponse>> GetSaleOrders([FromBody] GetSaleOrdersRequest req)
         {
             return new ApiResponse<GetSaleOrdersResponse>(await _saleOrdersService.GetSaleOrders(req));
         }
 
-        //[HttpPost("v1/brand/update-brand")]
-        //public async Task<ApiResponse<BaseResponse>> UpdateBrand([FromBody] UpdateBrandRequest req)
-        //{
-        //    return new ApiResponse<BaseResponse>(await _brandService.UpdateBrand(req));
-        //}
+        [HttpPost("v1/sale-order/update-sale-order")]
+        public async Task<ApiResponse<BaseResponse>> UpdateSaleOrder([FromBody] UpdateSaleOrderRequest req)
+        {
+            return new ApiResponse<BaseResponse>(await _saleOrdersService.UpdateSaleOrder(req));
+        }
 
-        //[HttpPost("v1/brand/get-detial-brand")]
-        //public async Task<ApiResponse<GetDetailBrandResponse>> GetDetailBrand([FromBody] GetDetailBrandRequest req)
-        //{
-        //    return new ApiResponse<GetDetailBrandResponse>(await _brandService.GetDetailBrand(req));
-        //}
+        [HttpPost("v1/sale-order/get-detial-sale-order")]
+        public async Task<ApiResponse<GetDetailSaleOrderResponse>> GetDetailSaleOrderBrand([FromBody] GetDetailSaleOrderRequest req)
+        {
+            return new ApiResponse<GetDetailSaleOrderResponse>(await _saleOrdersService.GetDetailSaleOrder(req));
+        }
     }
 }

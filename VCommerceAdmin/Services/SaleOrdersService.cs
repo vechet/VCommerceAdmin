@@ -1,4 +1,5 @@
 ﻿using VCommerceAdmin.ApiModels;
+using VCommerceAdmin.Helpers;
 using VCommerceAdmin.Repository;
 using VCommerceAdmin.Repository.Interface;
 using VCommerceAdmin.Services.Interface;
@@ -12,9 +13,25 @@ namespace VCommerceAdmin.Services
         {
             _saleOrdersRepository = saleOrdersRepository;
         }
+
+        public async Task<BaseResponse> CreateSaleOrder(CreateSaleOrderRequest req)
+        {
+            return await _saleOrdersRepository.CreateSaleOrder(req);
+        }
+
+        public async Task<GetDetailSaleOrderResponse> GetDetailSaleOrder(GetDetailSaleOrderRequest req)
+        {
+            return await _saleOrdersRepository.GetDetailSaleOrder(req);
+        }
+
         public async Task<GetSaleOrdersResponse> GetSaleOrders(GetSaleOrdersRequest req)
         {
             return await _saleOrdersRepository.GetSaleOrders(req);
+        }
+
+        public async Task<BaseResponse> UpdateSaleOrder(UpdateSaleOrderRequest req)
+        {
+            return await _saleOrdersRepository.UpdateSaleOrder(req);
         }
     }
 }
