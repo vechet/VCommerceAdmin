@@ -3,7 +3,7 @@ using VCommerceAdmin.Helpers;
 
 namespace VCommerceAdmin.Services.Interface
 {
-    public interface ISaleOrdersService
+    public interface ISaleOrderService
     {
         Task<GetSaleOrdersResponse> GetSaleOrders(GetSaleOrdersRequest req);
         Task<GetDetailSaleOrderResponse> GetDetailSaleOrder(GetDetailSaleOrderRequest req);

@@ -11,9 +11,9 @@ namespace VCommerceAdmin.ApiController
     [ApiController]
     public class SaleOrderApiController : ControllerBase
     {
-        private readonly ISaleOrdersService _saleOrdersService;
+        private readonly ISaleOrderService _saleOrdersService;
 
-        public SaleOrderApiController(ISaleOrdersService saleOrdersService)
+        public SaleOrderApiController(ISaleOrderService saleOrdersService)
         {
             _saleOrdersService = saleOrdersService;
         }

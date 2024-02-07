@@ -6,10 +6,10 @@ using VCommerceAdmin.Services.Interface;
 
 namespace VCommerceAdmin.Services
 {
-    public class SaleOrdersService : ISaleOrdersService
+    public class SaleOrderService : ISaleOrderService
     {
-        private readonly ISaleOrdersRepository _saleOrdersRepository;
-        public SaleOrdersService(ISaleOrdersRepository saleOrdersRepository)
+        private readonly ISaleOrderRepository _saleOrdersRepository;
+        public SaleOrderService(ISaleOrderRepository saleOrdersRepository)
         {
             _saleOrdersRepository = saleOrdersRepository;
         }
