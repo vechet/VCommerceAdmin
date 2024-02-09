@@ -5,7 +5,7 @@ namespace VCommerceAdmin.ApiModels
     public class GetBrandsResponse : BaseResponse, IPageResponse
     {
         public List<BrandsResponse> Brands { get; set; }
-        public int PageNumber { get; set; }
+        public int Page { get; set; }
         public int PageSize { get; set; }
         public int TotalPages { get; set; }
         public int TotalRecords { get; set; }
@@ -13,7 +13,7 @@ namespace VCommerceAdmin.ApiModels
         public GetBrandsResponse(List<BrandsResponse> brands, PageResponse pageResponse, int code, string msg) 
         {
             Brands = brands;
-            PageNumber = pageResponse.PageNumber;
+            Page = pageResponse.Page;
             PageSize = pageResponse.PageSize;
             TotalPages = pageResponse.TotalPages;
             TotalRecords = pageResponse.TotalRecords;

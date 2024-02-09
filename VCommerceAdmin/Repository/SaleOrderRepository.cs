@@ -41,13 +41,13 @@ namespace VCommerceAdmin.Repository
                             Id = x.Id,
                             Name = x.Name,
                             Memo = x.Memo,
-                            CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
-                            CreatedBy = x.CreatedBy,
-                            CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
-                            ModifiedByUser = x.ModifiedBy.IsNullOrEmpty() ? null : context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName,
-                            ModifiedBy = x.ModifiedBy,
-                            StatusId = x.StatusId,
-                            StatusName = x.Status.Name,
+                            //CreatedByUser = context.Users.FirstOrDefault(z => z.Id == x.CreatedBy).UserName,
+                            //CreatedBy = x.CreatedBy,
+                            //CreatedDate = x.CreatedDate.ToString(GlobalVariable.dateFormat),
+                            //ModifiedByUser = x.ModifiedBy.IsNullOrEmpty() ? null : context.Users.FirstOrDefault(z => z.Id == x.ModifiedBy).UserName,
+                            //ModifiedBy = x.ModifiedBy,
+                            //StatusId = x.StatusId,
+                            //StatusName = x.Status.Name,
                         }).FirstOrDefault();
 
                     return new GetDetailSaleOrderResponse(result, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());

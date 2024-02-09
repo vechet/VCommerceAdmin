@@ -103,12 +103,12 @@ namespace VCommerceAdmin.Repository
                         StatusName = x.Status.Name,
                     })
                     .OrderByDescending(x => x.Id)
-                    .Skip((req.PageNumber - 1) * req.PageSize)
+                    .Skip((req.Page - 1) * req.PageSize)
                     .Take(req.PageSize).ToList();
 
                     //pagination
                     var totalRecords = context.Brands.Count(x => (req.isShowAll || (!req.isShowAll && x.Status.KeyName == "Active")));
-                    var pageResponse = new PageResponse(req.PageNumber, req.PageSize, totalRecords);
+                    var pageResponse = new PageResponse(req.Page, req.PageSize, totalRecords);
                     
                     return new GetBrandsResponse(result, pageResponse, ApiResponseStatus.Success.Value(), ApiResponseStatus.Success.Description());
                 }
